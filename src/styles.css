@@ -1,0 +1,406 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-deep: var(--surface-deep);
+  --color-teal: var(--teal);
+  --color-pink: var(--pink);
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Echo 27 brand palette — flat, high-contrast, ink-on-paper */
+  --background: oklch(0.96 0.004 95);            /* warm paper off-white */
+  --surface: oklch(1 0 0);                        /* #FFFFFF cards */
+  --surface-alt: oklch(0.935 0.005 95);           /* subtle neutral alternate */
+  --surface-deep: oklch(0.9 0.006 95);            /* deeper neutral finale */
+  --foreground: oklch(0.16 0.006 190);            /* near-black ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.006 190);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.006 190);
+  --primary: oklch(0.55 0.16 0);                 /* #C13D6E pink */
+  --primary-foreground: oklch(1 0 0);
+  --pink: oklch(0.55 0.16 0);
+  /* Exact Echo 27 brand teal (same color as the "27" in the logo) */
+  --teal: #1F8F85;
+  --secondary: oklch(0.935 0.005 95);
+  --secondary-foreground: oklch(0.16 0.006 190);
+  --muted: oklch(0.935 0.005 95);
+  --muted-foreground: oklch(0.42 0.015 190);     /* darker, more legible muted ink */
+  --accent: oklch(0.58 0.085 190);               /* teal as accent */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.16 0.006 190);               /* borders are ink-black, not soft grey */
+  --input: oklch(0.7 0.006 190);
+  --ring: oklch(0.58 0.085 190);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+}
+
+@layer utilities {
+  /* Section label: flat uppercase text with a solid square marker. No pills. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--foreground);
+  }
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--teal);
+  }
+  .eyebrow-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  .eyebrow-dark::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--teal);
+  }
+  .label-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--foreground);
+  }
+  .label-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background-color: currentColor;
+  }
+  .label-eyebrow.on-dark { color: oklch(0.92 0 0); }
+  .serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .num-display {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .rule-thin {
+    height: 1px;
+    width: 100%;
+    background-color: color-mix(in oklab, var(--foreground) 18%, transparent);
+  }
+  .rule-thin-dark {
+    height: 1px;
+    width: 100%;
+    background-color: color-mix(in oklab, #ffffff 18%, transparent);
+  }
+  .text-teal { color: var(--teal); }
+  .bg-teal { background-color: var(--teal); }
+  .border-teal { border-color: var(--teal); }
+  .bg-pink { background-color: var(--pink); }
+  .text-pink { color: var(--pink); }
+  .bg-surface { background-color: var(--surface); }
+  .bg-surface-alt { background-color: var(--surface-alt); }
+  .bg-surface-deep { background-color: var(--surface-deep); }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.7s ease-out both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .hairline {
+    background-color: color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+  .hairline-dark {
+    background-color: color-mix(in oklab, #ffffff 14%, transparent);
+  }
+
+  /* Buttons: flat rectangles with an ink border. Never pills, never shadows. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--teal);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.85rem 1.4rem;
+    border-radius: 8px;
+    border: 2px solid var(--foreground);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--foreground);
+    color: #ffffff;
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background-color: var(--surface);
+    color: var(--foreground);
+    font-weight: 700;
+    padding: 0.85rem 1.4rem;
+    border-radius: 8px;
+    border: 2px solid var(--foreground);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+  .btn-on-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--teal);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.85rem 1.4rem;
+    border-radius: 8px;
+    border: 2px solid #ffffff;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-on-dark:hover {
+    background-color: #ffffff;
+    color: var(--foreground);
+  }
+
+  /* Calculator inputs: no native spinners, they fight the flat ink borders. */
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Cards: 2px ink border, flat fill, square-ish corners. */
+  .card-elev {
+    background-color: var(--surface);
+    border-radius: 10px;
+    border: 2px solid var(--foreground);
+    transition: background-color 0.2s ease;
+  }
+  .card-elev:hover {
+    background-color: var(--surface-alt);
+  }
+
+  /* Struck-out word: one clean editorial rule, drawn left to right. */
+  .strike-easy {
+    position: relative;
+    display: inline-block;
+    color: color-mix(in oklab, var(--foreground) 45%, var(--background));
+  }
+  .strike-easy::after {
+    content: "";
+    position: absolute;
+    left: -3%;
+    right: -3%;
+    top: 52%;
+    height: 0.09em;
+    background-color: var(--pink);
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: strikeThrough 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.45s forwards;
+  }
+  @keyframes strikeThrough {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  /* A single ink-bordered slab. Cells inside sit on an ink-coloured grid whose
+     2px gaps read as the dividing rules, so they stay correct at every breakpoint. */
+  .slab {
+    border: 2px solid var(--foreground);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
