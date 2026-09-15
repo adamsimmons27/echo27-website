@@ -187,7 +187,7 @@ export function LocalServicesLanding() {
         </section>
 
         {/* Founder */}
-        <section id="founder" className="border-y-2 border-foreground bg-butter py-20 md:py-28">
+        <section id="founder" className="border-y-2 border-foreground bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center md:gap-16">
               <div className="slab overflow-hidden bg-surface">
@@ -315,26 +315,26 @@ export function LocalServicesLanding() {
         </section>
 
         {/* Final CTA */}
-        <section id="apply" className="border-y-2 border-foreground bg-yellow py-20 text-foreground md:py-28">
+        <section id="apply" className="border-y-2 border-foreground bg-teal-deep py-20 text-white md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
               <div>
-                <p className="eyebrow mb-7">Let's do this</p>
+                <p className="eyebrow-dark mb-7">Let's do this</p>
                 <h2 className="max-w-[14ch] text-[44px] md:text-[68px] lg:text-[80px] font-extrabold leading-[0.94] tracking-[-0.04em]">
-                  Your business deserves a full calendar. <span className="text-teal-deep">Let's build one.</span>
+                  Your business deserves a full calendar. <span className="text-mint">Let's build one.</span>
                 </h2>
               </div>
               <div>
-                <p className="max-w-[40ch] text-lg text-foreground/75 leading-snug">
+                <p className="max-w-[40ch] text-lg text-white/70 leading-snug">
                   Apply and we'll look at your market, your numbers, and your goals. Then we'll map
                   out a plan to fill the calendar, and tell you straight if we're not the right fit.
                 </p>
                 <div className="mt-8">
-                  <button type="button" onClick={openBookingModal} className="btn-primary">
+                  <button type="button" onClick={openBookingModal} className="btn-on-dark">
                     Apply to partner with us
                   </button>
                 </div>
-                <p className="mt-4 text-[14px] text-foreground/60">No pitch. Takes about two minutes.</p>
+                <p className="mt-4 text-[14px] text-white/60">No pitch. Takes about two minutes.</p>
               </div>
             </div>
           </div>

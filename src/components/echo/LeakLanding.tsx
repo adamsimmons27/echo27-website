@@ -234,7 +234,7 @@ export function LeakLanding() {
         </section>
 
         {/* What you won't get / will get */}
-        <section id="deal" className="border-y-2 border-foreground bg-butter py-20 md:py-28">
+        <section id="deal" className="border-y-2 border-foreground bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <p className="eyebrow mb-7">The deal</p>
             <h2 className="max-w-[16ch] text-[38px] md:text-[52px] font-extrabold leading-[0.98] tracking-[-0.04em]">
@@ -289,27 +289,27 @@ export function LeakLanding() {
         </section>
 
         {/* Final CTA */}
-        <section id="apply" className="border-y-2 border-foreground bg-yellow py-20 text-foreground md:py-28">
+        <section id="apply" className="border-y-2 border-foreground bg-teal-deep py-20 text-white md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
               <div>
-                <p className="eyebrow mb-7">Stop replacing. Start keeping.</p>
+                <p className="eyebrow-dark mb-7">Stop replacing. Start keeping.</p>
                 <h2 className="max-w-[13ch] text-[44px] md:text-[68px] lg:text-[80px] font-extrabold leading-[0.94] tracking-[-0.04em]">
-                  Plug the leak before you buy <span className="text-teal-deep">another lead.</span>
+                  Plug the leak before you buy <span className="text-mint">another lead.</span>
                 </h2>
               </div>
               <div>
-                <p className="max-w-[40ch] text-lg text-foreground/75 leading-snug">
+                <p className="max-w-[40ch] text-lg text-white/70 leading-snug">
                   Apply with your numbers. On the first call we'll find where your leads are going,
                   what it's costing you, and whether we're the right people to fix it. If we're
                   not, we'll say so.
                 </p>
                 <div className="mt-8">
-                  <button type="button" onClick={openBookingModal} className="btn-primary">
+                  <button type="button" onClick={openBookingModal} className="btn-on-dark">
                     Apply to partner with us
                   </button>
                 </div>
-                <p className="mt-4 text-[14px] text-foreground/60">No pitch. Takes about two minutes.</p>
+                <p className="mt-4 text-[14px] text-white/60">No pitch. Takes about two minutes.</p>
               </div>
             </div>
           </div>

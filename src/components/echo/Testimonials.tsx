@@ -134,7 +134,7 @@ export function WrittenQuotes({ items, columns = 3 }: { items: Written[]; column
   return (
     <div className={`slab grid grid-cols-1 gap-[2px] bg-foreground ${columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {items.map((w, i) => (
-        <article key={w.name} className={`flex flex-col ${["bg-butter", "bg-sky", "bg-peach"][i % 3]} p-7 md:p-9`}>
+        <article key={w.name} className={`flex flex-col ${["bg-sky", "bg-surface", "bg-peach"][i % 3]} p-7 md:p-9`}>
           {w.result && (
             <p className="mb-5 text-[13px] font-bold uppercase tracking-[0.08em] text-teal">{w.result}</p>
           )}

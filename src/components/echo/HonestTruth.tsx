@@ -54,7 +54,7 @@ export function HonestTruth() {
                     type="button"
                     onClick={() => toggle(i)}
                     aria-pressed={on}
-                    className="flex w-full items-center gap-4 bg-surface px-5 py-4 text-left hover:bg-butter md:px-6 md:py-5"
+                    className="flex w-full items-center gap-4 bg-surface px-5 py-4 text-left hover:bg-surface-alt md:px-6 md:py-5"
                   >
                     <span
                       className={`flex h-5 w-5 shrink-0 items-center justify-center border-2 border-foreground ${

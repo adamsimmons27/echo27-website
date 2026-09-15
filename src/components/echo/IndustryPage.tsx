@@ -97,7 +97,7 @@ export function IndustryPage({ c }: { c: IndustryConfig }) {
       <main className="pt-[68px]">
         {/* Hero: qualifier, short uppercase headline, one CTA */}
         <section id="top" className="mx-auto max-w-[1180px] px-6 pt-14 pb-14 text-center md:pt-20 md:pb-20">
-          <p className="mx-auto inline-block rounded-lg border-2 border-foreground bg-yellow px-5 py-2.5 text-[13px] font-bold uppercase tracking-[0.08em] text-foreground md:text-[14px]">
+          <p className="mx-auto inline-block rounded-lg border-2 border-foreground bg-surface px-5 py-2.5 text-[13px] font-bold uppercase tracking-[0.08em] text-foreground md:text-[14px]">
             {c.qualifier}
           </p>
           <h1 className="mx-auto mt-10 max-w-[14ch] text-balance text-[52px] font-extrabold uppercase leading-[0.9] tracking-[-0.03em] sm:text-[72px] md:text-[96px] lg:text-[112px]">
@@ -161,7 +161,7 @@ export function IndustryPage({ c }: { c: IndustryConfig }) {
             <Heading eyebrow={c.industry} title={`Who we work with in ${c.industry.toLowerCase()}.`} />
             <div className="slab mt-12 grid grid-cols-1 gap-[2px] bg-foreground sm:grid-cols-2 lg:grid-cols-3">
               {c.subVerticals.map((v, i) => (
-                <div key={v.name} className={`card-flip ${["bg-sky", "bg-butter", "bg-peach", "bg-lilac", "bg-mint", "bg-surface"][i % 6]} p-7`}>
+                <div key={v.name} className={`card-flip ${["bg-sky", "bg-surface", "bg-peach", "bg-lilac", "bg-mint", "bg-surface"][i % 6]} p-7`}>
                   <h3 className="text-[22px] font-extrabold leading-[1.05] tracking-[-0.03em]">{v.name}</h3>
                   <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">{v.copy}</p>
                 </div>
@@ -343,7 +343,7 @@ export function IndustryPage({ c }: { c: IndustryConfig }) {
         )}
 
         {/* Not marketers */}
-        <section id="why" className="border-t-2 border-foreground bg-butter py-20 md:py-28">
+        <section id="why" className="border-t-2 border-foreground bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
               <div>
@@ -388,15 +388,15 @@ export function IndustryPage({ c }: { c: IndustryConfig }) {
         </section>
 
         {/* Closing CTA */}
-        <section id="contact" className="border-y-2 border-foreground bg-yellow py-20 text-foreground md:py-28">
+        <section id="contact" className="border-y-2 border-foreground bg-teal-deep py-20 text-white md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
               <div>
-                <p className="eyebrow mb-7">Ready when you are</p>
+                <p className="eyebrow-dark mb-7">Ready when you are</p>
                 <h2 className="max-w-[14ch] text-[44px] md:text-[64px] lg:text-[76px] font-extrabold leading-[0.94] tracking-[-0.04em]">{c.closing.title}</h2>
               </div>
               <div>
-                <p className="max-w-[40ch] text-lg text-foreground/75 leading-snug">{c.closing.copy}</p>
+                <p className="max-w-[40ch] text-lg text-white/70 leading-snug">{c.closing.copy}</p>
                 <div className="mt-8">
                   <Apply dark />
                 </div>

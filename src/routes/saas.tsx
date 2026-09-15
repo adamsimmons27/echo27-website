@@ -77,7 +77,7 @@ const config: IndustryConfig = {
   closing: {
     title: (
       <>
-        Turn ad spend into <span className="text-teal">predictable growth.</span>
+        Turn ad spend into <span className="text-mint">predictable growth.</span>
       </>
     ),
     copy: "Apply with your numbers. On the first call we'll look at your funnel, your spend, and your targets, and tell you straight whether we can move them.",

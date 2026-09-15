@@ -97,7 +97,7 @@ function Index() {
         <Testimonials />
         <Results />
         <HonestTruth />
-        <Ticker items={["Paid ads", "SEO and AEO", "Web and UX design", "Funnel building", "Fractional CMO"]} tone="yellow" />
+        <Ticker items={["Paid ads", "SEO and AEO", "Web and UX design", "Funnel building", "Fractional CMO"]} tone="teal" />
         <Services />
         <Industries />
         <FreeTools />

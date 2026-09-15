@@ -75,7 +75,7 @@ const config: IndustryConfig = {
   closing: {
     title: (
       <>
-        Outrank the national lenders <span className="text-teal">on the searches that matter.</span>
+        Outrank the national lenders <span className="text-mint">on the searches that matter.</span>
       </>
     ),
     copy: "Apply with your numbers. On the first call we'll look at your account, your tracking, and your states, and tell you straight whether we can bring cost per qualified lead down.",

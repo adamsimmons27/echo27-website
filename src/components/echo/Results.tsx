@@ -21,7 +21,7 @@ export function Results() {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`${["bg-sky", "bg-mint", "bg-butter", "bg-peach", "bg-lilac"][i % 5]} p-6 md:p-7 lg:col-span-1 ${
+              className={`${["bg-sky", "bg-mint", "bg-surface", "bg-peach", "bg-lilac"][i % 5]} p-6 md:p-7 lg:col-span-1 ${
                 i === 4 ? "col-span-2 sm:col-span-3" : i === 3 ? "sm:col-span-3" : "sm:col-span-2"
               }`}
             >

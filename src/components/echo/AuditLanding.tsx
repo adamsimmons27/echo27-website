@@ -340,7 +340,7 @@ export function AuditLanding() {
         </section>
 
         {/* Founder */}
-        <section id="founder" className="border-y-2 border-foreground bg-butter py-20 md:py-28">
+        <section id="founder" className="border-y-2 border-foreground bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center md:gap-16">
               <div className="slab overflow-hidden bg-surface">
@@ -386,22 +386,22 @@ export function AuditLanding() {
         </section>
 
         {/* Final CTA back to the form */}
-        <section id="cta" className="border-t-2 border-foreground bg-yellow py-20 text-foreground md:py-28">
+        <section id="cta" className="border-t-2 border-foreground bg-teal-deep py-20 text-white md:py-28">
           <div className="mx-auto max-w-[1180px] px-6">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
               <div>
-                <p className="eyebrow mb-7">Get your audit</p>
+                <p className="eyebrow-dark mb-7">Get your audit</p>
                 <h2 className="max-w-[14ch] text-[40px] md:text-[60px] lg:text-[72px] font-extrabold leading-[0.94] tracking-[-0.04em]">
-                  Find out what's costing you <span className="text-teal-deep">customers.</span>
+                  Find out what's costing you <span className="text-mint">customers.</span>
                 </h2>
               </div>
               <div>
-                <p className="max-w-[40ch] text-lg text-foreground/75 leading-snug">
+                <p className="max-w-[40ch] text-lg text-white/70 leading-snug">
                   Two minutes to fill in. Ten minutes to watch. You'll know exactly where you're
                   losing customers and what to fix first.
                 </p>
                 <div className="mt-8">
-                  <a href="#audit" className="btn-primary">Get my free audit</a>
+                  <a href="#audit" className="btn-on-dark">Get my free audit</a>
                 </div>
               </div>
             </div>

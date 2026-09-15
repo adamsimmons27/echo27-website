@@ -75,7 +75,7 @@ const config: IndustryConfig = {
   closing: {
     title: (
       <>
-        Profitable first. <span className="text-teal">Then scale.</span>
+        Profitable first. <span className="text-mint">Then scale.</span>
       </>
     ),
     copy: "Apply with your numbers. On the first call we'll look at your margins, your creative, and your funnel, and tell you straight whether we can bring CAC down.",

@@ -62,7 +62,7 @@ export function Services() {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`card-flip flex flex-col ${["bg-sky", "bg-mint", "bg-butter", "bg-peach", "bg-lilac"][i % 5]} p-6 xl:col-span-1 ${
+              className={`card-flip flex flex-col ${["bg-sky", "bg-mint", "bg-surface", "bg-peach", "bg-lilac"][i % 5]} p-6 xl:col-span-1 ${
                 i === 4 ? "sm:col-span-2 lg:col-span-3" : i === 3 ? "lg:col-span-3" : "lg:col-span-2"
               }`}
             >

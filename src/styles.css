@@ -81,7 +81,7 @@
   --background: #FBF6EC;                          /* warm cream paper */
   --surface: #FFFFFF;                             /* cards */
   --surface-alt: #E4F3EA;                         /* mint band for alternate sections */
-  --surface-deep: #FDEBB3;                        /* butter band */
+  --surface-deep: #C5E2F6;                        /* sky band */
   /* Friendly flat fills. Always paired with ink text and ink borders, never gradients. */
   --yellow: #F7C948;
   --butter: #FDEBB3;
@@ -180,12 +180,12 @@
   }
 }
 
-/* Cards take a wash of yellow on hover. */
+/* Cards get a teal inner outline on hover. */
 .card-flip {
-  transition: background-color 0.25s ease;
+  transition: box-shadow 0.2s ease;
 }
 .card-flip:hover {
-  background-color: var(--yellow);
+  box-shadow: inset 0 0 0 3px var(--teal);
 }
 
 /* Nav links draw an underline instead of toggling one. */
@@ -328,9 +328,10 @@
   .bg-mint { background-color: var(--mint); }
   .bg-peach { background-color: var(--peach); }
   .bg-lilac { background-color: var(--lilac); }
+  .text-mint { color: var(--mint); }
   /* Marker highlight behind a word or two. */
   .hl {
-    background-color: var(--yellow);
+    background-color: var(--mint);
     color: var(--foreground);
     padding: 0 0.12em;
     margin: 0 -0.04em;
@@ -421,7 +422,7 @@
     transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .btn-ghost:hover {
-    background-color: var(--butter);
+    background-color: var(--surface-alt);
     color: var(--foreground);
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 0 var(--foreground);
