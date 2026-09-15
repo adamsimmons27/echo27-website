@@ -63,7 +63,14 @@
   --color-surface-alt: var(--surface-alt);
   --color-surface-deep: var(--surface-deep);
   --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
   --color-pink: var(--pink);
+  --color-yellow: var(--yellow);
+  --color-butter: var(--butter);
+  --color-sky: var(--sky);
+  --color-mint: var(--mint);
+  --color-peach: var(--peach);
+  --color-lilac: var(--lilac);
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Archivo", ui-sans-serif, system-ui, sans-serif;
 }
@@ -71,10 +78,18 @@
 :root {
   --radius: 0.625rem;
   /* Echo 27 brand palette — flat, high-contrast, ink-on-paper */
-  --background: oklch(0.96 0.004 95);            /* warm paper off-white */
-  --surface: oklch(1 0 0);                        /* #FFFFFF cards */
-  --surface-alt: oklch(0.935 0.005 95);           /* subtle neutral alternate */
-  --surface-deep: oklch(0.9 0.006 95);            /* deeper neutral finale */
+  --background: #FBF6EC;                          /* warm cream paper */
+  --surface: #FFFFFF;                             /* cards */
+  --surface-alt: #E4F3EA;                         /* mint band for alternate sections */
+  --surface-deep: #FDEBB3;                        /* butter band */
+  /* Friendly flat fills. Always paired with ink text and ink borders, never gradients. */
+  --yellow: #F7C948;
+  --butter: #FDEBB3;
+  --sky: #C5E2F6;
+  --mint: #C7EAD8;
+  --peach: #F9CFBB;
+  --lilac: #DCD5F5;
+  --teal-deep: #176E66;
   --foreground: oklch(0.16 0.006 190);            /* near-black ink */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.16 0.006 190);
@@ -146,9 +161,61 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Motion. Section and card reveals run through the Web Animations API in __root.tsx, so server HTML
+   is never hidden and hydration is untouched. Everything here also respects reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.35em);
+    animation: heroWord 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes heroWord {
+    to { opacity: 1; transform: none; }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Cards take a wash of yellow on hover. */
+.card-flip {
+  transition: background-color 0.25s ease;
+}
+.card-flip:hover {
+  background-color: var(--yellow);
+}
+
+/* Nav links draw an underline instead of toggling one. */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  /* Anchored sections land below the fixed 68px header instead of under it. */
+  section[id] {
+    scroll-margin-top: 5.25rem;
   }
 
   body {
@@ -185,6 +252,7 @@
     display: block;
     width: 10px;
     height: 10px;
+    border-radius: 50%;
     background-color: var(--teal);
   }
   .eyebrow-dark {
@@ -202,6 +270,7 @@
     display: block;
     width: 10px;
     height: 10px;
+    border-radius: 50%;
     background-color: var(--teal);
   }
   .label-eyebrow {
@@ -251,6 +320,24 @@
   .border-teal { border-color: var(--teal); }
   .bg-pink { background-color: var(--pink); }
   .text-pink { color: var(--pink); }
+  .bg-teal-deep { background-color: var(--teal-deep); }
+  .text-teal-deep { color: var(--teal-deep); }
+  .bg-yellow { background-color: var(--yellow); }
+  .bg-butter { background-color: var(--butter); }
+  .bg-sky { background-color: var(--sky); }
+  .bg-mint { background-color: var(--mint); }
+  .bg-peach { background-color: var(--peach); }
+  .bg-lilac { background-color: var(--lilac); }
+  /* Marker highlight behind a word or two. */
+  .hl {
+    background-color: var(--yellow);
+    color: var(--foreground);
+    padding: 0 0.12em;
+    margin: 0 -0.04em;
+    border-radius: 0.18em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
   .bg-surface { background-color: var(--surface); }
   .bg-surface-alt { background-color: var(--surface-alt); }
   .bg-surface-deep { background-color: var(--surface-deep); }
@@ -308,13 +395,16 @@
     color: #ffffff;
     font-weight: 700;
     padding: 0.85rem 1.4rem;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 2px solid var(--foreground);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    box-shadow: 4px 4px 0 0 var(--foreground);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .btn-primary:hover {
-    background-color: var(--foreground);
+    background-color: var(--teal-deep);
     color: #ffffff;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--foreground);
   }
   .btn-ghost {
     display: inline-flex;
@@ -325,13 +415,16 @@
     color: var(--foreground);
     font-weight: 700;
     padding: 0.85rem 1.4rem;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 2px solid var(--foreground);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    box-shadow: 4px 4px 0 0 var(--foreground);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .btn-ghost:hover {
-    background-color: var(--foreground);
-    color: var(--background);
+    background-color: var(--butter);
+    color: var(--foreground);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--foreground);
   }
   .btn-on-dark {
     display: inline-flex;
@@ -342,13 +435,16 @@
     color: #ffffff;
     font-weight: 700;
     padding: 0.85rem 1.4rem;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 2px solid #ffffff;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    box-shadow: 4px 4px 0 0 #ffffff;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .btn-on-dark:hover {
     background-color: #ffffff;
     color: var(--foreground);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 #ffffff;
   }
 
   /* Calculator inputs: no native spinners, they fight the flat ink borders. */
@@ -389,7 +485,7 @@
     background-color: var(--pink);
     transform-origin: left center;
     transform: scaleX(0);
-    animation: strikeThrough 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.45s forwards;
+    animation: strikeThrough 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.95s forwards;
   }
   @keyframes strikeThrough {
     from { transform: scaleX(0); }
@@ -400,7 +496,8 @@
      2px gaps read as the dividing rules, so they stay correct at every breakpoint. */
   .slab {
     border: 2px solid var(--foreground);
-    border-radius: 10px;
+    border-radius: 18px;
     overflow: hidden;
+    box-shadow: 6px 6px 0 0 var(--foreground);
   }
 }

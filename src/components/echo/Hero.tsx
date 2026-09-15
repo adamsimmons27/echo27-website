@@ -1,6 +1,6 @@
 import { openBookingModal } from "./BookingModal";
 
-const logos = [
+export const logos = [
   { name: "Client 1", src: "https://storage.googleapis.com/msgsndr/gIII1KIC3cd7xxjCBh3C/media/67c721dc66af95489e40cddc.png" },
   { name: "Client 2", src: "https://assets.cdn.filesafe.space/gIII1KIC3cd7xxjCBh3C/media/67c7199a001d0180e5371508.png" },
   { name: "Client 3", src: "https://assets.cdn.filesafe.space/gIII1KIC3cd7xxjCBh3C/media/67c7195ed26b7b0239b0c335.png" },
@@ -20,13 +20,21 @@ export function Hero() {
         {/* Headline block — left aligned, no centering, no glow */}
         <div className="pt-28 pb-20 md:pt-40 md:pb-28">
           <h1 className="max-w-[15ch] text-[46px] sm:text-[68px] md:text-[86px] lg:text-[100px] font-extrabold leading-[0.94] tracking-[-0.04em] text-foreground">
-            Business growth made{" "}
-            <span className="strike-easy">easy</span>{" "}
-            <span className="text-teal">less hard.</span>
+            {["Business", "growth", "made"].map((w, i) => (
+              <span key={w}>
+                <span className="hero-word" style={{ "--d": `${i * 90}ms` } as React.CSSProperties}>{w}</span>{" "}
+              </span>
+            ))}
+            <span className="hero-word" style={{ "--d": "270ms" } as React.CSSProperties}>
+              <span className="strike-easy">easy</span>
+            </span>{" "}
+            <span className="hero-word" style={{ "--d": "360ms" } as React.CSSProperties}>
+              <span className="hl">less hard.</span>
+            </span>
           </h1>
           <p className="mt-10 max-w-[46ch] text-lg md:text-2xl text-muted-foreground leading-snug">
-            Paid ads, web design, funnels, and fractional CMO work for founders
-            who want revenue, not reports.
+            Paid ads, SEO, web design, funnels, and fractional CMO work for
+            founders who want revenue, not reports.
           </p>
           <div className="mt-11 flex flex-wrap items-center gap-3">
             <button
@@ -43,8 +51,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Full-bleed ink band for the client logos (they're light marks) */}
-      <div className="border-y-2 border-foreground bg-foreground">
+      {/* Full-bleed teal band for the client logos (they're light marks) */}
+      <div className="border-y-2 border-foreground bg-teal">
         <div className="mx-auto max-w-[1180px] px-6 py-7">
           <div
             className="relative overflow-hidden"

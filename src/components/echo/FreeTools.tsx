@@ -4,7 +4,7 @@ import { TOOLS } from "@/components/echo/calc/CalcKit";
 
 export function FreeTools() {
   return (
-    <section id="tools" className="bg-background py-20 md:py-28">
+    <section id="tools" className="border-y-2 border-foreground bg-sky py-20 md:py-28">
       <div className="mx-auto max-w-[1180px] px-6">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
@@ -23,7 +23,7 @@ export function FreeTools() {
           {TOOLS.map((t) => (
             <div
               key={t.to}
-              className="relative flex flex-col bg-surface p-7 transition-colors hover:bg-surface-alt md:p-8"
+              className="card-flip relative flex flex-col bg-surface p-7 md:p-8"
             >
               <p className="text-[22px] font-extrabold tracking-[-0.02em]">{t.name}</p>
               <p className="mt-3 flex-1 text-[15px] text-muted-foreground leading-relaxed">

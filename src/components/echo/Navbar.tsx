@@ -4,10 +4,11 @@ import logo from "@/assets/echo27-logo.png";
 import { openBookingModal } from "./BookingModal";
 
 const links = [
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#results", label: "Results" },
-  { href: "#services", label: "What we do" },
-  { href: "#tools", label: "Free tools" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#results", label: "Results" },
+  { href: "/#services", label: "What we do" },
+  { href: "/#industries", label: "Industries" },
+  { href: "/#tools", label: "Free tools" },
 ];
 
 export function Navbar() {
@@ -37,7 +38,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-foreground hover:underline underline-offset-4 decoration-2"
+              className="nav-link text-sm font-medium text-foreground"
             >
               {l.label}
             </a>

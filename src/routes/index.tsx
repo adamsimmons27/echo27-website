@@ -8,16 +8,18 @@ import { Services } from "@/components/echo/Services";
 import { Industries } from "@/components/echo/Industries";
 import { FreeTools } from "@/components/echo/FreeTools";
 import { FinalCTA } from "@/components/echo/FinalCTA";
+import { Ticker } from "@/components/echo/Motion";
 import { Footer } from "@/components/echo/Footer";
 import { TOOLS } from "@/components/echo/calc/CalcKit";
 
 const SITE_URL = "https://echo-27.com";
 const TITLE = "Echo 27 — Growth Marketing Agency in Toronto";
 const DESCRIPTION =
-  "Echo 27 is a Toronto growth marketing agency that runs paid ads, web and UX design, funnel building, and fractional CMO work for founders who want revenue, not reports.";
+  "Echo 27 is a Toronto growth marketing agency that runs paid ads, SEO and AEO, web and UX design, funnel building, and fractional CMO work for founders who want revenue, not reports.";
 
 const SERVICES = [
   { name: "Paid advertising management", description: "Meta, Google, YouTube and TikTok campaigns managed against customer value, not click cost." },
+  { name: "SEO and AEO", description: "Search engine and answer engine optimization: technical SEO, site structure, and content built to rank in Google and be cited in AI answers." },
   { name: "Web and UX design", description: "Sites and landing pages built around the decision a visitor is making." },
   { name: "Funnel building", description: "Offers, landing pages, and email and SMS follow-up that convert paid traffic." },
   { name: "Fractional CMO", description: "Senior marketing leadership, strategy and oversight for a fraction of a full-time hire." },
@@ -36,7 +38,7 @@ const structuredData = [
     founder: { "@type": "Person", givenName: "Adam", jobTitle: "Founder" },
     address: { "@type": "PostalAddress", addressLocality: "Toronto", addressRegion: "ON", addressCountry: "CA" },
     areaServed: "Worldwide",
-    knowsAbout: ["Performance marketing", "Paid advertising", "Conversion funnels", "Customer acquisition cost", "Fractional CMO"],
+    knowsAbout: ["Performance marketing", "Paid advertising", "Search engine optimization", "Answer engine optimization", "Conversion funnels", "Customer acquisition cost", "Fractional CMO"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Growth marketing services",
@@ -95,6 +97,7 @@ function Index() {
         <Testimonials />
         <Results />
         <HonestTruth />
+        <Ticker items={["Paid ads", "SEO and AEO", "Web and UX design", "Funnel building", "Fractional CMO"]} tone="yellow" />
         <Services />
         <Industries />
         <FreeTools />

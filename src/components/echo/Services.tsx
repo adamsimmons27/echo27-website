@@ -9,6 +9,15 @@ const services = [
     ],
   },
   {
+    title: "SEO and AEO",
+    copy: "Search and answer-engine optimization, so you show up when people Google you and when they ask an AI.",
+    points: [
+      "Technical fixes and site structure, done once",
+      "Content written to be cited by AI, not just ranked",
+      "Tracked on leads and revenue, not keyword positions",
+    ],
+  },
+  {
     title: "Web and UX design",
     copy: "Sites and landing pages built around the decision a visitor is making. Clear in five seconds, fast on a phone.",
     points: [
@@ -44,14 +53,20 @@ export function Services() {
         <div>
           <p className="eyebrow mb-7">What we do</p>
           <h2 className="max-w-[16ch] text-[38px] md:text-[52px] font-extrabold leading-[0.98] tracking-[-0.04em] text-foreground">
-            Four ways we drive growth.
+            Five ways we drive growth.
           </h2>
         </div>
 
-        <div className="slab mt-14 grid grid-cols-1 gap-[2px] bg-foreground sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <div key={s.title} className="flex flex-col bg-surface p-7 md:p-8">
-              <h3 className="text-[24px] font-extrabold leading-[1.05] tracking-[-0.03em]">
+        {/* Five panels: spans are chosen so no breakpoint leaves an empty cell (which would show as a solid divider-colored box). */}
+        <div className="slab mt-14 grid grid-cols-1 gap-[2px] bg-foreground sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5">
+          {services.map((s, i) => (
+            <div
+              key={s.title}
+              className={`card-flip flex flex-col ${["bg-sky", "bg-mint", "bg-butter", "bg-peach", "bg-lilac"][i % 5]} p-6 xl:col-span-1 ${
+                i === 4 ? "sm:col-span-2 lg:col-span-3" : i === 3 ? "lg:col-span-3" : "lg:col-span-2"
+              }`}
+            >
+              <h3 className="text-[22px] font-extrabold leading-[1.05] tracking-[-0.03em]">
                 {s.title}
               </h3>
               <p className="mt-4 flex-1 text-[15px] text-muted-foreground leading-relaxed">

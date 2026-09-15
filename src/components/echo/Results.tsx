@@ -1,4 +1,6 @@
-const stats = [
+import { CountUp } from "@/components/echo/Motion";
+
+export const stats = [
   /* PLACEHOLDER: replace with real figure */
   { value: "$50M+", label: "Ad spend managed" },
   /* PLACEHOLDER: replace with real figure */
@@ -15,11 +17,16 @@ export function Results() {
   return (
     <section id="results" className="bg-background pb-20 md:pb-28">
       <div className="mx-auto max-w-[1180px] px-6">
-        <div className="slab grid grid-cols-2 gap-[2px] bg-foreground sm:grid-cols-3 lg:grid-cols-5">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-surface p-6 md:p-7">
+        <div className="slab grid grid-cols-2 gap-[2px] bg-foreground sm:grid-cols-6 lg:grid-cols-5">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`${["bg-sky", "bg-mint", "bg-butter", "bg-peach", "bg-lilac"][i % 5]} p-6 md:p-7 lg:col-span-1 ${
+                i === 4 ? "col-span-2 sm:col-span-3" : i === 3 ? "sm:col-span-3" : "sm:col-span-2"
+              }`}
+            >
               <p className="text-[34px] md:text-[40px] font-extrabold tracking-[-0.04em] leading-none text-foreground">
-                {s.value}
+                <CountUp value={s.value} />
               </p>
               <p className="mt-2 text-[13px] text-muted-foreground leading-snug">
                 {s.label}

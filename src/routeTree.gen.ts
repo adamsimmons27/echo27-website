@@ -12,10 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TorontoRouteImport } from './routes/toronto'
 import { Route as SaasRouteImport } from './routes/saas'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NotALeadsProblemRouteImport } from './routes/not-a-leads-problem'
 import { Route as MetaAdsRouteImport } from './routes/meta-ads'
+import { Route as LocalServicesRouteImport } from './routes/local-services'
+import { Route as HvacRouteImport } from './routes/hvac'
 import { Route as GtaSmallBusinessRouteImport } from './routes/gta-small-business'
 import { Route as GrowthCeilingRouteImport } from './routes/growth-ceiling'
 import { Route as GrowthCalculatorRouteImport } from './routes/growth-calculator'
+import { Route as FreeAuditRouteImport } from './routes/free-audit'
+import { Route as EcommerceRouteImport } from './routes/ecommerce'
+import { Route as ConsumerFinanceRouteImport } from './routes/consumer-finance'
 import { Route as CacCalculatorRouteImport } from './routes/cac-calculator'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ApplianceRepairRouteImport } from './routes/appliance-repair'
@@ -38,9 +44,24 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotALeadsProblemRoute = NotALeadsProblemRouteImport.update({
+  id: '/not-a-leads-problem',
+  path: '/not-a-leads-problem',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MetaAdsRoute = MetaAdsRouteImport.update({
   id: '/meta-ads',
   path: '/meta-ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalServicesRoute = LocalServicesRouteImport.update({
+  id: '/local-services',
+  path: '/local-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HvacRoute = HvacRouteImport.update({
+  id: '/hvac',
+  path: '/hvac',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GtaSmallBusinessRoute = GtaSmallBusinessRouteImport.update({
@@ -56,6 +77,21 @@ const GrowthCeilingRoute = GrowthCeilingRouteImport.update({
 const GrowthCalculatorRoute = GrowthCalculatorRouteImport.update({
   id: '/growth-calculator',
   path: '/growth-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeAuditRoute = FreeAuditRouteImport.update({
+  id: '/free-audit',
+  path: '/free-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcommerceRoute = EcommerceRouteImport.update({
+  id: '/ecommerce',
+  path: '/ecommerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsumerFinanceRoute = ConsumerFinanceRouteImport.update({
+  id: '/consumer-finance',
+  path: '/consumer-finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CacCalculatorRoute = CacCalculatorRouteImport.update({
@@ -96,10 +132,16 @@ export interface FileRoutesByFullPath {
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
+  '/consumer-finance': typeof ConsumerFinanceRoute
+  '/ecommerce': typeof EcommerceRoute
+  '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
+  '/hvac': typeof HvacRoute
+  '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
+  '/not-a-leads-problem': typeof NotALeadsProblemRoute
   '/privacy': typeof PrivacyRoute
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
@@ -111,10 +153,16 @@ export interface FileRoutesByTo {
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
+  '/consumer-finance': typeof ConsumerFinanceRoute
+  '/ecommerce': typeof EcommerceRoute
+  '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
+  '/hvac': typeof HvacRoute
+  '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
+  '/not-a-leads-problem': typeof NotALeadsProblemRoute
   '/privacy': typeof PrivacyRoute
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
@@ -127,10 +175,16 @@ export interface FileRoutesById {
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
+  '/consumer-finance': typeof ConsumerFinanceRoute
+  '/ecommerce': typeof EcommerceRoute
+  '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
+  '/hvac': typeof HvacRoute
+  '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
+  '/not-a-leads-problem': typeof NotALeadsProblemRoute
   '/privacy': typeof PrivacyRoute
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
@@ -144,10 +198,16 @@ export interface FileRouteTypes {
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
+    | '/consumer-finance'
+    | '/ecommerce'
+    | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
+    | '/hvac'
+    | '/local-services'
     | '/meta-ads'
+    | '/not-a-leads-problem'
     | '/privacy'
     | '/saas'
     | '/toronto'
@@ -159,10 +219,16 @@ export interface FileRouteTypes {
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
+    | '/consumer-finance'
+    | '/ecommerce'
+    | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
+    | '/hvac'
+    | '/local-services'
     | '/meta-ads'
+    | '/not-a-leads-problem'
     | '/privacy'
     | '/saas'
     | '/toronto'
@@ -174,10 +240,16 @@ export interface FileRouteTypes {
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
+    | '/consumer-finance'
+    | '/ecommerce'
+    | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
+    | '/hvac'
+    | '/local-services'
     | '/meta-ads'
+    | '/not-a-leads-problem'
     | '/privacy'
     | '/saas'
     | '/toronto'
@@ -190,10 +262,16 @@ export interface RootRouteChildren {
   ApplianceRepairRoute: typeof ApplianceRepairRoute
   BookRoute: typeof BookRoute
   CacCalculatorRoute: typeof CacCalculatorRoute
+  ConsumerFinanceRoute: typeof ConsumerFinanceRoute
+  EcommerceRoute: typeof EcommerceRoute
+  FreeAuditRoute: typeof FreeAuditRoute
   GrowthCalculatorRoute: typeof GrowthCalculatorRoute
   GrowthCeilingRoute: typeof GrowthCeilingRoute
   GtaSmallBusinessRoute: typeof GtaSmallBusinessRoute
+  HvacRoute: typeof HvacRoute
+  LocalServicesRoute: typeof LocalServicesRoute
   MetaAdsRoute: typeof MetaAdsRoute
+  NotALeadsProblemRoute: typeof NotALeadsProblemRoute
   PrivacyRoute: typeof PrivacyRoute
   SaasRoute: typeof SaasRoute
   TorontoRoute: typeof TorontoRoute
@@ -224,11 +302,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/not-a-leads-problem': {
+      id: '/not-a-leads-problem'
+      path: '/not-a-leads-problem'
+      fullPath: '/not-a-leads-problem'
+      preLoaderRoute: typeof NotALeadsProblemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/meta-ads': {
       id: '/meta-ads'
       path: '/meta-ads'
       fullPath: '/meta-ads'
       preLoaderRoute: typeof MetaAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/local-services': {
+      id: '/local-services'
+      path: '/local-services'
+      fullPath: '/local-services'
+      preLoaderRoute: typeof LocalServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hvac': {
+      id: '/hvac'
+      path: '/hvac'
+      fullPath: '/hvac'
+      preLoaderRoute: typeof HvacRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gta-small-business': {
@@ -250,6 +349,27 @@ declare module '@tanstack/react-router' {
       path: '/growth-calculator'
       fullPath: '/growth-calculator'
       preLoaderRoute: typeof GrowthCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-audit': {
+      id: '/free-audit'
+      path: '/free-audit'
+      fullPath: '/free-audit'
+      preLoaderRoute: typeof FreeAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecommerce': {
+      id: '/ecommerce'
+      path: '/ecommerce'
+      fullPath: '/ecommerce'
+      preLoaderRoute: typeof EcommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consumer-finance': {
+      id: '/consumer-finance'
+      path: '/consumer-finance'
+      fullPath: '/consumer-finance'
+      preLoaderRoute: typeof ConsumerFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cac-calculator': {
@@ -302,10 +422,16 @@ const rootRouteChildren: RootRouteChildren = {
   ApplianceRepairRoute: ApplianceRepairRoute,
   BookRoute: BookRoute,
   CacCalculatorRoute: CacCalculatorRoute,
+  ConsumerFinanceRoute: ConsumerFinanceRoute,
+  EcommerceRoute: EcommerceRoute,
+  FreeAuditRoute: FreeAuditRoute,
   GrowthCalculatorRoute: GrowthCalculatorRoute,
   GrowthCeilingRoute: GrowthCeilingRoute,
   GtaSmallBusinessRoute: GtaSmallBusinessRoute,
+  HvacRoute: HvacRoute,
+  LocalServicesRoute: LocalServicesRoute,
   MetaAdsRoute: MetaAdsRoute,
+  NotALeadsProblemRoute: NotALeadsProblemRoute,
   PrivacyRoute: PrivacyRoute,
   SaasRoute: SaasRoute,
   TorontoRoute: TorontoRoute,

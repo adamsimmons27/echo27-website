@@ -1,10 +1,17 @@
 import logo from "@/assets/echo27-logo.png";
 
 const nav = [
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#results", label: "Results" },
-  { href: "#services", label: "What we do" },
-  { href: "#industries", label: "Industries" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#results", label: "Results" },
+  { href: "/#services", label: "What we do" },
+  { href: "/#tools", label: "Free tools" },
+];
+
+const industries = [
+  { href: "/saas", label: "SaaS" },
+  { href: "/consumer-finance", label: "Consumer finance" },
+  { href: "/ecommerce", label: "Ecommerce" },
+  { href: "/local-services", label: "Local business" },
 ];
 
 const tools = [
@@ -23,7 +30,7 @@ export function Footer() {
     <footer className="bg-background">
       <div className="mx-auto max-w-[1180px] px-6 py-14">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <img src={logo} alt="Echo 27" className="h-8 w-auto" />
             <p className="mt-5 max-w-[34ch] text-[15px] text-muted-foreground leading-snug">
               A performance marketing partner for founders who want predictable
@@ -31,7 +38,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Explore
             </p>
@@ -49,6 +56,23 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
+            <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
+              Industries
+            </p>
+            <nav className="mt-5 flex flex-col gap-2.5">
+              {industries.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-[15px] text-muted-foreground hover:text-foreground hover:underline underline-offset-4"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div className="md:col-span-2">
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Free tools
             </p>

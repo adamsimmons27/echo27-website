@@ -63,7 +63,7 @@ export function CalcPage({
       <Navbar />
       <main className="pt-[68px]">
         <div className={`mx-auto px-6 ${wide ? "max-w-[1180px]" : "max-w-[760px]"}`}>
-          <div className="pt-16 pb-10 md:pt-24 md:pb-12">
+          <section className="pt-16 pb-10 md:pt-24 md:pb-12">
             <p className="eyebrow mb-6">{eyebrow}</p>
             <h1
               className={`font-extrabold leading-[0.98] tracking-[-0.04em] ${
@@ -80,10 +80,12 @@ export function CalcPage({
             {note && (
               <p className="mt-4 text-[14px] text-muted-foreground">{note}</p>
             )}
-          </div>
-          {children}
-          <ToolLinks />
-          <CalcCTA />
+          </section>
+          <section>{children}</section>
+          <section>
+            <ToolLinks />
+            <CalcCTA />
+          </section>
         </div>
       </main>
       <Footer />
@@ -93,7 +95,7 @@ export function CalcPage({
 
 function CalcCTA() {
   return (
-    <div className="slab my-16 bg-foreground p-8 text-white md:my-24 md:p-12">
+    <div className="slab my-16 bg-teal-deep p-8 text-white md:my-24 md:p-12">
       <h2 className="max-w-[20ch] text-[30px] md:text-[42px] font-extrabold leading-[1.02] tracking-[-0.03em]">
         These are your numbers. We fix the ones that are wrong.
       </h2>
@@ -120,7 +122,7 @@ function ToolLinks() {
           <Link
             key={t.to}
             to={t.to}
-            className="group flex flex-col bg-surface p-6 transition-colors hover:bg-background md:p-7"
+            className="card-flip group flex flex-col bg-surface p-6 md:p-7"
           >
             <p className="flex items-center gap-2 text-[20px] font-extrabold tracking-[-0.02em]">
               {t.name}
