@@ -51,8 +51,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Full-bleed teal band for the client logos (they're light marks) */}
-      <div className="border-y-2 border-foreground bg-teal">
+      {/* Full-bleed ink band for the client logos (they're light marks) */}
+      <div className="border-y-2 border-foreground bg-foreground">
         <div className="mx-auto max-w-[1180px] px-6 py-7">
           <div
             className="relative overflow-hidden"

@@ -113,7 +113,7 @@ export function IndustryPage({ c }: { c: IndustryConfig }) {
         </section>
 
         {/* Client logos */}
-        <div className="border-y-2 border-foreground bg-teal">
+        <div className="border-y-2 border-foreground bg-foreground">
           <div className="mx-auto max-w-[1180px] px-6 py-7">
             <div
               className="relative overflow-hidden"
