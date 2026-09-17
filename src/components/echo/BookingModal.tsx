@@ -175,6 +175,21 @@ export function BookingModal() {
             </div>
 
             <div>
+              <label className={labelClass} htmlFor="phone">
+                Phone
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                required
+                autoComplete="tel"
+                className={`${fieldClass} mt-2.5`}
+              />
+            </div>
+
+            <div>
               <label className={labelClass} htmlFor="website">
                 Website
               </label>
