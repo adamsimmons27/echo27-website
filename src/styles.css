@@ -537,3 +537,81 @@
     box-shadow: 6px 6px 0 0 var(--foreground);
   }
 }
+
+
+/* ---- Homepage hero ---- (unlayered on purpose, so these win over the layered .hl and .strike-easy rules) */
+
+/* Testimonial notes: slab cards pinned at a slight tilt (--r), rising in one after another (--d), then drifting
+   very slightly so the hero never sits completely still. The entrance uses fill-mode backwards so the resting
+   transform applies again afterwards and the hover straighten works. The drift uses the separate translate
+   property, so it never fights the rotate. Notes contain no links, so no stretched overlay can be trapped. */
+.hero-note {
+  position: relative;
+  transform: rotate(var(--r, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+/* A note is not a link, so hovering only straightens it. No lift or deeper shadow, which would read as clickable. */
+@media (hover: hover) {
+  .hero-note:hover {
+    z-index: 1;
+    transform: rotate(0deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-note {
+    animation:
+      heroNote 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) backwards,
+      heroDrift 7s ease-in-out calc(var(--d, 0ms) + 700ms) infinite;
+  }
+  .hero-note:hover {
+    animation-play-state: running, paused;
+  }
+  /* The entrance moves the separate translate property and leaves transform to the tilt, so the two never
+     interpolate against each other and hovering mid-entrance behaves. The drift starts after it has finished. */
+  @keyframes heroNote {
+    from { opacity: 0; translate: 0 18px; }
+  }
+  @keyframes heroDrift {
+    50% { translate: 0 -5px; }
+  }
+
+  /* The mint marker wipes in left to right as the strike through "easy" lands. Without motion the plain .hl
+     background shows, so the server HTML is complete on its own. */
+  .hl.hl-wipe {
+    position: relative;
+    isolation: isolate;
+    white-space: nowrap;
+    background-color: transparent;
+  }
+  .hl.hl-wipe::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background-color: var(--mint);
+    clip-path: inset(0 100% 0 0);
+    animation: hlWipe 0.5s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
+  }
+  @keyframes hlWipe {
+    to { clip-path: inset(0 0 0 0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-note { transition: none; }
+  /* The strike used to animate even with reduced motion. Show it drawn instead. */
+  .strike-easy::after {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Below the two-column layout the headline size follows the viewport, so "Business growth" always fits on
+   line one and the break is "Business growth / made easy / less hard." on every phone and tablet.
+   Scoped to below lg so it never competes with the fixed lg and xl sizes beside the notes. */
+@media (max-width: 1023.98px) {
+  .hero-h1 {
+    font-size: clamp(34px, calc((100vw - 48px) / 7.95), 86px);
+    max-width: 8.6em;
+  }
+}
