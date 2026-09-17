@@ -86,6 +86,7 @@ export function BookingModal() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          form: "application",
           source: "echo-27.com application form",
           submittedAt: new Date().toISOString(),
         }),
