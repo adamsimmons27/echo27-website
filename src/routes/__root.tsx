@@ -108,7 +108,7 @@ function RootComponent() {
         anims.push(a);
       };
       add(section, 28, 700, 0);
-      section.querySelectorAll(".slab > *").forEach((cell, i) => add(cell, 18, 550, 120 + Math.min(i, 5) * 70));
+      section.querySelectorAll(".slab > *, [data-stagger] > *").forEach((cell, i) => add(cell, 18, 550, 120 + Math.min(i, 5) * 70));
       pending.set(section, anims);
     };
 
@@ -133,22 +133,28 @@ function RootComponent() {
       (entries) => entries.forEach((e) => e.isIntersecting && revealThrough(e.target)),
       { threshold: 0.06, rootMargin: "0px 0px -6% 0px" },
     );
-    // Scroll fallback for browsers that deliver intersection updates late.
+    // Fallbacks for browsers that deliver intersection updates late: a plain geometry check on scroll and
+    // resize, plus a slow timer that does not depend on animation frames, so content can never stay hidden.
+    const check = () => {
+      if (!pending.size) return;
+      const vh = window.innerHeight;
+      Array.from(pending.keys()).forEach((s) => {
+        const r = s.getBoundingClientRect();
+        if (r.top < vh * 0.94 && r.bottom > 0) revealThrough(s);
+      });
+    };
     let ticking = false;
     const onScroll = () => {
       if (ticking || !pending.size) return;
       ticking = true;
       requestAnimationFrame(() => {
         ticking = false;
-        const vh = window.innerHeight;
-        Array.from(pending.keys()).forEach((s) => {
-          const r = s.getBoundingClientRect();
-          if (r.top < vh * 0.94 && r.bottom > 0) revealThrough(s);
-        });
+        check();
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+    const safety = window.setInterval(check, 700);
 
     const scan = () => {
       const vh = window.innerHeight;
@@ -168,6 +174,7 @@ function RootComponent() {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.clearInterval(safety);
       pending.forEach((anims) => anims.forEach((a) => a.cancel()));
     };
   }, [pathname]);

@@ -281,12 +281,15 @@ export function LocalServicesLanding() {
             />
             <div className="slab mt-12 grid grid-cols-1 gap-[2px] bg-foreground md:grid-cols-3">
               {TOOLS.map((t) => (
-                <div key={t.to} className="card-flip relative flex flex-col bg-surface p-7 md:p-8">
+                <div key={t.to} className="card-flip group relative flex flex-col bg-surface p-7 md:p-8">
                   <p className="text-[22px] font-extrabold tracking-[-0.02em]">{t.name}</p>
                   <p className="mt-3 flex-1 text-[15px] text-muted-foreground leading-relaxed">{t.blurb}</p>
-                  <Link to={t.to} className="btn-primary mt-7 w-full after:absolute after:inset-0 after:content-['']">
-                    {toolCta[t.to]}
-                    <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                  {/* Button look on an inner span so pressing it never shrinks the link's stretched overlay. */}
+                  <Link to={t.to} className="mt-7 block rounded-[12px] after:absolute after:inset-0 after:content-[''] focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground">
+                    <span className="btn-primary btn-press w-full">
+                      {toolCta[t.to]}
+                      <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                    </span>
                   </Link>
                 </div>
               ))}

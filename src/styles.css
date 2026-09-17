@@ -180,6 +180,41 @@
   }
 }
 
+/* A button whose ::after is stretched over its whole card must not move on hover: a transform would make the
+   button the containing block for that overlay, shrinking the click target under the pointer. */
+.btn-primary[class*="after:inset-0"]:hover,
+.btn-ghost[class*="after:inset-0"]:hover {
+  transform: none;
+  box-shadow: 4px 4px 0 0 var(--foreground);
+}
+.btn-on-dark[class*="after:inset-0"]:hover {
+  transform: none;
+  box-shadow: 4px 4px 0 0 #ffffff;
+}
+
+/* The safe pattern: the link carries the stretched overlay and the button look sits on an inner span with
+   .btn-press. The span presses when its card (.group) is hovered or its link takes keyboard focus. */
+.group:has(a:focus-visible) .btn-press {
+  background-color: var(--teal-deep);
+  box-shadow: 2px 2px 0 0 var(--foreground);
+}
+@media (hover: hover) {
+  .group:hover .btn-press {
+    background-color: var(--teal-deep);
+    box-shadow: 2px 2px 0 0 var(--foreground);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .group:has(a:focus-visible) .btn-press {
+    transform: translate(2px, 2px);
+  }
+  @media (hover: hover) {
+    .group:hover .btn-press {
+      transform: translate(2px, 2px);
+    }
+  }
+}
+
 /* Cards get a teal inner outline on hover. */
 .card-flip {
   transition: box-shadow 0.2s ease;

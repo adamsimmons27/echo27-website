@@ -23,19 +23,19 @@ export function FreeTools() {
           {TOOLS.map((t) => (
             <div
               key={t.to}
-              className="card-flip relative flex flex-col bg-surface p-7 md:p-8"
+              className="card-flip group relative flex flex-col bg-surface p-7 md:p-8"
             >
               <p className="text-[22px] font-extrabold tracking-[-0.02em]">{t.name}</p>
               <p className="mt-3 flex-1 text-[15px] text-muted-foreground leading-relaxed">
                 {t.blurb}
               </p>
-              {/* The button is the visible affordance; its ::after stretches over the card so the whole thing is the link. */}
-              <Link
-                to={t.to}
-                className="btn-primary mt-7 w-full after:absolute after:inset-0 after:content-['']"
-              >
-                Open calculator
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              {/* The link's ::after stretches over the card so the whole thing is the link. The button look sits on an
+                  inner span: a pressed (transformed) link would become the containing block for that overlay and shrink it. */}
+              <Link to={t.to} className="mt-7 block rounded-[12px] after:absolute after:inset-0 after:content-[''] focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground">
+                <span className="btn-primary btn-press w-full">
+                  Open calculator
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </span>
               </Link>
             </div>
           ))}
