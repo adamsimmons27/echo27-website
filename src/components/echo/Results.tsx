@@ -1,13 +1,10 @@
 import { CountUp } from "@/components/echo/Motion";
 
 export const stats = [
-  /* PLACEHOLDER: replace with real figure */
-  { value: "$50M+", label: "Ad spend managed" },
+  { value: "$12M+", label: "Ad spend managed" },
   /* PLACEHOLDER: replace with real figure */
   { value: "4.3x", label: "Average ROAS" },
-  /* PLACEHOLDER: replace with real figure */
   { value: "12+", label: "Years in performance marketing" },
-  /* PLACEHOLDER: replace with real figure */
   { value: "23+", label: "Industries served" },
   /* PLACEHOLDER: replace with real figure */
   { value: "90%", label: "Client retention" },
