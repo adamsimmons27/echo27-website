@@ -20,6 +20,7 @@ import { Route as GtaSmallBusinessRouteImport } from './routes/gta-small-busines
 import { Route as GrowthCeilingRouteImport } from './routes/growth-ceiling'
 import { Route as GrowthCalculatorRouteImport } from './routes/growth-calculator'
 import { Route as FreeAuditRouteImport } from './routes/free-audit'
+import { Route as FractionalCmoRouteImport } from './routes/fractional-cmo'
 import { Route as EcommerceRouteImport } from './routes/ecommerce'
 import { Route as ConsumerFinanceRouteImport } from './routes/consumer-finance'
 import { Route as CacCalculatorRouteImport } from './routes/cac-calculator'
@@ -84,6 +85,11 @@ const FreeAuditRoute = FreeAuditRouteImport.update({
   path: '/free-audit',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FractionalCmoRoute = FractionalCmoRouteImport.update({
+  id: '/fractional-cmo',
+  path: '/fractional-cmo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EcommerceRoute = EcommerceRouteImport.update({
   id: '/ecommerce',
   path: '/ecommerce',
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/cac-calculator': typeof CacCalculatorRoute
   '/consumer-finance': typeof ConsumerFinanceRoute
   '/ecommerce': typeof EcommerceRoute
+  '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/cac-calculator': typeof CacCalculatorRoute
   '/consumer-finance': typeof ConsumerFinanceRoute
   '/ecommerce': typeof EcommerceRoute
+  '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/cac-calculator': typeof CacCalculatorRoute
   '/consumer-finance': typeof ConsumerFinanceRoute
   '/ecommerce': typeof EcommerceRoute
+  '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
@@ -200,6 +209,7 @@ export interface FileRouteTypes {
     | '/cac-calculator'
     | '/consumer-finance'
     | '/ecommerce'
+    | '/fractional-cmo'
     | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
@@ -221,6 +231,7 @@ export interface FileRouteTypes {
     | '/cac-calculator'
     | '/consumer-finance'
     | '/ecommerce'
+    | '/fractional-cmo'
     | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
@@ -242,6 +253,7 @@ export interface FileRouteTypes {
     | '/cac-calculator'
     | '/consumer-finance'
     | '/ecommerce'
+    | '/fractional-cmo'
     | '/free-audit'
     | '/growth-calculator'
     | '/growth-ceiling'
@@ -264,6 +276,7 @@ export interface RootRouteChildren {
   CacCalculatorRoute: typeof CacCalculatorRoute
   ConsumerFinanceRoute: typeof ConsumerFinanceRoute
   EcommerceRoute: typeof EcommerceRoute
+  FractionalCmoRoute: typeof FractionalCmoRoute
   FreeAuditRoute: typeof FreeAuditRoute
   GrowthCalculatorRoute: typeof GrowthCalculatorRoute
   GrowthCeilingRoute: typeof GrowthCeilingRoute
@@ -358,6 +371,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FreeAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fractional-cmo': {
+      id: '/fractional-cmo'
+      path: '/fractional-cmo'
+      fullPath: '/fractional-cmo'
+      preLoaderRoute: typeof FractionalCmoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ecommerce': {
       id: '/ecommerce'
       path: '/ecommerce'
@@ -424,6 +444,7 @@ const rootRouteChildren: RootRouteChildren = {
   CacCalculatorRoute: CacCalculatorRoute,
   ConsumerFinanceRoute: ConsumerFinanceRoute,
   EcommerceRoute: EcommerceRoute,
+  FractionalCmoRoute: FractionalCmoRoute,
   FreeAuditRoute: FreeAuditRoute,
   GrowthCalculatorRoute: GrowthCalculatorRoute,
   GrowthCeilingRoute: GrowthCeilingRoute,

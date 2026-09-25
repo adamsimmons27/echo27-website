@@ -615,3 +615,62 @@
     max-width: 8.6em;
   }
 }
+
+/* ---- Fractional CMO landing page (/fractional-cmo). Extra classes on top of the site's slabs and buttons. ---- */
+@layer components {
+  .headline {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+  .headline-xl { font-size: clamp(2.5rem, 1.3rem + 4vw, 4.25rem); }
+  .headline-lg { font-size: clamp(2rem, 1.1rem + 3.4vw, 3.5rem); }
+  .headline-md { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.65rem); letter-spacing: -0.03em; line-height: 1.05; }
+  .lede { font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem); line-height: 1.5; }
+  /* Cells inside a .slab.slab-grid share 2px ink rules. Every cell sets its own background. */
+  .slab-grid { display: grid; gap: 2px; background-color: var(--foreground); }
+  .card,
+  .card-dark {
+    background: var(--surface);
+    border: 2px solid var(--foreground);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 6px 6px 0 0 var(--foreground);
+    color: var(--foreground);
+  }
+  .photo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--foreground);
+    border-radius: 18px;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .on-dark .photo-slot { border-color: #ffffff; color: #ffffff; }
+  .field {
+    width: 100%;
+    border: 2px solid var(--foreground);
+    border-radius: 12px;
+    background: var(--surface);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--foreground);
+  }
+  .field:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px var(--mint); }
+  .field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+.on-dark :focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }
+.on-dark .card-dark :focus-visible { outline-color: var(--foreground); }
+.sticky-cta { transition: transform 0.25s ease; }
+body[data-booking-visible="true"] .sticky-cta { transform: translateY(100%); }
