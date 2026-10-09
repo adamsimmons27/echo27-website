@@ -132,7 +132,7 @@ export function BookingModal() {
         {status === "sent" ? (
           <div className="p-7 md:p-9">
             <p className="text-[22px] font-extrabold tracking-[-0.02em]">
-              Got it — thanks.
+              Got it. Thanks.
             </p>
             <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">
               Adam reviews these personally and comes back within one business

@@ -5,7 +5,7 @@ import { Footer } from "@/components/echo/Footer";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Echo 27" },
+      { title: "Privacy Policy | Echo 27" },
       { name: "description", content: "How Echo 27 collects, uses, and protects your information." },
     ],
   }),

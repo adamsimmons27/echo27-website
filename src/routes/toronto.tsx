@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GtaLanding } from "@/components/echo/GtaLanding";
 
-const title = "Toronto Small Business Marketing | GTA Lead Generation — Echo 27";
+const title = "Toronto Small Business Marketing | GTA Lead Generation | Echo 27";
 const description =
   "Echo 27 helps Greater Toronto Area small businesses get more local customers with paid ads, funnels, and local lead generation. Results, not reports.";
 const canonical = "https://echo-27.com/gta-small-business";

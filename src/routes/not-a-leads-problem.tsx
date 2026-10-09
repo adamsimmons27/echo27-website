@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LeakLanding } from "@/components/echo/LeakLanding";
 
 const URL = "https://echo-27.com/not-a-leads-problem";
-const TITLE = "You Don't Have a Leads Problem — Echo 27";
+const TITLE = "You Don't Have a Leads Problem | Echo 27";
 const DESCRIPTION =
   "Most local service businesses already get enough leads to fill the calendar. They lose them between the click and the booked job. Put your numbers in, see where they go, and find out what plugging the leak is worth before you buy another lead.";
 

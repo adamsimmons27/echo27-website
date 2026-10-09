@@ -130,13 +130,13 @@ function PhaseCard({
 export const Route = createFileRoute("/case-studies/mountain-gaming")({
   head: () => ({
     meta: [
-      { title: "Case Study - Mountain Gaming — Echo 27" },
+      { title: "Case Study: Mountain Gaming | Echo 27" },
       {
         name: "description",
         content:
           "How Echo 27 helped Mountain Gaming reduce CAC by 41% and increase ROAS by 68%.",
       },
-      { property: "og:title", content: "Case Study - Mountain Gaming — Echo 27" },
+      { property: "og:title", content: "Case Study: Mountain Gaming | Echo 27" },
       {
         property: "og:description",
         content:

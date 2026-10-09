@@ -13,7 +13,7 @@ import {
 export const Route = createFileRoute("/growth-calculator")({
   head: () => ({
     meta: [
-      { title: "Growth Projection Calculator — Echo 27" },
+      { title: "Growth Projection Calculator | Echo 27" },
       {
         name: "description",
         content:

@@ -25,7 +25,7 @@ import {
 export const Route = createFileRoute("/growth-ceiling")({
   head: () => ({
     meta: [
-      { title: "Growth Ceiling Calculator — Echo 27" },
+      { title: "Growth Ceiling Calculator | Echo 27" },
       {
         name: "description",
         content:

@@ -6,7 +6,7 @@ import logo from "@/assets/echo27-logo.png";
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
-      { title: "Book a Call — Echo 27" },
+      { title: "Book a Call | Echo 27" },
       {
         name: "description",
         content:

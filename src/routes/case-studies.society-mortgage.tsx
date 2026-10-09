@@ -215,7 +215,7 @@ function CaseStudyNavbar() {
 export const Route = createFileRoute("/case-studies/society-mortgage")({
   head: () => ({
     meta: [
-      { title: "Case Study: Society Mortgage — Echo 27" },
+      { title: "Case Study: Society Mortgage | Echo 27" },
       {
         name: "description",
         content:
@@ -223,7 +223,7 @@ export const Route = createFileRoute("/case-studies/society-mortgage")({
       },
       {
         property: "og:title",
-        content: "Case Study: Society Mortgage — Echo 27",
+        content: "Case Study: Society Mortgage | Echo 27",
       },
       {
         property: "og:description",

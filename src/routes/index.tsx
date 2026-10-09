@@ -13,7 +13,7 @@ import { Footer } from "@/components/echo/Footer";
 import { TOOLS } from "@/components/echo/calc/CalcKit";
 
 const SITE_URL = "https://echo-27.com";
-const TITLE = "Echo 27 — Growth Marketing Agency in Toronto";
+const TITLE = "Echo 27 | Growth Marketing Agency in Toronto";
 const DESCRIPTION =
   "Echo 27 is a Toronto growth marketing agency that runs paid ads, SEO and AEO, web and UX design, funnel building, and fractional CMO work for founders who want revenue, not reports.";
 

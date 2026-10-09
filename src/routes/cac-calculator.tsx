@@ -16,7 +16,7 @@ import {
 export const Route = createFileRoute("/cac-calculator")({
   head: () => ({
     meta: [
-      { title: "Customer Acquisition Cost Calculator — Echo 27" },
+      { title: "Customer Acquisition Cost Calculator | Echo 27" },
       {
         name: "description",
         content:
