@@ -15,6 +15,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NotALeadsProblemRouteImport } from './routes/not-a-leads-problem'
 import { Route as MetaAdsRouteImport } from './routes/meta-ads'
 import { Route as LocalServicesRouteImport } from './routes/local-services'
+import { Route as HvacMarketingRouteImport } from './routes/hvac-marketing'
 import { Route as HvacRouteImport } from './routes/hvac'
 import { Route as GtaSmallBusinessRouteImport } from './routes/gta-small-business'
 import { Route as GrowthCeilingRouteImport } from './routes/growth-ceiling'
@@ -58,6 +59,11 @@ const MetaAdsRoute = MetaAdsRouteImport.update({
 const LocalServicesRoute = LocalServicesRouteImport.update({
   id: '/local-services',
   path: '/local-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HvacMarketingRoute = HvacMarketingRouteImport.update({
+  id: '/hvac-marketing',
+  path: '/hvac-marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HvacRoute = HvacRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
   '/hvac': typeof HvacRoute
+  '/hvac-marketing': typeof HvacMarketingRoute
   '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
   '/not-a-leads-problem': typeof NotALeadsProblemRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
   '/hvac': typeof HvacRoute
+  '/hvac-marketing': typeof HvacMarketingRoute
   '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
   '/not-a-leads-problem': typeof NotALeadsProblemRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
   '/hvac': typeof HvacRoute
+  '/hvac-marketing': typeof HvacMarketingRoute
   '/local-services': typeof LocalServicesRoute
   '/meta-ads': typeof MetaAdsRoute
   '/not-a-leads-problem': typeof NotALeadsProblemRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/growth-ceiling'
     | '/gta-small-business'
     | '/hvac'
+    | '/hvac-marketing'
     | '/local-services'
     | '/meta-ads'
     | '/not-a-leads-problem'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/growth-ceiling'
     | '/gta-small-business'
     | '/hvac'
+    | '/hvac-marketing'
     | '/local-services'
     | '/meta-ads'
     | '/not-a-leads-problem'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/growth-ceiling'
     | '/gta-small-business'
     | '/hvac'
+    | '/hvac-marketing'
     | '/local-services'
     | '/meta-ads'
     | '/not-a-leads-problem'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   GrowthCeilingRoute: typeof GrowthCeilingRoute
   GtaSmallBusinessRoute: typeof GtaSmallBusinessRoute
   HvacRoute: typeof HvacRoute
+  HvacMarketingRoute: typeof HvacMarketingRoute
   LocalServicesRoute: typeof LocalServicesRoute
   MetaAdsRoute: typeof MetaAdsRoute
   NotALeadsProblemRoute: typeof NotALeadsProblemRoute
@@ -334,6 +347,13 @@ declare module '@tanstack/react-router' {
       path: '/local-services'
       fullPath: '/local-services'
       preLoaderRoute: typeof LocalServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hvac-marketing': {
+      id: '/hvac-marketing'
+      path: '/hvac-marketing'
+      fullPath: '/hvac-marketing'
+      preLoaderRoute: typeof HvacMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hvac': {
@@ -450,6 +470,7 @@ const rootRouteChildren: RootRouteChildren = {
   GrowthCeilingRoute: GrowthCeilingRoute,
   GtaSmallBusinessRoute: GtaSmallBusinessRoute,
   HvacRoute: HvacRoute,
+  HvacMarketingRoute: HvacMarketingRoute,
   LocalServicesRoute: LocalServicesRoute,
   MetaAdsRoute: MetaAdsRoute,
   NotALeadsProblemRoute: NotALeadsProblemRoute,
