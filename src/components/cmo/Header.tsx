@@ -8,7 +8,7 @@ export function Header({ content }: { content: LandingContent }) {
   return (
     <header className="border-b-2 border-foreground bg-background md:sticky md:top-0 md:z-40">
       <Container className="flex h-[68px] items-center justify-between">
-        <a href="#top" className="flex items-center" aria-label={content.brand.name}>
+        <a href="#top" className="flex min-h-11 items-center" aria-label={content.brand.name}>
           <img src={logo} alt="" className="h-7 w-auto" />
         </a>
         <div className="hidden md:block">

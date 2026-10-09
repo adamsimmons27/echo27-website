@@ -65,7 +65,7 @@ export function Byline({ person }: { person: Written }) {
         <div className="flex items-center gap-2">
           <p className="font-bold leading-tight">{person.name}</p>
           {person.linkedin && (
-            <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${person.name} on LinkedIn`} className="text-muted-foreground hover:text-teal">
+            <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${person.name} on LinkedIn`} className="inline-flex h-11 w-11 -m-3 items-center justify-center text-muted-foreground hover:text-teal">
               <Linkedin className="h-4 w-4" />
             </a>
           )}
@@ -130,13 +130,13 @@ export function VideoTestimonials({
 }
 
 /** Written quotes in a hairline-divided slab. */
-export function WrittenQuotes({ items, columns = 3 }: { items: Written[]; columns?: 2 | 3 }) {
+export function WrittenQuotes({ items, columns = 3, showResult = true }: { items: Written[]; columns?: 2 | 3; showResult?: boolean }) {
   return (
     <div className={`slab grid grid-cols-1 gap-[2px] bg-foreground ${columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {items.map((w, i) => (
         <article key={w.name} className={`flex flex-col ${["bg-sky", "bg-surface", "bg-peach"][i % 3]} p-7 md:p-9`}>
-          {w.result && (
-            <p className="mb-5 text-[13px] font-bold uppercase tracking-[0.08em] text-teal">{w.result}</p>
+          {showResult && w.result && (
+            <p className="mb-5 text-[13px] font-bold uppercase tracking-[0.08em] text-teal-deep">{w.result}</p>
           )}
           <p className="flex-1 text-[17px] leading-snug">“{w.quote}”</p>
           <div className="mt-7">

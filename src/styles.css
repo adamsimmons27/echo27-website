@@ -670,7 +670,10 @@
     text-transform: uppercase;
   }
 }
+/* One clear keyboard focus ring everywhere; white on the dark teal bands. */
+:focus-visible { outline: 3px solid var(--teal-deep); outline-offset: 3px; }
 .on-dark :focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }
+select.field { min-height: 3.25rem; }
 .on-dark .card-dark :focus-visible { outline-color: var(--foreground); }
 .sticky-cta { transition: transform 0.25s ease; }
 body[data-booking-visible="true"] .sticky-cta { transform: translateY(100%); }

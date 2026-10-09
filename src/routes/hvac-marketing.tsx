@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HvacMarketingLanding, hvac } from "@/components/echo/HvacMarketingLanding";
 
 const URL = "https://echo-27.com/hvac-marketing";
-const TITLE = "HVAC Marketing That Books In-Home Estimates | Echo 27";
+const TITLE = "HVAC Marketing Built Around Booked Estimates | Echo 27";
 const DESCRIPTION =
-  "Ads, follow-up, and booking run as one system for residential HVAC companies, so the homeowners who are ready to replace a system end up on your techs' calendars. Reporting tied to booked estimates and revenue.";
+  "Ads, follow-up, and booking run as one system for residential HVAC companies, so homeowners ready to replace a system end up on your techs' calendars.";
 
 const jsonLd = {
   "@context": "https://schema.org",

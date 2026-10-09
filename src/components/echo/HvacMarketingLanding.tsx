@@ -30,8 +30,8 @@ export const hvac = {
     ],
   },
   problem: {
-    header: "Better appointments, not just more leads.",
-    body: "Paid ads are the fastest way to get in front of homeowners. Without the rest of the system they produce form fills nobody calls back, wasted spend, and a frustrated team. To win the replacement jobs, the ads, the follow-up, and the booking have to work together.",
+    header: "Appointments, not leads.",
+    body: "Ads get you in front of homeowners fast. On their own they get you form fills nobody calls back and a team that stops trusting the leads. The ads, the follow-up, and the booking have to run as one thing, or the spend leaks.",
   },
   system: {
     header: "One system, from the first click to the estimate.",
@@ -39,68 +39,68 @@ export const hvac = {
       "We run the whole path, with reporting tied to booked estimates and the revenue they produced, so you always know what the spend turned into.",
     pillars: [
       {
-        title: "Ads that find replacement jobs",
-        copy: "Google Search, Local Services Ads, and Meta, aimed at your service area and at homeowners whose systems are old enough to replace. Creative built around rebates, financing, and what makes your company different, not stock footage.",
+        title: "Ads that find replacements",
+        copy: "Google Search, Local Services Ads, and Meta, aimed at your service area and at the homes most likely to need a replacement. Creative built around rebates, financing, and what makes your company different, not stock footage.",
         tone: "bg-sky",
       },
       {
         title: "Follow-up in minutes, not days",
-        copy: "Every lead gets a call and a text within minutes, then reminders and no-show recovery. Leads that go quiet get chased, so the ad spend is not wasted on people who never hear back.",
+        copy: "Every lead gets a text and an email within minutes, then reminders and no-show recovery. Leads that go quiet get chased, so the ad spend is not wasted on people who never hear back.",
         tone: "bg-mint",
       },
       {
         title: "Booking that qualifies first",
-        copy: "System age, home ownership, timeline, and budget are asked before anything lands on your calendar. Your techs walk into estimates with the homeowner already informed.",
+        copy: "System age, home ownership, timeline, and budget are asked before anything lands on your calendar. Your techs spend their time on homeowners who are ready to decide.",
         tone: "bg-peach",
       },
     ],
-    cta: "Grow your HVAC business",
+    cta: "Book your call",
   },
   results: {
-    header: "Results from HVAC campaigns.",
-    intro: "Each card below is a placeholder until a real campaign result replaces it. Nothing here is invented.",
+    header: "HVAC campaign results.",
+    note: "[Placeholder cards until real campaign results replace them. Nothing here is invented.]",
     cards: [
       {
-        spent: "[SPEND] spent to generate",
-        headline: "[REVENUE] in system replacements in [Region]",
+        spent: "Spend: [SPEND]",
+        headline: "[REVENUE] in replacements, [Region]",
         roas: "[X]x return on ad spend",
         did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
       },
       {
-        spent: "[SPEND] spent to generate",
-        headline: "[REVENUE] in installs in [Region]",
+        spent: "Spend: [SPEND]",
+        headline: "[REVENUE] in new installs, [Region]",
         roas: "[X]x return on ad spend",
         did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
       },
       {
-        spent: "[SPEND] spent to generate",
-        headline: "[REVENUE] in [N] days",
+        spent: "Spend: [SPEND]",
+        headline: "[REVENUE] in the first [N] days",
         roas: "[X]x return on ad spend",
         did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
       },
     ],
   },
   voices: {
-    header: "What business owners say about working with us.",
-    intro: "Local businesses that fill their calendars with us. HVAC owners tell the same story once the first season is in.",
+    header: "Owners who fill their calendars with us.",
+    intro: "Local businesses we work with today. None of them are HVAC companies yet. The system is the same.",
   },
   faq: {
     header: "Frequently asked questions",
     items: [
       {
-        question: "What makes Echo 27 different?",
+        question: "How is this different from the last agency?",
         answer:
           "One person is accountable for the number, and the follow-up and booking are part of the service, not an upsell. You get reporting on booked estimates and the revenue behind them, not on clicks.",
       },
       {
-        question: "How do you make sure homeowners are qualified?",
+        question: "Who decides a homeowner is worth a visit?",
         answer:
-          "Before anything lands on your calendar we confirm system age, that they own the home, their timeline, and their budget. Anyone who does not fit gets a polite no, not a slot with your tech.",
+          "Before anything lands on your calendar the homeowner answers four questions: system age, whether they own the home, their timeline, and their budget. Anyone who does not fit is not booked.",
       },
       {
         question: "How much of my team's time does this take?",
         answer:
-          "Answer the phone when we transfer a homeowner, and send the tech. Setup takes two short calls in the first two weeks. After that it is a standing weekly call and a dashboard.",
+          "Answer the phone, and send the tech. Setup takes two short calls in the first two weeks. After that it is a standing weekly call and a dashboard.",
       },
       {
         question: "What does it cost?",
@@ -108,15 +108,15 @@ export const hvac = {
           "It depends on your service area and how much volume you want. We quote after the first call, and there is no long-term contract. We earn next month by performing this month.",
       },
       {
-        question: "How do I know if this is right for my HVAC business?",
+        question: "Who is this for?",
         answer:
           "It fits residential HVAC companies doing roughly $1M to $5M a year, with a few techs and room on the calendar to take more work. If you are under that, or you want the cheapest option rather than the best one, we will say so on the call.",
       },
     ],
   },
   closing: {
-    header: "Ready to grow your HVAC business?",
-    body: "Book a call and we'll tell you straight whether we're the right partner for you.",
+    header: "Ready for a fuller calendar?",
+    body: "Book a call. We look at your market and your calendar and tell you straight whether this works for you.",
   },
   form: {
     revenue: ["Under $1M", "$1M to $3M", "$3M to $5M", "$5M+"],
@@ -141,7 +141,7 @@ export function HvacMarketingLanding() {
     <div className="bg-background text-foreground">
       <header className="border-b-2 border-foreground bg-background md:sticky md:top-0 md:z-40">
         <Container className="flex h-[68px] items-center justify-between">
-          <a href="#top" className="flex items-center" aria-label="Echo 27">
+          <a href="#top" className="flex min-h-11 items-center" aria-label="Echo 27">
             <img src={logo} alt="" className="h-7 w-auto" />
           </a>
           <div className="hidden md:block">
@@ -173,7 +173,7 @@ export function HvacMarketingLanding() {
               <p className="mt-4 text-[14px] text-muted-foreground">{c.hero.note}</p>
             </div>
             {/* The three real figures as one slab: three cells across on small screens, stacked beside the headline on large. */}
-            <ul className="slab slab-grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 lg:max-w-[420px] lg:justify-self-end">
+            <ul className="slab slab-grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 lg:w-full lg:max-w-[440px] lg:justify-self-end">
               {c.hero.stats.map((s, i) => (
                 <li key={s.label} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} px-5 py-6 sm:px-6 lg:px-7 lg:py-8`}>
                   <p className="text-[34px] font-extrabold leading-none tracking-[-0.04em] md:text-[40px] lg:text-[48px]">{s.value}</p>
@@ -227,19 +227,19 @@ export function HvacMarketingLanding() {
 
         {/* Results */}
         <Section id="results" tone="sky" labelledBy="hvac-results">
-          <div className="max-w-[60ch]">
-            <h2 id="hvac-results" className="headline headline-lg">
-              {c.results.header}
-            </h2>
-            <p className="lede mt-5 text-muted-foreground">{c.results.intro}</p>
-          </div>
+          <h2 id="hvac-results" className="headline headline-lg max-w-[60ch]">
+            {c.results.header}
+          </h2>
+          {/* Rows share a subgrid at lg so the figure, the marker, and the list line up across the three cards. */}
           <ul className="mt-12 grid gap-6 md:gap-8 lg:grid-cols-3">
             {c.results.cards.map((r, i) => (
-              <li key={i} className="card flex flex-col md:p-7">
+              <li key={i} className="card flex flex-col md:p-7 lg:grid lg:grid-rows-subgrid lg:row-span-5">
                 <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">{r.spent}</p>
                 <h3 className="headline headline-md mt-3">{r.headline}</h3>
-                <p className="mt-4 inline-block self-start rounded-lg bg-mint px-3 py-1.5 text-[14px] font-bold">{r.roas}</p>
-                <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">What we did</p>
+                <p className="mt-4 text-[15px] font-bold">
+                  <span className="hl">{r.roas}</span>
+                </p>
+                <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">What changed</p>
                 <ul className="mt-3 space-y-2">
                   {r.did.map((d) => (
                     <li key={d} className="border-l-2 border-teal pl-3 text-[14px] leading-snug">
@@ -250,6 +250,7 @@ export function HvacMarketingLanding() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-[13px] text-muted-foreground">{c.results.note}</p>
         </Section>
 
         {/* Owner voices */}
@@ -264,7 +265,7 @@ export function HvacMarketingLanding() {
             <VideoTestimonials items={[videoBy("Marc Steiniger"), videoBy("Thibaut Bannelier")]} columns={2} showResult={false} />
           </div>
           <div className="mt-8">
-            <WrittenQuotes items={[writtenBy("Justin Lui"), writtenBy("Lou Jimenez")]} columns={2} />
+            <WrittenQuotes items={[writtenBy("Justin Lui"), writtenBy("Lou Jimenez")]} columns={2} showResult={false} />
           </div>
         </Section>
 
@@ -305,7 +306,7 @@ const LABELS: Record<Field, string> = {
   email: "Email",
   phone: "Phone",
   company: "Company",
-  service_area: "Service area (city and state or province)",
+  service_area: "Service area",
   revenue: "Annual revenue",
 };
 
@@ -388,7 +389,7 @@ function HvacBookingForm() {
         {wrap("email", <input {...a11y("email")} type="email" autoComplete="email" required className="field mt-2" />)}
         {wrap("phone", <input {...a11y("phone")} type="tel" inputMode="tel" autoComplete="tel" required className="field mt-2" />)}
         {wrap("company", <input {...a11y("company")} type="text" autoComplete="organization" required className="field mt-2" />)}
-        {wrap("service_area", <input {...a11y("service_area")} type="text" autoComplete="address-level2" required className="field mt-2" />)}
+        {wrap("service_area", <input {...a11y("service_area")} type="text" placeholder="City and state or province" autoComplete="address-level2" required className="field mt-2" />)}
         {wrap(
           "revenue",
           <select {...a11y("revenue")} defaultValue="" required className="field mt-2">
