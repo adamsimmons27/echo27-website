@@ -7,7 +7,6 @@ import { CtaButton } from "@/components/cmo/CtaButton";
 import { Faq } from "@/components/cmo/Faq";
 import { Analytics } from "@/components/cmo/Analytics";
 import { Footer } from "@/components/echo/Footer";
-import { VideoTestimonials, videoBy } from "@/components/echo/Testimonials";
 import { money0 } from "@/components/echo/calc/CalcKit";
 import { getAttribution } from "@/lib/attribution";
 import { track } from "@/lib/tracking";
@@ -86,10 +85,6 @@ export const voiceAi = {
       { title: "We build and train it", body: "We build the receptionist around your business, train it on your calls, and walk you through it before it goes live. You get a working front desk and a weekly note on what it handled." },
       { title: "It answers from day one", body: "Every call picked up, qualified, and booked. We listen to real calls in the first weeks and fix anything it got wrong." },
     ],
-  },
-  voices: {
-    header: "Owners we already work with.",
-    intro: "Local businesses we run marketing for today. None of them use the receptionist yet. The way we work with owners is the same.",
   },
   faq: {
     header: "Questions owners ask",
@@ -315,19 +310,6 @@ export function VoiceAiLanding() {
               </li>
             ))}
           </ol>
-        </Section>
-
-        {/* Proof */}
-        <Section id="voices" tone="mist" labelledBy="va-voices">
-          <div className="max-w-[60ch]">
-            <h2 id="va-voices" className="headline headline-lg">
-              {c.voices.header}
-            </h2>
-            <p className="lede mt-5 text-muted-foreground">{c.voices.intro}</p>
-          </div>
-          <div className="mt-12">
-            <VideoTestimonials items={[videoBy("Marc Steiniger"), videoBy("Thibaut Bannelier")]} columns={2} showResult={false} />
-          </div>
         </Section>
 
         <Faq faq={c.faq} />
