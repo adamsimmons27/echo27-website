@@ -1,4 +1,5 @@
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
@@ -67,6 +68,42 @@ export const googleAds = {
   proof: {
     header: "Hear it from clients.",
     intro: "Four owners on what changed when we took over their accounts.",
+  },
+  cases: {
+    header: "Two accounts, start to finish.",
+    intro: "The full write-ups are on the site. These are the numbers and what we changed.",
+    items: [
+      {
+        client: "Society Mortgage",
+        logo: { src: "/images/logos/society-mortgage.jpg", alt: "Society Mortgage logo", className: "h-10 w-auto object-contain" },
+        channel: "Google Ads, competitor conquesting, and a landing page rebuild",
+        tagline: "A fast-growing lender competing with Rocket Mortgage, CrossCountry, and Fairway on search.",
+        stats: [
+          { value: "62%", label: "Lower cost per qualified lead" },
+          { value: "128%", label: "More qualified leads" },
+          { value: "30%", label: "Higher conversion rate from ongoing testing" },
+        ],
+        story:
+          "Rebuilt the account from the ground up: tracking that counted only qualified leads, a three-tier keyword structure with competitor conquesting, new ad copy and extensions, Target CPA bidding trained on CRM data, and 250 negative keywords.",
+        to: "/case-studies/society-mortgage",
+        tone: "bg-lilac",
+      },
+      {
+        client: "Mountain",
+        logo: { src: "/images/logos/mountain.svg", alt: "Mountain logo", className: "h-12 w-auto object-contain" },
+        channel: "Paid campaigns across Meta, Twitter, and YouTube, with new landing pages",
+        tagline: "Premium gaming hardware, recently acquired and rebuilding its growth marketing from scratch.",
+        stats: [
+          { value: "41%", label: "Lower customer acquisition cost, from $138 to $82" },
+          { value: "68%", label: "Higher return on ad spend, from 1.9 to 3.2" },
+          { value: "3 weeks", label: "To a profitable return on ad spend" },
+        ],
+        story:
+          "Customer research found four segments the brand had been treating as one. We overhauled the creative, built campaigns with retargeting, and redesigned the site and landing pages for conversion, then scaled into three new countries.",
+        to: "/case-studies/mountain-gaming",
+        tone: "bg-peach",
+      },
+    ],
   },
   pricing: {
     header: "Pricing.",
@@ -228,6 +265,44 @@ export function GoogleAdsLanding() {
           <div className="mt-12">
             <VideoTestimonials items={videos} columns={2} showResult={false} />
           </div>
+        </Section>
+
+        {/* Case studies */}
+        <Section id="case-studies" tone="light" labelledBy="ga-cases">
+          <div className="max-w-[60ch]">
+            <h2 id="ga-cases" className="headline headline-lg">
+              {c.cases.header}
+            </h2>
+            <p className="lede mt-5 text-muted-foreground">{c.cases.intro}</p>
+          </div>
+          <ul className="mt-12 grid gap-6 md:gap-8 lg:grid-cols-2">
+            {c.cases.items.map((k) => (
+              <li key={k.client} className="card group relative flex flex-col md:p-8">
+                <div className="flex h-14 items-center">
+                  <img src={k.logo.src} alt={k.logo.alt} className={k.logo.className} />
+                </div>
+                <p className="eyebrow mt-5">{k.channel}</p>
+                <h3 className="headline headline-md mt-4">{k.client}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{k.tagline}</p>
+                <ul className="slab slab-grid mt-6 grid-cols-1 sm:grid-cols-3">
+                  {k.stats.map((st) => (
+                    <li key={st.label} className={`${k.tone} px-4 py-5`}>
+                      <p className="text-[30px] font-extrabold leading-none tracking-[-0.04em]">{st.value}</p>
+                      <p className="mt-2 text-[12px] font-bold leading-snug">{st.label}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 flex-1 text-[15px] leading-relaxed">{k.story}</p>
+                {/* The link's ::after covers the card; the button look sits on an inner span so a hover press never shrinks it. */}
+                <Link to={k.to} className="mt-7 block rounded-[12px] after:absolute after:inset-0 after:content-[''] focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground">
+                  <span className="btn-ghost btn-press w-full">
+                    Read the case study
+                    <ArrowRight className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Section>
 
         {/* Pricing */}
