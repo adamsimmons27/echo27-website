@@ -24,12 +24,12 @@ export const webDesign = {
       "We design and build your site, host it, keep it fast and secure, and make the changes you ask for. One upfront fee, one monthly fee, nothing else to manage.",
     price: [
       { value: "$1,000", label: "Up front. Design, build, and launch.", tone: "bg-sky" },
-      { value: "$250", label: "Per month. Hosting, maintenance, and updates.", tone: "bg-mint" },
+      { value: "$250", label: "Per month. Hosting, maintenance, and the changes you ask for.", tone: "bg-mint" },
     ],
   },
   included: {
     header: "What you get.",
-    intro: "A site with one purpose, winning customers, and someone who keeps it doing that.",
+    intro: "A site built to win customers, and someone who keeps it doing that.",
     parts: [
       {
         title: "Design and build",
@@ -37,10 +37,10 @@ export const webDesign = {
         items: [
           "Designed around the decision a visitor is making, not a template",
           "Mobile first and fast, because that is where your customers are",
-          "Set up to rank: page titles, structure, speed, and the basics that let AI answers cite you",
+          "Search basics done properly: page titles, structure, speed, and the markup search engines and AI answers look for",
           "Copy written with you, in your voice",
           "Booking, forms, and call tracking wired into your calendar or CRM",
-          "Launched in weeks, not months",
+          "Launched in weeks once the content is agreed",
         ],
       },
       {
@@ -49,7 +49,7 @@ export const webDesign = {
         items: [
           "Fast, secure hosting with SSL and daily backups",
           "Software and security updates handled for you",
-          "Uptime monitoring, so we know before you do",
+          "Uptime monitoring, so a problem gets seen quickly",
           "Content changes and small updates each month, included",
           "A monthly note on traffic and inquiries",
           "Your domain stays in your name",
@@ -61,25 +61,30 @@ export const webDesign = {
     header: "How it works.",
     steps: [
       { title: "Kickoff call", body: "What you sell, who buys it, and what the site has to make happen. We agree the pages and the one action each page is for." },
-      { title: "Design and copy", body: "You see the design and the words before anything is built. One round of changes is part of the fee." },
+      { title: "Design and copy", body: "You see the design and the words before anything is built. One round of changes is part of the fee. Further rounds are quoted first." },
       { title: "Build and launch", body: "Built, tested on real phones, tracking checked, and launched on your domain." },
-      { title: "Hosting and care", body: "From launch on, we host it, keep it updated and backed up, and make the changes you send us." },
+      { title: "Hosting and maintenance", body: "From launch on, we host it, keep it updated and backed up, and make the changes you send us." },
     ],
   },
   pricing: {
     header: "Pricing.",
-    intro: "Two numbers. No add-ons, no surprise invoices.",
+    intro: "Two numbers. Anything outside them is quoted before we do it.",
     upfront: { value: "$1,000", label: "up front", includes: ["Design and copy", "Build and launch", "Tracking and forms set up"] },
-    monthly: { value: "$250", label: "per month", includes: ["Hosting, SSL, and daily backups", "Updates and security patches", "Content changes and small updates", "Uptime monitoring and support"] },
-    terms: ["No long lock-in on the monthly plan.", "Your domain stays in your name.", "Larger changes, like a new section or a new page, are quoted first."],
+    monthly: { value: "$250", label: "per month", includes: ["Hosting, SSL, and daily backups", "Updates and security patches", "Content changes and small updates", "Uptime monitoring"] },
+    terms: [
+      "The monthly plan starts at launch and runs month to month. No long lock-in.",
+      "Small changes, like new hours, a price, a photo, or a new testimonial, are included. A new section or page is quoted first.",
+      "Your domain stays in your name.",
+      "Plus applicable tax.",
+    ],
   },
   proof: {
     header: "Sites and landing pages we rebuilt as part of these accounts.",
     items: [
       {
         client: "Society Mortgage",
-        logo: { src: "/images/logos/society-mortgage.jpg", alt: "Society Mortgage logo", className: "h-10 w-auto object-contain" },
-        line: "Landing page rebuild alongside the Google Ads account. Ongoing testing lifted the conversion rate by 30%.",
+        logo: { src: "/images/logos/society-mortgage.jpg", alt: "Society Mortgage logo", className: "h-14 w-auto object-contain" },
+        line: "Landing page rebuild alongside the Google Ads account. Ongoing testing lifted the conversion rate by over 30%.",
         to: "/case-studies/society-mortgage",
         tone: "bg-lilac",
       },
@@ -95,15 +100,15 @@ export const webDesign = {
   faq: {
     header: "Questions owners ask",
     items: [
-      { question: "Who owns the site?", answer: "You do. The domain is registered in your name, and the content and design are yours. We host it for you as part of the monthly plan." },
-      { question: "I already have a site. Can you work with it?", answer: "Usually, yes. If the bones are good we rebuild on them. If they are not, we start fresh and keep the address, so nothing you have earned in Google is lost." },
+      { question: "Who owns the site?", answer: "You do. The domain is registered in your name, and the content and design are yours. We host it for you as part of the monthly plan, and if you ever want to stop, we talk through the handover before anything changes." },
+      { question: "I already have a site. Can you work with it?", answer: "Usually, yes. If the bones are good we rebuild on them. If they are not, we start fresh on the same address, with the old pages redirected, so you keep as much of what you have earned in Google as possible." },
       { question: "How long does it take?", answer: "Most sites go from kickoff to launch in a few weeks. The main thing that slows a site down is waiting on content, so we write the copy with you early." },
-      { question: "What counts as maintenance?", answer: "Updates, backups, security, monitoring, and the small changes you ask for in a normal month: new hours, a new team member, a price, a photo, a new testimonial. A new section or page is quoted first." },
+      { question: "What counts as maintenance?", answer: "Updates, backups, security, monitoring, and the small changes you ask for: new hours, a new team member, a price, a photo, a new testimonial. A new section or page is quoted first." },
     ],
   },
   closing: {
-    header: "Ready for a site that works as hard as you do?",
-    body: "Tell us about your business and we'll come back with what we'd build, what it would cost, and when it could launch.",
+    header: "Tell us what the site has to do.",
+    body: "Tell us about your business and we'll come back with what we'd build and when it could launch.",
   },
   form: {
     needs: ["A new site from scratch", "A rebuild of my current site", "A landing page for a campaign", "Not sure yet"],
@@ -263,6 +268,7 @@ export function WebDesignLanding() {
                 <Link to={k.to} className="mt-7 block rounded-[12px] after:absolute after:inset-0 after:content-[''] focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground">
                   <span className="btn-ghost btn-press w-full">
                     Read the case study
+                    <span className="sr-only">: {k.client}</span>
                     <ArrowRight className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
                   </span>
                 </Link>

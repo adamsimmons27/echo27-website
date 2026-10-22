@@ -42,7 +42,7 @@ export function Footer() {
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Explore
             </p>
-            <nav className="mt-5 flex flex-col gap-2.5">
+            <nav aria-label="Explore" className="mt-5 flex flex-col gap-2.5">
               {nav.map((l) => (
                 <a
                   key={l.href}
@@ -59,7 +59,7 @@ export function Footer() {
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Industries
             </p>
-            <nav className="mt-5 flex flex-col gap-2.5">
+            <nav aria-label="Industries" className="mt-5 flex flex-col gap-2.5">
               {industries.map((l) => (
                 <a
                   key={l.href}
@@ -76,7 +76,7 @@ export function Footer() {
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Free tools
             </p>
-            <nav className="mt-5 flex flex-col gap-2.5">
+            <nav aria-label="Free tools" className="mt-5 flex flex-col gap-2.5">
               {tools.map((l) => (
                 <a
                   key={l.href}
@@ -93,7 +93,7 @@ export function Footer() {
             <p className="text-[12px] font-bold uppercase tracking-[0.1em]">
               Legal
             </p>
-            <nav className="mt-5 flex flex-col gap-2.5">
+            <nav aria-label="Legal" className="mt-5 flex flex-col gap-2.5">
               {legal.map((l) => (
                 <a
                   key={l.href}
