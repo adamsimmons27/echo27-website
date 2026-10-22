@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { Check, Phone } from "lucide-react";
+import { Check, Phone, PhoneCall } from "lucide-react";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
@@ -29,7 +29,11 @@ export const voiceAi = {
     demo: "Hear it answer",
     demoNote: "[Demo line goes here: a number anyone can call to hear the receptionist.]",
     mock: {
-      label: "Illustration of a call handled by the receptionist",
+      label: "Illustration of a phone call answered, qualified, and booked by the receptionist",
+      status: "Incoming call",
+      number: "(416) 555 0147",
+      timer: "0:38",
+      outcome: "Booked for today, 5 to 7. Confirmation text sent to the caller.",
       lines: [
         { who: "Caller", text: "Hi, my AC stopped working this afternoon and it's getting hot in here." },
         { who: "Receptionist", text: "Sorry to hear that. I can get someone out to you. What's the address, and is anyone in the home right now?" },
@@ -192,16 +196,43 @@ export function VoiceAiLanding() {
               </div>
               {!DEMO_PHONE && <p className="mt-4 text-[14px] text-muted-foreground">{c.hero.demoNote}</p>}
             </div>
-            {/* Pure HTML illustration of a handled call. No product UI, no logos. */}
-            <div role="img" aria-label={c.hero.mock.label} className="card-dark w-full lg:justify-self-end lg:max-w-[460px]">
-              <ol aria-hidden="true" className="space-y-3">
-                {c.hero.mock.lines.map((l, i) => (
-                  <li key={i} className={`max-w-[88%] rounded-xl px-4 py-3 text-[15px] leading-snug ${l.who === "Caller" ? "ml-auto bg-sky" : "bg-surface-alt"}`}>
-                    <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-teal-deep">{l.who}</span>
-                    <span className="mt-1 block">{l.text}</span>
-                  </li>
-                ))}
-              </ol>
+            {/* Pure HTML illustration of a live phone call: call bar, spoken transcript, outcome. No product UI, no logos. */}
+            <div role="img" aria-label={c.hero.mock.label} className="card-dark w-full p-0 lg:justify-self-end lg:max-w-[460px]">
+              <div aria-hidden="true">
+                <div className="flex items-center justify-between gap-4 border-b-2 border-foreground px-5 py-4">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-deep text-white">
+                      <PhoneCall className="h-5 w-5" strokeWidth={2.25} />
+                    </span>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-teal-deep">{c.hero.mock.status}</p>
+                      <p className="text-[15px] font-bold leading-tight">{c.hero.mock.number}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="call-wave flex h-6 items-end gap-[3px]">
+                      <span />
+                      <span />
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <span className="text-[15px] font-bold tabular-nums">{c.hero.mock.timer}</span>
+                  </div>
+                </div>
+                <ol className="space-y-3 px-5 py-5">
+                  {c.hero.mock.lines.map((l, i) => (
+                    <li key={i} className={`max-w-[88%] rounded-xl px-4 py-3 text-[15px] leading-snug ${l.who === "Caller" ? "ml-auto bg-sky" : "bg-surface-alt"}`}>
+                      <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-teal-deep">{l.who}</span>
+                      <span className="mt-1 block">{l.text}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="flex items-start gap-3 border-t-2 border-foreground bg-mint px-5 py-4 text-[14px] font-bold leading-snug">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" strokeWidth={2.5} />
+                  <span>{c.hero.mock.outcome}</span>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
