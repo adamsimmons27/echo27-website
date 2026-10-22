@@ -20,6 +20,7 @@ import { Route as HvacRouteImport } from './routes/hvac'
 import { Route as GtaSmallBusinessRouteImport } from './routes/gta-small-business'
 import { Route as GrowthCeilingRouteImport } from './routes/growth-ceiling'
 import { Route as GrowthCalculatorRouteImport } from './routes/growth-calculator'
+import { Route as GoogleAdsManagementRouteImport } from './routes/google-ads-management'
 import { Route as FreeAuditRouteImport } from './routes/free-audit'
 import { Route as FractionalCmoRouteImport } from './routes/fractional-cmo'
 import { Route as EcommerceRouteImport } from './routes/ecommerce'
@@ -86,6 +87,11 @@ const GrowthCalculatorRoute = GrowthCalculatorRouteImport.update({
   path: '/growth-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoogleAdsManagementRoute = GoogleAdsManagementRouteImport.update({
+  id: '/google-ads-management',
+  path: '/google-ads-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FreeAuditRoute = FreeAuditRouteImport.update({
   id: '/free-audit',
   path: '/free-audit',
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/ecommerce': typeof EcommerceRoute
   '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
+  '/google-ads-management': typeof GoogleAdsManagementRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/ecommerce': typeof EcommerceRoute
   '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
+  '/google-ads-management': typeof GoogleAdsManagementRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/ecommerce': typeof EcommerceRoute
   '/fractional-cmo': typeof FractionalCmoRoute
   '/free-audit': typeof FreeAuditRoute
+  '/google-ads-management': typeof GoogleAdsManagementRoute
   '/growth-calculator': typeof GrowthCalculatorRoute
   '/growth-ceiling': typeof GrowthCeilingRoute
   '/gta-small-business': typeof GtaSmallBusinessRoute
@@ -220,6 +229,7 @@ export interface FileRouteTypes {
     | '/ecommerce'
     | '/fractional-cmo'
     | '/free-audit'
+    | '/google-ads-management'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
@@ -243,6 +253,7 @@ export interface FileRouteTypes {
     | '/ecommerce'
     | '/fractional-cmo'
     | '/free-audit'
+    | '/google-ads-management'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
@@ -266,6 +277,7 @@ export interface FileRouteTypes {
     | '/ecommerce'
     | '/fractional-cmo'
     | '/free-audit'
+    | '/google-ads-management'
     | '/growth-calculator'
     | '/growth-ceiling'
     | '/gta-small-business'
@@ -290,6 +302,7 @@ export interface RootRouteChildren {
   EcommerceRoute: typeof EcommerceRoute
   FractionalCmoRoute: typeof FractionalCmoRoute
   FreeAuditRoute: typeof FreeAuditRoute
+  GoogleAdsManagementRoute: typeof GoogleAdsManagementRoute
   GrowthCalculatorRoute: typeof GrowthCalculatorRoute
   GrowthCeilingRoute: typeof GrowthCeilingRoute
   GtaSmallBusinessRoute: typeof GtaSmallBusinessRoute
@@ -384,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GrowthCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/google-ads-management': {
+      id: '/google-ads-management'
+      path: '/google-ads-management'
+      fullPath: '/google-ads-management'
+      preLoaderRoute: typeof GoogleAdsManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/free-audit': {
       id: '/free-audit'
       path: '/free-audit'
@@ -466,6 +486,7 @@ const rootRouteChildren: RootRouteChildren = {
   EcommerceRoute: EcommerceRoute,
   FractionalCmoRoute: FractionalCmoRoute,
   FreeAuditRoute: FreeAuditRoute,
+  GoogleAdsManagementRoute: GoogleAdsManagementRoute,
   GrowthCalculatorRoute: GrowthCalculatorRoute,
   GrowthCeilingRoute: GrowthCeilingRoute,
   GtaSmallBusinessRoute: GtaSmallBusinessRoute,
