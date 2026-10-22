@@ -30,6 +30,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SaasRouteImport } from './routes/saas'
 import { Route as TorontoRouteImport } from './routes/toronto'
 import { Route as VoiceAiRouteImport } from './routes/voice-ai'
+import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as CaseStudiesMountainGamingRouteImport } from './routes/case-studies.mountain-gaming'
 import { Route as CaseStudiesSocietyMortgageRouteImport } from './routes/case-studies.society-mortgage'
 
@@ -138,6 +139,11 @@ const VoiceAiRoute = VoiceAiRouteImport.update({
   path: '/voice-ai',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WebDesignRoute = WebDesignRouteImport.update({
+  id: '/web-design',
+  path: '/web-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaseStudiesMountainGamingRoute =
   CaseStudiesMountainGamingRouteImport.update({
     id: '/case-studies/mountain-gaming',
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
   '/voice-ai': typeof VoiceAiRoute
+  '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
 }
@@ -198,6 +205,7 @@ export interface FileRoutesByTo {
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
   '/voice-ai': typeof VoiceAiRoute
+  '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
 }
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/saas': typeof SaasRoute
   '/toronto': typeof TorontoRoute
   '/voice-ai': typeof VoiceAiRoute
+  '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
 }
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/saas'
     | '/toronto'
     | '/voice-ai'
+    | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
   fileRoutesByTo: FileRoutesByTo
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/saas'
     | '/toronto'
     | '/voice-ai'
+    | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
   id:
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/saas'
     | '/toronto'
     | '/voice-ai'
+    | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
   fileRoutesById: FileRoutesById
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   SaasRoute: typeof SaasRoute
   TorontoRoute: typeof TorontoRoute
   VoiceAiRoute: typeof VoiceAiRoute
+  WebDesignRoute: typeof WebDesignRoute
   CaseStudiesMountainGamingRoute: typeof CaseStudiesMountainGamingRoute
   CaseStudiesSocietyMortgageRoute: typeof CaseStudiesSocietyMortgageRoute
 }
@@ -480,6 +493,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VoiceAiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/web-design': {
+      id: '/web-design'
+      path: '/web-design'
+      fullPath: '/web-design'
+      preLoaderRoute: typeof WebDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies/mountain-gaming': {
       id: '/case-studies/mountain-gaming'
       path: '/case-studies/mountain-gaming'
@@ -519,6 +539,7 @@ const rootRouteChildren: RootRouteChildren = {
   SaasRoute: SaasRoute,
   TorontoRoute: TorontoRoute,
   VoiceAiRoute: VoiceAiRoute,
+  WebDesignRoute: WebDesignRoute,
   CaseStudiesMountainGamingRoute: CaseStudiesMountainGamingRoute,
   CaseStudiesSocietyMortgageRoute: CaseStudiesSocietyMortgageRoute,
 }
