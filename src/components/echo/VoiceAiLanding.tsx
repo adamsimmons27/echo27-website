@@ -4,7 +4,6 @@ import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
 import { CtaButton } from "@/components/cmo/CtaButton";
-import { Faq } from "@/components/cmo/Faq";
 import { Analytics } from "@/components/cmo/Analytics";
 import { Footer } from "@/components/echo/Footer";
 import { money0 } from "@/components/echo/calc/CalcKit";
@@ -84,49 +83,6 @@ export const voiceAi = {
       { title: "A 20-minute call", body: "Your services, your prices where you want them shared, your hours, and what a good customer looks like. No pitch." },
       { title: "We build and train it", body: "We build the receptionist around your business, train it on your calls, and walk you through it before it goes live. You get a working front desk and a weekly note on what it handled." },
       { title: "It answers from day one", body: "Every call picked up, qualified, and booked. We listen to real calls in the first weeks and fix anything it got wrong." },
-    ],
-  },
-  faq: {
-    header: "Questions owners ask",
-    items: [
-      {
-        question: "Can it handle after-hours and emergency calls?",
-        answer:
-          "Yes, and that is most of the point. After hours it takes the call, gets the address and what has gone wrong, and tries your phone. If you don't answer, the details are texted and emailed to you as soon as the call ends, and the caller is told when to expect you.",
-      },
-      {
-        question: "What does it cost?",
-        answer:
-          "It depends on call volume and what you want it to do. We quote after the first call, and there is no long lock-in. Put your average customer value into the calculator above: if one extra booking a month is worth more than the fee, it pays for itself.",
-      },
-      {
-        question: "I already have a receptionist. Why would I need this?",
-        answer:
-          "It covers the gaps: lunch, after five, weekends, and the second call that comes in while your receptionist is on the first. Nothing lands in voicemail.",
-      },
-      {
-        question: "How is this different from an answering service?",
-        answer:
-          "An answering service writes down a name and a number. This books the appointment, so by the time you see the message the customer is already on your calendar.",
-      },
-      {
-        question: "Will customers mind talking to an AI?",
-        answer:
-          "Callers want an answer and a time. The receptionist gives both, in your business's name. When a call needs a person it says so and puts it through, rather than bluffing.",
-      },
-      {
-        question: "Will it know my services and prices?",
-        answer:
-          "Yes. On the setup call you tell us what you charge and what you are happy to quote over the phone. Fixed prices it quotes. Anything that needs a look first, it books the visit and leaves the number to you.",
-      },
-      {
-        question: "Who owns the phone number and the data?",
-        answer: "You do. The number, the call records, and the customer details are in accounts you own. If we ever part ways, you keep all of it.",
-      },
-      {
-        question: "Is there a contract?",
-        answer: "No long lock-in. We earn next month by performing this month.",
-      },
     ],
   },
   closing: {
@@ -311,8 +267,6 @@ export function VoiceAiLanding() {
             ))}
           </ol>
         </Section>
-
-        <Faq faq={c.faq} />
 
         {/* Closing and booking */}
         <Section id="book" tone="dark" labelledBy="va-book">

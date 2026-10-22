@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { VoiceAiLanding, voiceAi } from "@/components/echo/VoiceAiLanding";
+import { VoiceAiLanding } from "@/components/echo/VoiceAiLanding";
 
 const URL = "https://echo-27.com/voice-ai";
 const TITLE = "AI Receptionist for Local Businesses | Echo 27";
@@ -18,15 +18,6 @@ const jsonLd = {
       provider: { "@id": "https://echo-27.com/#organization" },
       audience: { "@type": "BusinessAudience", audienceType: "Local businesses" },
       url: URL,
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${URL}#faq`,
-      mainEntity: voiceAi.faq.items.map((f) => ({
-        "@type": "Question",
-        name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
-      })),
     },
   ],
 };
