@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Check, Phone } from "lucide-react";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
@@ -25,7 +25,7 @@ export const voiceAi = {
     eyebrow: "Voice AI for local businesses",
     headline: "Every missed call is a customer who called someone else.",
     subhead:
-      "An AI receptionist that answers every call in seconds, day or night, asks the right questions, and books the appointment into your calendar. Built, trained, and run by Echo 27, so you never touch the technology.",
+      "An AI receptionist that answers every call in seconds, day or night, asks the right questions, and books the appointment into your calendar. Built, trained, and run by Echo 27.",
     demo: "Hear it answer",
     demoNote: "[Demo line goes here: a number anyone can call to hear the receptionist.]",
     mock: {
@@ -44,14 +44,14 @@ export const voiceAi = {
       { title: "Never misses a call", body: "Answers in seconds, 24 hours a day, including nights, weekends, and the moment three calls come in at once.", tone: "bg-sky" },
       { title: "Built around your business", body: "Trained on your services, your service area, your hours, and the questions you ask before you book anyone.", tone: "bg-mint" },
       { title: "Books, not just answers", body: "Qualifies the caller and puts the appointment straight into your calendar or CRM, with the details your team needs.", tone: "bg-peach" },
-      { title: "Hands urgent calls to you", body: "When a call needs a person, it goes straight through to your phone. If you can't pick up, the details are in your inbox within the minute.", tone: "bg-lilac" },
+      { title: "Hands urgent calls to you", body: "When a call needs a person, it goes straight through to your phone. If you can't pick up, the details are texted and emailed to you as soon as the call ends.", tone: "bg-lilac" },
     ],
   },
   calc: {
     header: "What are missed calls costing you?",
     intro: "Your numbers, not an industry average. Change any field and the result updates.",
     labels: { missed: "Missed calls per week", value: "Average customer value", close: "Close rate on answered calls" },
-    note: "A rough figure, not a promise. Most businesses are surprised by it.",
+    note: "A rough figure from your own inputs, not a promise. Change any number and watch how fast it moves.",
   },
   included: {
     header: "What's included.",
@@ -59,7 +59,7 @@ export const voiceAi = {
       { title: "AI receptionist, 24/7", body: "Every inbound call answered in a natural voice, in your business's name, with your services and hours." },
       { title: "Missed-call text back", body: "If a call ever does slip through, the caller gets a text within seconds asking how you can help." },
       { title: "Lead qualification", body: "Service needed, location, timing, and anything else you want asked before the appointment goes on the calendar." },
-      { title: "Booking into your calendar", body: "Appointments land in the tools you already use, including GoHighLevel, ServiceTitan, Housecall Pro, and Jobber." },
+      { title: "Booking into your calendar", body: "Appointments land in your calendar or CRM with the details your team needs. We confirm your tools on the first call." },
       { title: "Follow-up and reminders", body: "Confirmation texts, reminders before the visit, and a nudge when someone goes quiet, so fewer no-shows." },
       { title: "Review requests", body: "After the visit, a friendly request for a Google review, timed so it actually gets done." },
     ],
@@ -68,24 +68,24 @@ export const voiceAi = {
     header: "Who it's for.",
     intro: "Any local business that wins customers one phone call at a time.",
     items: [
-      { title: "Clinics and practices", body: "New patient enquiries answered and booked while the front desk is with someone else." },
+      { title: "Clinics and practices", body: "New patient inquiries answered and booked while the front desk is with someone else." },
       { title: "Gyms and studios", body: "Trial and membership questions handled at 9pm, when people actually decide." },
-      { title: "Professional services", body: "Enquiries screened for fit before they reach a partner's desk." },
+      { title: "Professional services", body: "Inquiries screened for fit before they reach a partner's desk." },
       { title: "Retail and hospitality", body: "Bookings, hours, and directions answered without pulling staff off the floor." },
-      { title: "Home services and trades", body: "Emergency calls routed to your cell. Everything else booked while you're on a roof or under a sink." },
+      { title: "Home services and trades", body: "Emergency calls go straight to your phone. Everything else is booked while you are out on a job." },
     ],
   },
   how: {
     header: "Live in three steps.",
     steps: [
       { title: "A 20-minute call", body: "Your services, your prices where you want them shared, your hours, and what a good customer looks like. No pitch." },
-      { title: "We build and train it", body: "You don't touch the technology. We build the receptionist around your business and walk you through it before it goes live." },
-      { title: "It answers from day one", body: "Every call picked up, qualified, and booked. We keep tuning it from real calls, so it gets sharper every week." },
+      { title: "We build and train it", body: "We build the receptionist around your business, train it on your calls, and walk you through it before it goes live. You get a working front desk and a weekly note on what it handled." },
+      { title: "It answers from day one", body: "Every call picked up, qualified, and booked. We listen to real calls in the first weeks and fix anything it got wrong." },
     ],
   },
   voices: {
-    header: "Owners who fill their calendars with us.",
-    intro: "Local businesses we work with today.",
+    header: "Owners we already work with.",
+    intro: "Local businesses we run marketing for today. None of them use the receptionist yet. The way we work with owners is the same.",
   },
   faq: {
     header: "Questions owners ask",
@@ -93,32 +93,32 @@ export const voiceAi = {
       {
         question: "Can it handle after-hours and emergency calls?",
         answer:
-          "That is where it earns its keep. A caller at 10pm with a burst pipe is not leaving a voicemail. The receptionist picks up, gets the address and what is happening, and puts the call straight through to your phone. If you can't pick up, the details are in your inbox right away.",
+          "Yes, and that is most of the point. After hours it takes the call, gets the address and what has gone wrong, and tries your phone. If you don't answer, the details are texted and emailed to you as soon as the call ends, and the caller is told when to expect you.",
       },
       {
         question: "What does it cost?",
         answer:
-          "It depends on call volume and what you want it to do. We quote after the first call, and there is no long lock-in. One captured customer usually covers a month.",
+          "It depends on call volume and what you want it to do. We quote after the first call, and there is no long lock-in. Put your average customer value into the calculator above: if one extra booking a month is worth more than the fee, it pays for itself.",
       },
       {
         question: "I already have a receptionist. Why would I need this?",
         answer:
-          "It doesn't replace anyone. It picks up when your team can't: nights, weekends, lunch, or when the second and third calls come in at once. Nothing goes to voicemail.",
+          "It covers the gaps: lunch, after five, weekends, and the second call that comes in while your receptionist is on the first. Nothing lands in voicemail.",
       },
       {
         question: "How is this different from an answering service?",
         answer:
-          "An answering service takes a message. This one has the conversation, qualifies the caller, and books the appointment before your competitor calls back.",
+          "An answering service writes down a name and a number. This books the appointment, so by the time you see the message the customer is already on your calendar.",
       },
       {
         question: "Will customers mind talking to an AI?",
         answer:
-          "Most callers care about one thing: getting help fast. The receptionist is trained on your business, so the conversation is specific, not scripted. Anything it can't handle, it hands to you instead of guessing.",
+          "Callers want an answer and a time. The receptionist gives both, in your business's name. When a call needs a person it says so and puts it through, rather than bluffing.",
       },
       {
         question: "Will it know my services and prices?",
         answer:
-          "Yes. Before launch we go through your services, your service area, and which prices you are comfortable sharing. Anything that needs someone to see the work first, it leaves to you and books the visit.",
+          "Yes. On the setup call you tell us what you charge and what you are happy to quote over the phone. Fixed prices it quotes. Anything that needs a look first, it books the visit and leaves the number to you.",
       },
       {
         question: "Who owns the phone number and the data?",
@@ -341,7 +341,13 @@ function MissedCallCalculator() {
     { label: "Per month", amount: weekly * 4.33 },
     { label: "Per year", amount: weekly * 52 },
   ];
-  const field = (id: string, label: string, val: string, set: (v: string) => void, prefix?: string, suffix?: string) => (
+  // One short sentence for screen readers, updated after typing pauses, instead of announcing every cell on every keystroke.
+  const [announce, setAnnounce] = useState("");
+  useEffect(() => {
+    const t = window.setTimeout(() => setAnnounce(`About ${money0(weekly * 4.33)} a month, ${money0(weekly * 52)} a year.`), 700);
+    return () => window.clearTimeout(t);
+  }, [weekly]);
+  const field = (id: string, label: string, val: string, set: (v: string) => void, prefix?: string, suffix?: string, max?: number) => (
     <div>
       <label htmlFor={id} className="field-label">
         {label}
@@ -353,6 +359,7 @@ function MissedCallCalculator() {
           type="number"
           inputMode="decimal"
           min={0}
+          max={max}
           value={val}
           onChange={(e) => set(e.target.value)}
           className={`field ${prefix ? "pl-8" : ""} ${suffix ? "pr-10" : ""}`}
@@ -366,16 +373,19 @@ function MissedCallCalculator() {
       <div className="grid gap-5 sm:grid-cols-3">
         {field("va-missed", c.labels.missed, missed, setMissed)}
         {field("va-value", c.labels.value, value, setValue, "$")}
-        {field("va-close", c.labels.close, close, setClose, undefined, "%")}
+        {field("va-close", c.labels.close, close, setClose, undefined, "%", 100)}
       </div>
-      <dl className="slab slab-grid mt-7 grid-cols-1 sm:grid-cols-3" aria-live="polite">
+      <dl className="slab slab-grid mt-7 grid-cols-1">
         {rows.map((r, i) => (
-          <div key={r.label} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} px-5 py-5`}>
+          <div key={r.label} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} flex items-center justify-between gap-4 px-5 py-4`}>
             <dt className="text-[12px] font-bold uppercase tracking-[0.1em]">{r.label}</dt>
-            <dd className="mt-2 text-[28px] font-extrabold leading-none tracking-[-0.04em] md:text-[32px]">{money0(r.amount)}</dd>
+            <dd className="min-w-0 text-right text-[26px] font-extrabold leading-none tracking-[-0.04em] tabular-nums md:text-[30px]">{money0(r.amount)}</dd>
           </div>
         ))}
       </dl>
+      <p className="sr-only" aria-live="polite">
+        {announce}
+      </p>
       <p className="mt-4 text-[13px] text-muted-foreground">{c.note}</p>
     </div>
   );
@@ -410,7 +420,7 @@ function VoiceAiForm() {
     if (data.phone && data.phone.replace(/\D/g, "").length < 10) found.phone = f.errors.phone;
     setErrors(found);
     if (Object.keys(found).length > 0) {
-      const first = (Object.keys(found) as Field[])[0];
+      const first = (Object.keys(LABELS) as Field[]).find((k) => found[k]);
       el.querySelector<HTMLElement>(`#va-${first}`)?.focus();
       return;
     }

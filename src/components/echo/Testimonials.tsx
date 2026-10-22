@@ -94,8 +94,9 @@ export function VideoTestimonials({
       <div className={`grid grid-cols-1 gap-6 ${columns === 2 ? "sm:grid-cols-2" : ""} ${className}`}>
         {items.map((v) => (
           <button key={v.src} onClick={() => setActive(v)} className="group appearance-none p-0 text-left">
+            <span className="sr-only">Play video: </span>
             <div className="relative aspect-video overflow-hidden border-2 border-foreground bg-foreground">
-              <img src={v.poster} alt={v.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={v.poster} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <span className="absolute bottom-0 left-0 flex h-11 w-11 items-center justify-center border-r-2 border-t-2 border-foreground bg-background group-hover:bg-teal">
                 <Play className="ml-0.5 h-4 w-4 fill-current text-foreground group-hover:text-white" strokeWidth={2} />
               </span>

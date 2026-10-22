@@ -327,7 +327,7 @@ function HvacBookingForm() {
     if (data.phone && data.phone.replace(/\D/g, "").length < 10) found.phone = f.errors.phone;
     setErrors(found);
     if (Object.keys(found).length > 0) {
-      const first = (Object.keys(found) as Field[])[0];
+      const first = (Object.keys(LABELS) as Field[]).find((k) => found[k]);
       el.querySelector<HTMLElement>(`#hvac-${first}`)?.focus();
       return;
     }
