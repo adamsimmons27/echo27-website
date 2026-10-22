@@ -72,7 +72,7 @@ export const voiceAi = {
       { title: "Gyms and studios", body: "Trial and membership questions handled at 9pm, when people actually decide." },
       { title: "Professional services", body: "Inquiries screened for fit before they reach a partner's desk." },
       { title: "Retail and hospitality", body: "Bookings, hours, and directions answered without pulling staff off the floor." },
-      { title: "Home services and trades", body: "Emergency calls go straight to your phone. Everything else is booked while you are out on a job." },
+      { title: "Home services and trades", body: "Emergency calls go straight to your phone. Everything else is booked while you are out on site." },
     ],
   },
   how: {
