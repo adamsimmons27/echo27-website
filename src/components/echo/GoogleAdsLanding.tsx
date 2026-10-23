@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
-import { Faq } from "@/components/cmo/Faq";
 import { Footer } from "@/components/echo/Footer";
 import { VideoTestimonials, videos } from "@/components/echo/Testimonials";
 import { openBookingModal } from "@/components/echo/BookingModal";
@@ -120,33 +119,6 @@ export const googleAds = {
       "Ad spend is separate and paid to Google from your own account.",
       "Everything is built in accounts you own. If we ever part ways, you keep all of it.",
       "No long lock-in. We earn next month by performing this month.",
-    ],
-  },
-  faq: {
-    header: "Questions owners ask on the call",
-    items: [
-      {
-        question: "Who owns the ad account and the landing page?",
-        answer: "You do. Everything is built in accounts you own. If we ever part ways, you keep all of it.",
-      },
-      {
-        question: "How much ad spend do I need?",
-        answer:
-          "It depends on your market and how competitive your category is. We'll tell you the realistic floor on the call, and we'll tell you honestly if it isn't worth running ads yet.",
-      },
-      {
-        question: "How quickly do campaigns go live?",
-        answer: "Tracking and the first landing page in week one, campaigns live in week two.",
-      },
-      {
-        question: "What if it isn't working?",
-        answer:
-          "We say so, and we change it. You'll always know what a new customer is costing you. If a campaign isn't tracking to the numbers we set together, the budget moves or the campaign stops.",
-      },
-      {
-        question: "Is there a contract?",
-        answer: "No long lock-in. We earn next month by performing this month.",
-      },
     ],
   },
   closing: {
@@ -338,8 +310,6 @@ export function GoogleAdsLanding() {
             </div>
           </div>
         </Section>
-
-        <Faq faq={c.faq} />
 
         {/* Next step */}
         <Section id="start" tone="dark" labelledBy="ga-start">
