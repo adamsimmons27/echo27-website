@@ -5,7 +5,6 @@ import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
 import { CtaButton } from "@/components/cmo/CtaButton";
-import { Faq } from "@/components/cmo/Faq";
 import { Analytics } from "@/components/cmo/Analytics";
 import { Footer } from "@/components/echo/Footer";
 import { getAttribution } from "@/lib/attribution";
@@ -95,15 +94,6 @@ export const webDesign = {
         to: "/case-studies/mountain-gaming",
         tone: "bg-peach",
       },
-    ],
-  },
-  faq: {
-    header: "Questions owners ask",
-    items: [
-      { question: "Who owns the site?", answer: "You do. The domain is registered in your name, and the content and design are yours. We host it for you as part of the monthly plan, and if you ever want to stop, we talk through the handover before anything changes." },
-      { question: "I already have a site. Can you work with it?", answer: "Usually, yes. If the bones are good we rebuild on them. If they are not, we start fresh on the same address, with the old pages redirected, so you keep as much of what you have earned in Google as possible." },
-      { question: "How long does it take?", answer: "Most sites go from kickoff to launch in a few weeks. The main thing that slows a site down is waiting on content, so we write the copy with you early." },
-      { question: "What counts as maintenance?", answer: "Updates, backups, security, monitoring, and the small changes you ask for: new hours, a new team member, a price, a photo, a new testimonial. A new section or page is quoted first." },
     ],
   },
   closing: {
@@ -276,8 +266,6 @@ export function WebDesignLanding() {
             ))}
           </ul>
         </Section>
-
-        <Faq faq={c.faq} />
 
         {/* Closing and form */}
         <Section id="book" tone="dark" labelledBy="wd-book">

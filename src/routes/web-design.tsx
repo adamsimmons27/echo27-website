@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { WebDesignLanding, webDesign } from "@/components/echo/WebDesignLanding";
+import { WebDesignLanding } from "@/components/echo/WebDesignLanding";
 
 const URL = "https://echo-27.com/web-design";
 const TITLE = "Web Design and Hosting | Echo 27";
@@ -17,15 +17,6 @@ const jsonLd = {
       description: DESCRIPTION,
       provider: { "@id": "https://echo-27.com/#organization" },
       url: URL,
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${URL}#faq`,
-      mainEntity: webDesign.faq.items.map((f) => ({
-        "@type": "Question",
-        name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
-      })),
     },
   ],
 };
