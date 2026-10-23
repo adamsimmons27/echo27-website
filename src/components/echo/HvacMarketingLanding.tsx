@@ -1,28 +1,33 @@
 import { useState, type FormEvent } from "react";
+import { Check, Play, X } from "lucide-react";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
 import { CtaButton } from "@/components/cmo/CtaButton";
-import { Faq } from "@/components/cmo/Faq";
 import { Analytics } from "@/components/cmo/Analytics";
 import { Footer } from "@/components/echo/Footer";
-import { VideoTestimonials, WrittenQuotes, videoBy, writtenBy } from "@/components/echo/Testimonials";
+import { VideoTestimonials, videoBy } from "@/components/echo/Testimonials";
 import { getAttribution } from "@/lib/attribution";
 import { track } from "@/lib/tracking";
 
+/** PLACEHOLDER: the hero video. An .mp4 path or a YouTube, Loom, or Vimeo embed URL. Empty shows a marked frame. */
+const VIDEO = { src: "", poster: "" };
+
 /**
- * HVAC marketing page at /hvac-marketing, modelled on the structure of an appointment-booking agency page:
- * promise, the problem with leads, the three-part system, results, owner testimonials, FAQ, booking.
- * Copy rules: no em dashes, no exclamation marks, no invented figures. Proof cards are marked until real ones exist.
+ * HVAC growth partner page at /hvac-marketing, in the shape of a video sales page: a centred promise, the video,
+ * one call to action, the problem, the four-part program, proof, what happens next, fit, and booking.
+ * Copy rules: no em dashes, no exclamation marks, no invented figures, "estimates" and "customers" rather than "jobs".
  */
 export const hvac = {
-  cta: { label: "Book your call", targetId: "book" },
+  cta: { label: "Book a call", targetId: "book", note: "20 minutes. No pitch. Pick your own time." },
   hero: {
-    eyebrow: "For HVAC business owners",
-    headline: "Booked estimates on your calendar, not leads in your inbox.",
+    eyebrow: "For residential HVAC companies doing $1M to $5M a year",
+    headline: "Qualified replacement estimates on your calendar.",
+    mark: "Booked for you.",
     subhead:
-      "Ads, follow-up, and booking run as one system for residential HVAC companies, so the homeowners who are ready to replace a system end up on your techs' calendars.",
-    note: "No pitch. We'll tell you if we're not a fit.",
+      "Demand generated, every homeowner qualified, and the estimate booked before it reaches you. You show up and close. Nothing shared, nothing resold.",
+    watch: "Watch this first",
+    reassurance: "We are both just deciding whether there is a fit.",
     stats: [
       { value: "$12M+", label: "Ad spend managed" },
       { value: "12+", label: "Years in performance marketing" },
@@ -30,97 +35,54 @@ export const hvac = {
     ],
   },
   problem: {
-    header: "Appointments, not leads.",
-    body: "Ads get you in front of homeowners fast. On their own they get you form fills nobody calls back and a team that stops trusting the leads. The ads, the follow-up, and the booking have to run as one thing, or the spend leaks.",
-  },
-  system: {
-    header: "One system, from the first click to the estimate.",
-    intro:
-      "We run the whole path, with reporting tied to booked estimates and the revenue they produced, so you always know what the spend turned into.",
-    pillars: [
-      {
-        title: "Ads that find replacements",
-        copy: "Google Search, Local Services Ads, and Meta, aimed at your service area and at the homes most likely to need a replacement. Creative built around rebates, financing, and what makes your company different, not stock footage.",
-        tone: "bg-sky",
-      },
-      {
-        title: "Follow-up in minutes, not days",
-        copy: "Every lead gets a text and an email within minutes, then reminders and no-show recovery. Leads that go quiet get chased, so the ad spend is not wasted on people who never hear back.",
-        tone: "bg-mint",
-      },
-      {
-        title: "Booking that qualifies first",
-        copy: "System age, home ownership, timeline, and budget are asked before anything lands on your calendar. Your techs spend their time on homeowners who are ready to decide.",
-        tone: "bg-peach",
-      },
-    ],
-    cta: "Book your call",
-  },
-  results: {
-    header: "HVAC campaign results.",
-    note: "[Placeholder cards until real campaign results replace them. Nothing here is invented.]",
+    eyebrow: "Why the leads are not turning into installs",
+    header: "You don't have a lead problem. You have a qualification problem.",
+    intro: "Every HVAC company we talk to is already spending. The money is buying the wrong conversations.",
     cards: [
-      {
-        spent: "Spend: [SPEND]",
-        headline: "[REVENUE] in replacements, [Region]",
-        roas: "[X]x return on ad spend",
-        did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
-      },
-      {
-        spent: "Spend: [SPEND]",
-        headline: "[REVENUE] in new installs, [Region]",
-        roas: "[X]x return on ad spend",
-        did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
-      },
-      {
-        spent: "Spend: [SPEND]",
-        headline: "[REVENUE] in the first [N] days",
-        roas: "[X]x return on ad spend",
-        did: ["[PLACEHOLDER: what we did, step one]", "[PLACEHOLDER: what we did, step two]", "[PLACEHOLDER: what we did, step three]"],
-      },
+      { title: "The lead you bought was sold to three other companies", body: "Lead marketplaces sell the same homeowner to you and your competitors. You are bidding against people who got the same name at the same minute.", tone: "bg-sky" },
+      { title: "Cheap clicks buy the wrong homeowners", body: "Optimizing an account for cost per lead fills the calendar with people who wanted a free opinion, not a new system.", tone: "bg-peach" },
+      { title: "By the time someone calls back, they have booked elsewhere", body: "One person on the phones, a full queue, and a lead that went cold while it waited. The lead was fine. Nobody got to it.", tone: "bg-lilac" },
     ],
   },
-  voices: {
+  program: {
+    eyebrow: "The HVAC growth partner program",
+    header: "We generate. We qualify. We book. You close.",
+    steps: [
+      { title: "Generate", sub: "Demand that is yours", body: "Google Search, Local Services Ads, and Meta built for replacement intent in your service area. Your leads, never resold, never shared.", tone: "bg-sky" },
+      { title: "Qualify", sub: "Every homeowner, before you see them", body: "Every lead gets a call and a text within minutes. System age, home ownership, timeline, and budget confirmed before anything reaches you.", tone: "bg-mint" },
+      { title: "Book", sub: "Straight to your calendar", body: "Only qualified homeowners land on your calendar, with the details your tech needs to walk in prepared.", tone: "bg-peach" },
+      { title: "You close", sub: "You run the sale", body: "You show up to a homeowner who expects you and wants a quote. That is the whole of your part.", tone: "bg-lilac" },
+    ],
+    cta: "See if your metro is open",
+  },
+  proof: {
+    eyebrow: "Real owners",
     header: "Owners who fill their calendars with us.",
     intro: "Local businesses we work with today. None of them are HVAC companies yet. The system is the same.",
   },
-  faq: {
-    header: "Frequently asked questions",
-    items: [
-      {
-        question: "How is this different from the last agency?",
-        answer:
-          "One person is accountable for the number, and the follow-up and booking are part of the service, not an upsell. You get reporting on booked estimates and the revenue behind them, not on clicks.",
-      },
-      {
-        question: "Who decides a homeowner is worth a visit?",
-        answer:
-          "Before anything lands on your calendar the homeowner answers four questions: system age, whether they own the home, their timeline, and their budget. Anyone who does not fit is not booked.",
-      },
-      {
-        question: "How much of my team's time does this take?",
-        answer:
-          "Answer the phone, and send the tech. Setup takes two short calls in the first two weeks. After that it is a standing weekly call and a dashboard.",
-      },
-      {
-        question: "What does it cost?",
-        answer:
-          "It depends on your service area and how much volume you want. We quote after the first call, and there is no long-term contract. We earn next month by performing this month.",
-      },
-      {
-        question: "Who is this for?",
-        answer:
-          "It fits residential HVAC companies doing roughly $1M to $5M a year, with a few techs and room on the calendar to take more work. If you are under that, or you want the cheapest option rather than the best one, we will say so on the call.",
-      },
+  next: {
+    eyebrow: "What happens next",
+    header: "Three steps.",
+    steps: [
+      { title: "A 20-minute call", body: "Pick a slot. We ask about your metro, your install volume, and what you are running today, and tell you straight whether this fits." },
+      { title: "The plan", body: "A walk through exactly how we would build it for your metro, your service area, and your calendar. You keep the plan whether or not you go ahead." },
+      { title: "Your metro is yours", body: "If it is a fit both ways, we claim your metro, build the system, and start booking replacement estimates. One HVAC company per metro. We do not work for your competitor." },
     ],
   },
+  fit: {
+    header: "This is not for everyone.",
+    intro: "It only works when the fit is right on both sides.",
+    yes: { title: "A fit if you", items: ["Do $1M to $5M a year in residential HVAC", "Run three to fifteen techs", "Have room on the calendar to take more work", "Can run the estimates we book within 48 hours", "Treat ad spend as an investment, not an expense"] },
+    no: { title: "Not a fit if you", items: ["Are under $1M, or one truck", "Have no CRM, or no customer list", "Are shopping for the cheapest lead source", "Cannot answer the phone or run booked estimates daily", "Want leads handed over and nothing after"] },
+  },
   closing: {
-    header: "Ready for a fuller calendar?",
-    body: "Book a call. We look at your market and your calendar and tell you straight whether this works for you.",
+    eyebrow: "One HVAC company per metro",
+    header: "See if your metro is still open.",
+    body: "Book the 20-minute call. If it is not a fit, we will tell you on the call and you will have lost nothing but twenty minutes.",
   },
   form: {
     revenue: ["Under $1M", "$1M to $3M", "$3M to $5M", "$5M+"],
-    submit: "Book your call",
+    submit: "Book a call",
     sending: "Sending",
     success: { title: "Got it. Thanks.", body: "We'll email you to set up the call." },
     errors: {
@@ -134,6 +96,10 @@ export const hvac = {
 };
 
 const WEBHOOK_URL = import.meta.env.VITE_GHL_WEBHOOK_URL as string | undefined;
+
+function Eyebrow({ children, dark = false }: { children: string; dark?: boolean }) {
+  return <p className={`${dark ? "eyebrow-dark" : "eyebrow"} mb-6`}>{children}</p>;
+}
 
 export function HvacMarketingLanding() {
   const c = hvac;
@@ -153,30 +119,29 @@ export function HvacMarketingLanding() {
       </header>
 
       <main className="pb-20 md:pb-0">
-        {/* Hero */}
+        {/* Hero: centred promise, the video, one button */}
         <section id="top" aria-labelledby="hvac-hero" className="bg-background">
-          <Container className="grid gap-12 pt-14 pb-14 sm:pt-20 sm:pb-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16 lg:pt-24 lg:pb-24">
-            <div>
-              <p className="eyebrow">{c.hero.eyebrow}</p>
-              <h1 id="hvac-hero" className="headline headline-xl mt-6 max-w-[18ch]">
-                {c.hero.headline}
-              </h1>
-              <p className="lede mt-7 max-w-[56ch] text-muted-foreground">{c.hero.subhead}</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <CtaButton location="hero" targetId={c.cta.targetId}>
-                  {c.cta.label}
-                </CtaButton>
-                <a href="#how" className="btn-ghost">
-                  See how it works
-                </a>
-              </div>
-              <p className="mt-4 text-[14px] text-muted-foreground">{c.hero.note}</p>
+          <Container className="pt-14 pb-14 text-center sm:pt-20 sm:pb-16 lg:pt-24">
+            <p className="eyebrow justify-center">{c.hero.eyebrow}</p>
+            <h1 id="hvac-hero" className="headline headline-xl mx-auto mt-6 max-w-[18ch]">
+              {c.hero.headline} <span className="hl">{c.hero.mark}</span>
+            </h1>
+            <p className="lede mx-auto mt-7 max-w-[60ch] text-muted-foreground">{c.hero.subhead}</p>
+            <div className="mx-auto mt-10 max-w-[880px]">
+              <p className="eyebrow mb-4 justify-center">{c.hero.watch}</p>
+              <VideoSlot />
             </div>
-            {/* The three real figures as one slab: three cells across on small screens, stacked beside the headline on large. */}
-            <ul className="slab slab-grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 lg:w-full lg:max-w-[440px] lg:justify-self-end">
+            <div className="mt-10 flex flex-col items-center gap-3">
+              <CtaButton location="hero" targetId={c.cta.targetId} className="w-full sm:w-auto sm:px-8 sm:py-4 sm:text-[17px]">
+                {c.cta.label}
+              </CtaButton>
+              <p className="text-[14px] text-muted-foreground">{c.cta.note}</p>
+              <p className="text-[14px] text-muted-foreground">{c.hero.reassurance}</p>
+            </div>
+            <ul className="slab slab-grid mx-auto mt-12 max-w-[880px] grid-cols-1 text-left sm:grid-cols-3">
               {c.hero.stats.map((s, i) => (
-                <li key={s.label} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} px-5 py-6 sm:px-6 lg:px-7 lg:py-8`}>
-                  <p className="text-[34px] font-extrabold leading-none tracking-[-0.04em] md:text-[40px] lg:text-[48px]">{s.value}</p>
+                <li key={s.label} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} px-5 py-5 sm:px-6`}>
+                  <p className="text-[32px] font-extrabold leading-none tracking-[-0.04em] md:text-[38px]">{s.value}</p>
                   <p className="mt-2 text-[13px] font-bold leading-snug">{s.label}</p>
                 </li>
               ))}
@@ -184,96 +149,115 @@ export function HvacMarketingLanding() {
           </Container>
         </section>
 
-        {/* The problem with leads */}
+        {/* Problem */}
         <Section id="problem" tone="mist" labelledBy="hvac-problem">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:items-center">
-            <h2 id="hvac-problem" className="headline headline-lg max-w-[16ch]">
+          <div className="max-w-[60ch]">
+            <Eyebrow>{c.problem.eyebrow}</Eyebrow>
+            <h2 id="hvac-problem" className="headline headline-lg">
               {c.problem.header}
             </h2>
-            <div>
-              <p className="lede text-muted-foreground">{c.problem.body}</p>
-              <div className="mt-8">
-                <CtaButton location="problem" targetId={c.cta.targetId}>
-                  {c.cta.label}
-                </CtaButton>
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        {/* The system */}
-        <Section id="how" tone="light" labelledBy="hvac-how">
-          <div className="max-w-[60ch]">
-            <h2 id="hvac-how" className="headline headline-lg">
-              {c.system.header}
-            </h2>
-            <p className="lede mt-5 text-muted-foreground">{c.system.intro}</p>
+            <p className="lede mt-5 text-muted-foreground">{c.problem.intro}</p>
           </div>
           <ul className="slab slab-grid mt-12 grid-cols-1 lg:grid-cols-3">
-            {c.system.pillars.map((p) => (
-              <li key={p.title} className={`${p.tone} p-6 md:p-7`}>
+            {c.problem.cards.map((k) => (
+              <li key={k.title} className={`${k.tone} p-6 md:p-7`}>
                 <span className="block h-2.5 w-2.5 rounded-full bg-teal" aria-hidden="true" />
-                <h3 className="headline headline-md mt-4">{p.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{p.copy}</p>
+                <h3 className="headline headline-md mt-4">{k.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{k.body}</p>
               </li>
             ))}
           </ul>
-          <div className="mt-10">
-            <CtaButton location="system" targetId={c.cta.targetId}>
-              {c.system.cta}
+        </Section>
+
+        {/* Program */}
+        <Section id="program" tone="light" labelledBy="hvac-program">
+          <div className="max-w-[60ch]">
+            <Eyebrow>{c.program.eyebrow}</Eyebrow>
+            <h2 id="hvac-program" className="headline headline-lg">
+              {c.program.header}
+            </h2>
+          </div>
+          <ol className="slab slab-grid mt-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {c.program.steps.map((s) => (
+              <li key={s.title} className={`${s.tone} p-6 md:p-7`}>
+                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">{s.title}</p>
+                <h3 className="headline headline-md mt-3">{s.sub}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-10 flex flex-col items-start gap-2">
+            <CtaButton location="program" targetId={c.cta.targetId}>
+              {c.program.cta}
             </CtaButton>
+            <p className="text-[14px] text-muted-foreground">{c.cta.note}</p>
           </div>
         </Section>
 
-        {/* Results */}
-        <Section id="results" tone="sky" labelledBy="hvac-results">
-          <h2 id="hvac-results" className="headline headline-lg max-w-[60ch]">
-            {c.results.header}
-          </h2>
-          {/* Rows share a subgrid at lg so the figure, the marker, and the list line up across the three cards. */}
-          <ul className="mt-12 grid gap-6 md:gap-8 lg:grid-cols-3">
-            {c.results.cards.map((r, i) => (
-              <li key={i} className="card flex flex-col md:p-7 lg:grid lg:grid-rows-subgrid lg:row-span-5">
-                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">{r.spent}</p>
-                <h3 className="headline headline-md mt-3">{r.headline}</h3>
-                <p className="mt-4 text-[15px] font-bold">
-                  <span className="hl">{r.roas}</span>
-                </p>
-                <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">What changed</p>
-                <ul className="mt-3 space-y-2">
-                  {r.did.map((d) => (
-                    <li key={d} className="border-l-2 border-teal pl-3 text-[14px] leading-snug">
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-[13px] text-muted-foreground">{c.results.note}</p>
-        </Section>
-
-        {/* Owner voices */}
-        <Section id="voices" tone="light" labelledBy="hvac-voices">
+        {/* Proof */}
+        <Section id="voices" tone="sky" labelledBy="hvac-voices">
           <div className="max-w-[60ch]">
+            <Eyebrow>{c.proof.eyebrow}</Eyebrow>
             <h2 id="hvac-voices" className="headline headline-lg">
-              {c.voices.header}
+              {c.proof.header}
             </h2>
-            <p className="lede mt-5 text-muted-foreground">{c.voices.intro}</p>
+            <p className="lede mt-5 text-muted-foreground">{c.proof.intro}</p>
           </div>
           <div className="mt-12">
             <VideoTestimonials items={[videoBy("Marc Steiniger"), videoBy("Thibaut Bannelier")]} columns={2} showResult={false} />
           </div>
-          <div className="mt-8">
-            <WrittenQuotes items={[writtenBy("Justin Lui"), writtenBy("Lou Jimenez")]} columns={2} showResult={false} />
-          </div>
         </Section>
 
-        <Faq faq={c.faq} />
+        {/* What happens next */}
+        <Section id="next" tone="light" labelledBy="hvac-next">
+          <Eyebrow>{c.next.eyebrow}</Eyebrow>
+          <h2 id="hvac-next" className="headline headline-lg">
+            {c.next.header}
+          </h2>
+          <ol className="slab slab-grid mt-12 grid-cols-1 lg:grid-cols-3">
+            {c.next.steps.map((s, i) => (
+              <li key={s.title} className={`${["bg-sky", "bg-mint", "bg-peach"][i]} p-6 md:p-7`}>
+                <span className="block h-2.5 w-2.5 rounded-full bg-teal" aria-hidden="true" />
+                <h3 className="headline headline-md mt-4">{s.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+
+        {/* Fit */}
+        <Section id="fit" tone="mist" labelledBy="hvac-fit">
+          <div className="max-w-[60ch]">
+            <h2 id="hvac-fit" className="headline headline-lg">
+              {c.fit.header}
+            </h2>
+            <p className="lede mt-5 text-muted-foreground">{c.fit.intro}</p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
+            {[c.fit.yes, c.fit.no].map((col, i) => (
+              <div key={col.title} className={`card ${i === 0 ? "bg-mint" : "bg-peach"} sm:p-8`}>
+                <h3 className="headline headline-md">{col.title}</h3>
+                <ul className="mt-5 space-y-3">
+                  {col.items.map((item) => (
+                    <li key={item} className="flex min-h-[28px] items-start gap-3 text-[15px] font-medium leading-snug">
+                      {i === 0 ? (
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" strokeWidth={2.5} aria-hidden="true" />
+                      ) : (
+                        <X className="mt-0.5 h-5 w-5 shrink-0 text-foreground" strokeWidth={2.5} aria-hidden="true" />
+                      )}
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Section>
 
         {/* Closing and booking */}
         <Section id="book" tone="dark" labelledBy="hvac-book">
           <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow-dark mb-6 justify-center">{c.closing.eyebrow}</p>
             <h2 id="hvac-book" className="headline headline-lg">
               {c.closing.header}
             </h2>
@@ -294,6 +278,30 @@ export function HvacMarketingLanding() {
 
       <Footer />
       <Analytics bookingId={c.cta.targetId} />
+    </div>
+  );
+}
+
+/** The hero video: an embed or an mp4 when VIDEO.src is set, otherwise a marked frame. */
+function VideoSlot() {
+  const isEmbed = /youtube\.com|youtu\.be|loom\.com|vimeo\.com/.test(VIDEO.src);
+  return (
+    <div className="slab overflow-hidden bg-[#111]">
+      <div className="relative aspect-video w-full">
+        {VIDEO.src && isEmbed ? (
+          <iframe src={VIDEO.src} title="How the HVAC growth partner program works" className="absolute inset-0 h-full w-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
+        ) : VIDEO.src ? (
+          <video src={VIDEO.src} poster={VIDEO.poster || undefined} controls playsInline className="absolute inset-0 h-full w-full" />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 border-2 border-dashed border-white/30 p-6 text-center text-white">
+            <span className="flex h-16 w-16 items-center justify-center border-2 border-white">
+              <Play className="ml-1 h-6 w-6 fill-current" aria-hidden="true" />
+            </span>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/70">[Video goes here]</p>
+            <p className="max-w-[40ch] text-[14px] text-white/60">Set VIDEO.src in HvacMarketingLanding.tsx to an .mp4 path or a YouTube, Loom, or Vimeo embed URL.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

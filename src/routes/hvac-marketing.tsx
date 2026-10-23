@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HvacMarketingLanding, hvac } from "@/components/echo/HvacMarketingLanding";
+import { HvacMarketingLanding } from "@/components/echo/HvacMarketingLanding";
 
 const URL = "https://echo-27.com/hvac-marketing";
-const TITLE = "HVAC Marketing Built Around Booked Estimates | Echo 27";
+const TITLE = "HVAC Growth Partner Program | Echo 27";
 const DESCRIPTION =
-  "Ads, follow-up, and booking run as one system for residential HVAC companies, so homeowners ready to replace a system end up on your techs' calendars.";
+  "Qualified replacement estimates booked onto your calendar. We generate the demand, qualify every homeowner, and book the estimate. You show up and close. One HVAC company per metro.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -12,21 +12,12 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${URL}#service`,
-      name: "HVAC marketing and appointment booking",
+      name: "HVAC growth partner program",
       serviceType: "Marketing agency",
       description: DESCRIPTION,
       provider: { "@id": "https://echo-27.com/#organization" },
       audience: { "@type": "BusinessAudience", audienceType: "Residential HVAC companies" },
       url: URL,
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${URL}#faq`,
-      mainEntity: hvac.faq.items.map((f) => ({
-        "@type": "Question",
-        name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
-      })),
     },
   ],
 };
