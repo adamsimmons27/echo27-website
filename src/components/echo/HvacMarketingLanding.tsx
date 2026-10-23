@@ -19,15 +19,15 @@ const VIDEO = { src: "", poster: "" };
  * Copy rules: no em dashes, no exclamation marks, no invented figures, "estimates" and "customers" rather than "jobs".
  */
 export const hvac = {
-  cta: { label: "Book a call", targetId: "book", note: "20 minutes. No pitch. Pick your own time." },
+  cta: { label: "Book a call", targetId: "book", note: "Twenty minutes, at a time you pick. We ask questions, we do not pitch." },
   hero: {
     eyebrow: "For residential HVAC companies doing $1M to $5M a year",
-    headline: "Qualified replacement estimates on your calendar.",
-    mark: "Booked for you.",
+    headline: "Qualified replacement estimates.",
+    mark: "Already on your calendar.",
     subhead:
       "Demand generated, every homeowner qualified, and the estimate booked before it reaches you. You show up and close. Nothing shared, nothing resold.",
     watch: "Watch this first",
-    reassurance: "We are both just deciding whether there is a fit.",
+    reassurance: "The call is for both of us to work out whether this is worth doing.",
     stats: [
       { value: "$12M+", label: "Ad spend managed" },
       { value: "12+", label: "Years in performance marketing" },
@@ -36,49 +36,49 @@ export const hvac = {
   },
   problem: {
     eyebrow: "Why the leads are not turning into installs",
-    header: "You don't have a lead problem. You have a qualification problem.",
-    intro: "Every HVAC company we talk to is already spending. The money is buying the wrong conversations.",
+    header: "The leads are coming in. The wrong ones are reaching your calendar.",
+    intro: "Most HVAC owners we speak to already have an ad budget. It is paying for conversations with people who were never going to buy a system.",
     cards: [
-      { title: "The lead you bought was sold to three other companies", body: "Lead marketplaces sell the same homeowner to you and your competitors. You are bidding against people who got the same name at the same minute.", tone: "bg-sky" },
+      { title: "The lead you bought was sold to three other companies", body: "The marketplaces resell one homeowner to several companies at once. Three of you dial the same person and the fastest one wins.", tone: "bg-sky" },
       { title: "Cheap clicks buy the wrong homeowners", body: "Optimizing an account for cost per lead fills the calendar with people who wanted a free opinion, not a new system.", tone: "bg-peach" },
-      { title: "By the time someone calls back, they have booked elsewhere", body: "One person on the phones, a full queue, and a lead that went cold while it waited. The lead was fine. Nobody got to it.", tone: "bg-lilac" },
+      { title: "By the time someone calls back, they have booked elsewhere", body: "The homeowner called, nobody picked up, and the voicemail sat until lunch. By then two other companies had called them back.", tone: "bg-lilac" },
     ],
   },
   program: {
-    eyebrow: "The HVAC growth partner program",
-    header: "We generate. We qualify. We book. You close.",
+    eyebrow: "The booked estimates program",
+    header: "Demand, qualification, and booking are ours. The sale is yours.",
     steps: [
-      { title: "Generate", sub: "Demand that is yours", body: "Google Search, Local Services Ads, and Meta built for replacement intent in your service area. Your leads, never resold, never shared.", tone: "bg-sky" },
-      { title: "Qualify", sub: "Every homeowner, before you see them", body: "Every lead gets a call and a text within minutes. System age, home ownership, timeline, and budget confirmed before anything reaches you.", tone: "bg-mint" },
-      { title: "Book", sub: "Straight to your calendar", body: "Only qualified homeowners land on your calendar, with the details your tech needs to walk in prepared.", tone: "bg-peach" },
-      { title: "You close", sub: "You run the sale", body: "You show up to a homeowner who expects you and wants a quote. That is the whole of your part.", tone: "bg-lilac" },
+      { title: "Generate", sub: "Homeowners who need a system", body: "Google Search, Local Services Ads, and Meta campaigns aimed at homeowners in your service area who need a system, not a tune-up. Every lead belongs to you and goes to nobody else.", tone: "bg-sky" },
+      { title: "Qualify", sub: "Every homeowner, before you see them", body: "Automated follow-up texts and calls every lead within minutes, and an AI receptionist picks up when your office cannot. System age, ownership, timeline, and budget are confirmed before the estimate reaches your calendar.", tone: "bg-mint" },
+      { title: "Book", sub: "Onto your calendar, with notes", body: "Only qualified homeowners land on your calendar, with the details your tech needs to walk in prepared.", tone: "bg-peach" },
+      { title: "You close", sub: "The sale is yours", body: "The homeowner is expecting your tech, knows why they are there, and wants a price. Your part starts at the front door.", tone: "bg-lilac" },
     ],
-    cta: "See if your metro is open",
+    cta: "Check whether your metro is taken",
   },
   proof: {
-    eyebrow: "Real owners",
-    header: "Owners who fill their calendars with us.",
-    intro: "Local businesses we work with today. None of them are HVAC companies yet. The system is the same.",
+    eyebrow: "Clients on camera",
+    header: "Owners we work with today.",
+    intro: "Two current clients, on camera. Neither runs an HVAC company. The same team and the same approach go into this program.",
   },
   next: {
-    eyebrow: "What happens next",
-    header: "Three steps.",
+    eyebrow: "After you book",
+    header: "Here is how it goes.",
     steps: [
-      { title: "A 20-minute call", body: "Pick a slot. We ask about your metro, your install volume, and what you are running today, and tell you straight whether this fits." },
-      { title: "The plan", body: "A walk through exactly how we would build it for your metro, your service area, and your calendar. You keep the plan whether or not you go ahead." },
-      { title: "Your metro is yours", body: "If it is a fit both ways, we claim your metro, build the system, and start booking replacement estimates. One HVAC company per metro. We do not work for your competitor." },
+      { title: "A 20-minute call", body: "Pick a time. We talk about your metro, how many installs you do, and what you are spending now. If we are not the right fit, we say so on the call." },
+      { title: "The plan", body: "A written plan for your metro: which channels, what the follow-up looks like, and what we need from your office. Yours to keep either way." },
+      { title: "Your metro is yours", body: "If it works both ways, we reserve your metro, build the system, and start putting estimates on your calendar. One HVAC company per metro. We do not work for your competitor." },
     ],
   },
   fit: {
-    header: "This is not for everyone.",
-    intro: "It only works when the fit is right on both sides.",
-    yes: { title: "A fit if you", items: ["Do $1M to $5M a year in residential HVAC", "Run three to fifteen techs", "Have room on the calendar to take more work", "Can run the estimates we book within 48 hours", "Treat ad spend as an investment, not an expense"] },
-    no: { title: "Not a fit if you", items: ["Are under $1M, or one truck", "Have no CRM, or no customer list", "Are shopping for the cheapest lead source", "Cannot answer the phone or run booked estimates daily", "Want leads handed over and nothing after"] },
+    header: "Who this is built for.",
+    intro: "We take on one HVAC company per metro, so we are particular about which one.",
+    yes: { title: "A fit if you", items: ["Do $1M to $5M a year in residential HVAC", "Run three to fifteen techs", "Have room on the calendar to take more work", "Have a tech free to run estimates the same week they are booked", "Are willing to fund ads for the months it takes to build a channel"] },
+    no: { title: "Not a fit if you", items: ["Are under $1M, or one truck", "Have no CRM, or no customer list", "Are shopping for the cheapest lead source", "Let booked estimates sit because nobody is free to run them", "Want leads handed over and nothing after"] },
   },
   closing: {
     eyebrow: "One HVAC company per metro",
-    header: "See if your metro is still open.",
-    body: "Book the 20-minute call. If it is not a fit, we will tell you on the call and you will have lost nothing but twenty minutes.",
+    header: "Is your metro still available?",
+    body: "Twenty minutes to find out. If we are not the right partner for your metro, you hear it on the call, not after a contract.",
   },
   form: {
     revenue: ["Under $1M", "$1M to $3M", "$3M to $5M", "$5M+"],
@@ -123,7 +123,7 @@ export function HvacMarketingLanding() {
         <section id="top" aria-labelledby="hvac-hero" className="bg-background">
           <Container className="pt-14 pb-14 text-center sm:pt-20 sm:pb-16 lg:pt-24">
             <p className="eyebrow justify-center">{c.hero.eyebrow}</p>
-            <h1 id="hvac-hero" className="headline headline-xl mx-auto mt-6 max-w-[18ch]">
+            <h1 id="hvac-hero" className="headline headline-xl mx-auto mt-6 max-w-[20ch]">
               {c.hero.headline} <span className="hl">{c.hero.mark}</span>
             </h1>
             <p className="lede mx-auto mt-7 max-w-[60ch] text-muted-foreground">{c.hero.subhead}</p>
@@ -180,7 +180,7 @@ export function HvacMarketingLanding() {
           <ol className="slab slab-grid mt-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {c.program.steps.map((s) => (
               <li key={s.title} className={`${s.tone} p-6 md:p-7`}>
-                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-teal-deep">{s.title}</p>
+                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-foreground">{s.title}</p>
                 <h3 className="headline headline-md mt-3">{s.sub}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{s.body}</p>
               </li>
@@ -294,11 +294,11 @@ function VideoSlot() {
           <video src={VIDEO.src} poster={VIDEO.poster || undefined} controls playsInline className="absolute inset-0 h-full w-full" />
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 border-2 border-dashed border-white/30 p-6 text-center text-white">
-            <span className="flex h-16 w-16 items-center justify-center border-2 border-white">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center border-2 border-white">
               <Play className="ml-1 h-6 w-6 fill-current" aria-hidden="true" />
             </span>
-            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/70">[Video goes here]</p>
-            <p className="max-w-[40ch] text-[14px] text-white/60">Set VIDEO.src in HvacMarketingLanding.tsx to an .mp4 path or a YouTube, Loom, or Vimeo embed URL.</p>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/80">[Video goes here]</p>
+            <p className="hidden max-w-[40ch] text-[14px] text-white/80 sm:block">Set VIDEO.src in HvacMarketingLanding.tsx to an .mp4 path or a YouTube, Loom, or Vimeo embed URL.</p>
           </div>
         )}
       </div>
@@ -363,7 +363,7 @@ function HvacBookingForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="card-dark">
+      <div role="status" tabIndex={-1} autoFocus className="card-dark">
         <p className="headline headline-md">{f.success.title}</p>
         <p className="mt-3 text-muted-foreground">{f.success.body}</p>
       </div>
@@ -376,11 +376,16 @@ function HvacBookingForm() {
     "aria-invalid": errors[name] ? true : undefined,
     "aria-describedby": errors[name] ? `hvac-${name}-error` : undefined,
   });
-  const wrap = (name: Field, input: React.ReactNode) => (
+  const wrap = (name: Field, input: React.ReactNode, hint?: string) => (
     <div>
       <label htmlFor={`hvac-${name}`} className="field-label">
         {LABELS[name]}
       </label>
+      {hint && (
+        <p id={`hvac-${name}-hint`} className="mt-1 text-[13px] text-muted-foreground">
+          {hint}
+        </p>
+      )}
       {input}
       {errors[name] && (
         <p id={`hvac-${name}-error`} className="mt-1.5 text-sm font-semibold text-foreground">
@@ -397,7 +402,7 @@ function HvacBookingForm() {
         {wrap("email", <input {...a11y("email")} type="email" autoComplete="email" required className="field mt-2" />)}
         {wrap("phone", <input {...a11y("phone")} type="tel" inputMode="tel" autoComplete="tel" required className="field mt-2" />)}
         {wrap("company", <input {...a11y("company")} type="text" autoComplete="organization" required className="field mt-2" />)}
-        {wrap("service_area", <input {...a11y("service_area")} type="text" placeholder="City and state or province" autoComplete="address-level2" required className="field mt-2" />)}
+        {wrap("service_area", <input {...a11y("service_area")} type="text" autoComplete="address-level2" required className="field mt-2" />, "City and state or province")}
         {wrap(
           "revenue",
           <select {...a11y("revenue")} defaultValue="" required className="field mt-2">

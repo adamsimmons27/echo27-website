@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Play, X, Linkedin } from "lucide-react";
 import justinImg from "@/assets/justin.jpg";
 import tobiasImg from "@/assets/tobias.jpeg";
@@ -89,11 +89,52 @@ export function VideoTestimonials({
   className?: string;
 }) {
   const [active, setActive] = useState<Video | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+
+  // The player is a modal dialog: focus moves to its close button, Escape closes it, Tab stays inside,
+  // and focus returns to the card that opened it.
+  useEffect(() => {
+    if (!active) return;
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActive(null);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const dialog = closeRef.current?.parentElement;
+      if (!dialog) return;
+      const focusables = Array.from(dialog.querySelectorAll<HTMLElement>("button, video, [tabindex]:not([tabindex='-1'])"));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      openerRef.current?.focus();
+    };
+  }, [active]);
   return (
     <>
       <div className={`grid grid-cols-1 gap-6 ${columns === 2 ? "sm:grid-cols-2" : ""} ${className}`}>
         {items.map((v) => (
-          <button key={v.src} onClick={() => setActive(v)} className="group appearance-none p-0 text-left">
+          <button
+            key={v.src}
+            onClick={(e) => {
+              openerRef.current = e.currentTarget;
+              setActive(v);
+            }}
+            className="group appearance-none p-0 text-left"
+          >
             <span className="sr-only">Play video: </span>
             <div className="relative aspect-video overflow-hidden border-2 border-foreground bg-foreground">
               <img src={v.poster} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -113,8 +154,15 @@ export function VideoTestimonials({
       </div>
 
       {active && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/90 p-6" onClick={() => setActive(null)}>
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${active.name} video`}
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/90 p-6"
+          onClick={() => setActive(null)}
+        >
           <button
+            ref={closeRef}
             className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center border-2 border-white text-white hover:bg-white hover:text-foreground"
             onClick={() => setActive(null)}
             aria-label="Close video"

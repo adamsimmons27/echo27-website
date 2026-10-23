@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HvacMarketingLanding } from "@/components/echo/HvacMarketingLanding";
 
 const URL = "https://echo-27.com/hvac-marketing";
-const TITLE = "HVAC Growth Partner Program | Echo 27";
+const TITLE = "Booked HVAC Estimates | Echo 27";
 const DESCRIPTION =
-  "Qualified replacement estimates booked onto your calendar. We generate the demand, qualify every homeowner, and book the estimate. You show up and close. One HVAC company per metro.";
+  "Qualified replacement estimates on your calendar. We bring the homeowners in, sort out the serious ones, and put the estimate on your calendar. You show up and close. One HVAC company per metro.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -12,7 +12,7 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${URL}#service`,
-      name: "HVAC growth partner program",
+      name: "Booked HVAC estimates program",
       serviceType: "Marketing agency",
       description: DESCRIPTION,
       provider: { "@id": "https://echo-27.com/#organization" },
