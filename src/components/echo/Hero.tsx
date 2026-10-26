@@ -73,7 +73,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-8 max-w-[46ch] text-balance text-lg md:mt-9 md:text-2xl text-muted-foreground leading-snug">
-              Paid ads, SEO, web design, funnels, and fractional CMO work for
+              Paid ads, SEO, web design, funnels, AI receptionists, and fractional CMO work for
               founders who want{" "}
               <span className="font-semibold text-foreground">revenue, not reports.</span>
             </p>

@@ -36,6 +36,15 @@ const services = [
     ],
   },
   {
+    title: "AI receptionist",
+    copy: "An AI receptionist that answers every call in seconds, day or night, qualifies the caller, and books the appointment into the tools you already use.",
+    points: [
+      "Every call answered, including nights and weekends",
+      "Missed-call text back and automated follow-up",
+      "Works with ServiceTitan, Jobber, Housecall Pro, and your CRM",
+    ],
+  },
+  {
     title: "Fractional CMO",
     copy: "Senior marketing leadership for a fraction of a full-time hire. Strategy, oversight, and hands-on execution.",
     points: [
@@ -53,18 +62,16 @@ export function Services() {
         <div>
           <p className="eyebrow mb-7">What we do</p>
           <h2 className="max-w-[16ch] text-[38px] md:text-[52px] font-extrabold leading-[0.98] tracking-[-0.04em] text-foreground">
-            Five ways we drive growth.
+            Six ways we drive growth.
           </h2>
         </div>
 
-        {/* Five panels: spans are chosen so no breakpoint leaves an empty cell (which would show as a solid divider-colored box). */}
-        <div className="slab mt-14 grid grid-cols-1 gap-[2px] bg-foreground sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5">
+        {/* Six panels fill two and three columns evenly, so no breakpoint leaves an empty cell. */}
+        <div className="slab mt-14 grid grid-cols-1 gap-[2px] bg-foreground sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`card-flip flex flex-col ${["bg-sky", "bg-mint", "bg-surface", "bg-peach", "bg-lilac"][i % 5]} p-6 xl:col-span-1 ${
-                i === 4 ? "sm:col-span-2 lg:col-span-3" : i === 3 ? "lg:col-span-3" : "lg:col-span-2"
-              }`}
+              className={`card-flip flex flex-col ${["bg-sky", "bg-mint", "bg-surface", "bg-peach", "bg-lilac", "bg-surface"][i % 6]} p-6`}
             >
               <h3 className="text-[22px] font-extrabold leading-[1.05] tracking-[-0.03em]">
                 {s.title}

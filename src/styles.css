@@ -703,3 +703,38 @@ body[data-booking-visible="true"] .sticky-cta { transform: translateY(100%); }
   .call-wave span:nth-child(odd) { height: 14px; }
   .call-wave span:nth-child(even) { height: 20px; }
 }
+
+/* Voice AI integrations diagram: a dot travels along each connector. Still with reduced motion. */
+.flow-link { position: relative; }
+.flow-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background-color: var(--foreground);
+  transform: translateY(-50%);
+}
+.flow-track::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--teal);
+  transform: translate(0, -50%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow-track::after {
+    animation: flowDot 1.8s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes flowDot {
+    0% { left: 0; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { left: calc(100% - 10px); opacity: 0; }
+  }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { Check, Phone, PhoneCall } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Phone, PhoneCall } from "lucide-react";
 import logo from "@/assets/echo27-logo.png";
 import { Container } from "@/components/cmo/Container";
 import { Section } from "@/components/cmo/Section";
@@ -12,6 +12,20 @@ import { track } from "@/lib/tracking";
 
 /** PLACEHOLDER: the demo line visitors can call to hear the receptionist. Leave empty until one exists. */
 const DEMO_PHONE: string = "";
+
+/**
+ * Platforms shown as supported integration targets. They are not Echo 27 partners and nothing here claims certification.
+ * To show an official logo instead of the wordmark, drop the file into public/images/integrations/ and set "logo" to its path,
+ * following that platform's brand guidelines. Leave "logo" empty to render the name.
+ */
+const PLATFORMS: { name: string; logo: string }[] = [
+  { name: "ServiceTitan", logo: "" },
+  { name: "Jobber", logo: "" },
+  { name: "Housecall Pro", logo: "" },
+  { name: "GoHighLevel", logo: "" },
+  { name: "HubSpot", logo: "" },
+];
+const PLATFORMS_MORE = "and other CRM, scheduling, and field service platforms";
 
 /**
  * Voice AI page at /voice-ai. An AI receptionist, built and run by Echo 27, for local businesses.
@@ -76,6 +90,36 @@ export const voiceAi = {
       { title: "Retail and hospitality", body: "Bookings, hours, and directions answered without pulling staff off the floor." },
       { title: "Home services and trades", body: "Emergency calls go straight to your phone. Everything else is booked while you are out on site." },
     ],
+  },
+  integrations: {
+    stripHeader: "Works With the Tools You Already Use.",
+    stripNote: "Nothing to replace. We connect to what your office already runs.",
+    eyebrow: "Integrations",
+    header: "Your Software. Now Working Smarter.",
+    sub: "Already using ServiceTitan, Jobber, Housecall Pro, or another platform? Echo 27 connects AI-powered answering, lead follow-up, and booking workflows with the tools your business already relies on.",
+    flow: {
+      label: "How a call moves through your software: a customer call is answered by Echo 27's AI automation, which passes the details to ServiceTitan, Jobber, or Housecall Pro, where it becomes an appointment or a lead record.",
+      nodes: [
+        { title: "Customer call", body: "Answered in seconds, day or night." },
+        { title: "Echo 27 AI automation", body: "Qualifies the caller and books the visit." },
+        { title: "ServiceTitan, Jobber, or Housecall Pro", body: "Receives the customer and the booking." },
+        { title: "Appointment or lead record", body: "Ready for your office, with the notes." },
+      ],
+    },
+    benefits: [
+      { title: "Customer Information", body: "Capture new inquiries and send customer details into your existing CRM." },
+      { title: "Scheduling & Booking", body: "Connect qualified inquiries with your scheduling and appointment workflows." },
+      { title: "Estimate Follow-Up", body: "Automate reminders and follow-ups based on available estimate and job information." },
+      { title: "Lead Tracking", body: "Keep lead statuses, conversations, and follow-up activities organized." },
+      { title: "Less Manual Data Entry", body: "Reduce repetitive tasks by connecting your systems." },
+    ],
+    statement: "No complicated software migration. No need to rebuild your business processes. We help your existing tools work together.",
+    cta: "See How It Works With Your Software",
+    question: {
+      q: "Will this integrate with ServiceTitan, Jobber, or Housecall Pro?",
+      a: "Echo 27 works with major home service management platforms, including ServiceTitan, Jobber, and Housecall Pro. We assess your existing setup and recommend the appropriate integration approach based on your software, account permissions, and available functionality.",
+    },
+    disclaimer: "Platform names and logos belong to their owners. Echo 27 is not certified by, endorsed by, or affiliated with these companies. Specific integrations may require API access, third-party middleware, an eligible subscription plan, or additional setup, and some features may not be available on every platform.",
   },
   how: {
     header: "Live in three steps.",
@@ -186,6 +230,18 @@ export function VoiceAiLanding() {
               </div>
             </div>
           </Container>
+          {/* Integration strip: the tools stay, we connect to them */}
+          <Container className="pb-14 sm:pb-16">
+            <div className="slab bg-surface">
+              <div className="grid gap-6 p-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-10 md:p-8">
+                <div>
+                  <h2 className="headline headline-md">{c.integrations.stripHeader}</h2>
+                  <p className="mt-2 text-[14px] text-muted-foreground">{c.integrations.stripNote}</p>
+                </div>
+                <PlatformGrid compact />
+              </div>
+            </div>
+          </Container>
         </section>
 
         {/* Why */}
@@ -268,6 +324,46 @@ export function VoiceAiLanding() {
           </ol>
         </Section>
 
+        {/* Integrations */}
+        <Section id="integrations" tone="peach" labelledBy="va-integrations">
+          <div className="max-w-[64ch]">
+            <p className="eyebrow mb-6">{c.integrations.eyebrow}</p>
+            <h2 id="va-integrations" className="headline headline-lg">
+              {c.integrations.header}
+            </h2>
+            <p className="lede mt-5 text-muted-foreground">{c.integrations.sub}</p>
+          </div>
+          <div className="mt-10">
+            <PlatformGrid />
+          </div>
+          <IntegrationFlow />
+          {/* Five benefits: spans chosen so no breakpoint leaves an empty ink cell. */}
+          <ul className="slab slab-grid mt-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
+            {c.integrations.benefits.map((b, i) => (
+              <li key={b.title} className={`bg-surface p-6 ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"} ${i === 4 ? "sm:col-span-2 lg:col-span-3" : ""}`}>
+                <Check className="h-6 w-6 text-teal-deep" strokeWidth={2.5} aria-hidden="true" />
+                <h3 className="headline headline-md mt-4">{b.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{b.body}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <blockquote className="card bg-mint md:p-8">
+              <p className="text-[19px] font-bold leading-snug md:text-[22px]">{"\u201c"}{c.integrations.statement}{"\u201d"}</p>
+            </blockquote>
+            <div className="card md:p-8">
+              <h3 className="headline headline-md">{c.integrations.question.q}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{c.integrations.question.a}</p>
+            </div>
+          </div>
+          <div className="mt-8 flex flex-col items-start gap-4">
+            <CtaButton location="integrations" targetId={c.cta.targetId}>
+              {c.integrations.cta}
+            </CtaButton>
+            <p className="max-w-[80ch] text-[13px] leading-relaxed text-muted-foreground">{c.integrations.disclaimer}</p>
+          </div>
+        </Section>
+
         {/* Closing and booking */}
         <Section id="book" tone="dark" labelledBy="va-book">
           <div className="mx-auto max-w-3xl text-center">
@@ -291,6 +387,52 @@ export function VoiceAiLanding() {
 
       <Footer />
       <Analytics bookingId={c.cta.targetId} />
+    </div>
+  );
+}
+
+/** Platform tiles. A wordmark in the site's own type unless an official logo path is set on the platform. */
+function PlatformGrid({ compact = false }: { compact?: boolean }) {
+  return (
+    <ul className="slab slab-grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" aria-label="Platforms we connect to">
+      {PLATFORMS.map((p) => (
+        <li key={p.name} className={`flex items-center justify-center bg-surface text-center font-extrabold tracking-[-0.02em] ${compact ? "px-3 py-4 text-[14px]" : "px-4 py-6 text-[16px] md:text-[17px]"}`}>
+          {p.logo ? <img src={p.logo} alt={p.name} className={compact ? "max-h-6 w-auto" : "max-h-8 w-auto"} /> : p.name}
+        </li>
+      ))}
+      <li className={`flex items-center justify-center bg-mint text-center font-bold leading-snug text-foreground ${compact ? "px-3 py-3 text-[12px]" : "px-4 py-5 text-[13px]"}`}>
+        {PLATFORMS_MORE}
+      </li>
+    </ul>
+  );
+}
+
+/** The path a call takes into the office software. Four nodes, with a dot moving along the connectors. */
+function IntegrationFlow() {
+  const f = voiceAi.integrations.flow;
+  const cells: React.ReactNode[] = [];
+  f.nodes.forEach((n, i) => {
+    cells.push(
+      <li key={n.title} className={`rounded-[12px] border-2 border-foreground p-4 ${["bg-sky", "bg-teal-deep text-white", "bg-surface", "bg-mint"][i]}`}>
+        <p className="text-[15px] font-extrabold leading-tight">{n.title}</p>
+        <p className={`mt-1.5 text-[13px] leading-snug ${i === 1 ? "text-white/90" : "text-muted-foreground"}`}>{n.body}</p>
+      </li>,
+    );
+    if (i < f.nodes.length - 1) {
+      cells.push(
+        <li key={`${n.title}-link`} className="flow-link flex items-center justify-center lg:w-14" style={{ "--d": `${i * 0.6}s` } as React.CSSProperties}>
+          <span className="flow-track hidden lg:block" />
+          <ArrowRight className="relative hidden h-5 w-5 bg-surface text-foreground lg:block" strokeWidth={2.5} />
+          <ArrowDown className="h-5 w-5 text-foreground lg:hidden" strokeWidth={2.5} />
+        </li>,
+      );
+    }
+  });
+  return (
+    <div role="img" aria-label={f.label} className="card mt-8 md:p-8">
+      <ol aria-hidden="true" className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch">
+        {cells}
+      </ol>
     </div>
   );
 }
