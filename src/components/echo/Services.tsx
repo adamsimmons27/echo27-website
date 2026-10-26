@@ -41,7 +41,7 @@ const services = [
     points: [
       "Every call answered, including nights and weekends",
       "Missed-call text back and automated follow-up",
-      "Works with ServiceTitan, Jobber, Housecall Pro, and your CRM",
+      "Connects to ServiceTitan, Jobber, Housecall Pro, or your CRM",
     ],
   },
   {

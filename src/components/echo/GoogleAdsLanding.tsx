@@ -288,7 +288,7 @@ export function GoogleAdsLanding() {
               <p className="mt-2 text-[17px] font-bold">{c.pricing.per}</p>
               <ul className="mt-8 space-y-3 border-t-2 border-white/30 pt-6">
                 {c.pricing.terms.map((t) => (
-                  <li key={t} className="text-[15px] leading-snug text-white/90">
+                  <li key={t} className="text-[15px] leading-snug text-white">
                     {t}
                   </li>
                 ))}
@@ -317,7 +317,7 @@ export function GoogleAdsLanding() {
             <h2 id="ga-start" className="headline headline-lg">
               {c.closing.header}
             </h2>
-            <p className="lede mt-5 text-white/90">{c.closing.body}</p>
+            <p className="lede mt-5 text-white">{c.closing.body}</p>
             <div className="mt-8">
               <button
                 type="button"

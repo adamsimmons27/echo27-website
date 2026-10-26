@@ -59,7 +59,7 @@ export const voiceAi = {
     cards: [
       { title: "Never misses a call", body: "Answers in seconds, 24 hours a day, including nights, weekends, and the moment three calls come in at once.", tone: "bg-sky" },
       { title: "Built around your trade", body: "Trained on your services, your service area, your hours, and the questions your dispatcher asks before anyone goes out.", tone: "bg-mint" },
-      { title: "Books, not just answers", body: "Qualifies the caller and puts the appointment straight into your calendar or CRM, with the details your team needs.", tone: "bg-peach" },
+      { title: "Books, not just answers", body: "Qualifies the caller and puts the appointment into your calendar or CRM, with the details your team needs. We confirm your tools on the first call.", tone: "bg-peach" },
       { title: "Hands emergencies to you", body: "A no-heat call in January or a burst pipe at midnight goes straight through to your phone. If you can't pick up, the details are texted and emailed to you as soon as the call ends.", tone: "bg-lilac" },
     ],
   },
@@ -93,17 +93,18 @@ export const voiceAi = {
   },
   integrations: {
     stripHeader: "Works With the Tools You Already Use.",
-    stripNote: "Nothing to replace. We connect to what your office already runs.",
+    stripNote: "Nothing to replace. We connect to the tools your office already runs, where the platform allows it.",
+    stripDisclaimer: "Supported integration targets, not partners. Platform names belong to their owners. Some connections need API access or extra setup.",
     eyebrow: "Integrations",
     header: "Your Software. Now Working Smarter.",
     sub: "Already using ServiceTitan, Jobber, Housecall Pro, or another platform? Echo 27 connects AI-powered answering, lead follow-up, and booking workflows with the tools your business already relies on.",
     flow: {
-      label: "How a call moves through your software: a customer call is answered by Echo 27's AI automation, which passes the details to ServiceTitan, Jobber, or Housecall Pro, where it becomes an appointment or a lead record.",
+      label: "How a call moves through your software: a customer call is answered by Echo 27's AI automation, which passes the details to ServiceTitan, Jobber, or Housecall Pro, where it is recorded as an appointment or a lead, depending on what your platform and plan support.",
       nodes: [
         { title: "Customer call", body: "Answered in seconds, day or night." },
         { title: "Echo 27 AI automation", body: "Qualifies the caller and books the visit." },
-        { title: "ServiceTitan, Jobber, or Housecall Pro", body: "Receives the customer and the booking." },
-        { title: "Appointment or lead record", body: "Ready for your office, with the notes." },
+        { title: "ServiceTitan, Jobber, or Housecall Pro", body: "Receives the customer details." },
+        { title: "Appointment or lead record", body: "Booked or logged, depending on what your platform supports." },
       ],
     },
     benefits: [
@@ -238,7 +239,10 @@ export function VoiceAiLanding() {
                   <h2 className="headline headline-md">{c.integrations.stripHeader}</h2>
                   <p className="mt-2 text-[14px] text-muted-foreground">{c.integrations.stripNote}</p>
                 </div>
-                <PlatformGrid compact />
+                <div>
+                  <PlatformGrid compact />
+                  <p className="mt-3 text-[12px] leading-snug text-muted-foreground">{c.integrations.stripDisclaimer}</p>
+                </div>
               </div>
             </div>
           </Container>
@@ -356,11 +360,11 @@ export function VoiceAiLanding() {
               <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{c.integrations.question.a}</p>
             </div>
           </div>
-          <div className="mt-8 flex flex-col items-start gap-4">
+          <div className="mt-8 flex flex-col items-start gap-5">
+            <p className="max-w-[80ch] text-[13px] leading-relaxed text-muted-foreground">{c.integrations.disclaimer}</p>
             <CtaButton location="integrations" targetId={c.cta.targetId}>
               {c.integrations.cta}
             </CtaButton>
-            <p className="max-w-[80ch] text-[13px] leading-relaxed text-muted-foreground">{c.integrations.disclaimer}</p>
           </div>
         </Section>
 
@@ -370,7 +374,7 @@ export function VoiceAiLanding() {
             <h2 id="va-book" className="headline headline-lg">
               {c.closing.header}
             </h2>
-            <p className="lede mt-5 text-white/90">{c.closing.body}</p>
+            <p className="lede mt-5 text-white">{c.closing.body}</p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">
             <VoiceAiForm />
@@ -394,7 +398,7 @@ export function VoiceAiLanding() {
 /** Platform tiles. A wordmark in the site's own type unless an official logo path is set on the platform. */
 function PlatformGrid({ compact = false }: { compact?: boolean }) {
   return (
-    <ul className="slab slab-grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" aria-label="Platforms we connect to">
+    <ul className={`slab slab-grid grid-cols-2 sm:grid-cols-3 ${compact ? "" : "lg:grid-cols-6"}`} aria-label="Platforms we connect to">
       {PLATFORMS.map((p) => (
         <li key={p.name} className={`flex items-center justify-center bg-surface text-center font-extrabold tracking-[-0.02em] ${compact ? "px-3 py-4 text-[14px]" : "px-4 py-6 text-[16px] md:text-[17px]"}`}>
           {p.logo ? <img src={p.logo} alt={p.name} className={compact ? "max-h-6 w-auto" : "max-h-8 w-auto"} /> : p.name}
@@ -415,7 +419,7 @@ function IntegrationFlow() {
     cells.push(
       <li key={n.title} className={`rounded-[12px] border-2 border-foreground p-4 ${["bg-sky", "bg-teal-deep text-white", "bg-surface", "bg-mint"][i]}`}>
         <p className="text-[15px] font-extrabold leading-tight">{n.title}</p>
-        <p className={`mt-1.5 text-[13px] leading-snug ${i === 1 ? "text-white/90" : "text-muted-foreground"}`}>{n.body}</p>
+        <p className={`mt-1.5 text-[13px] leading-snug ${i === 1 ? "text-white" : "text-muted-foreground"}`}>{n.body}</p>
       </li>,
     );
     if (i < f.nodes.length - 1) {

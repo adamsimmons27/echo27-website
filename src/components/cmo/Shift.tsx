@@ -15,7 +15,7 @@ export function Shift({ content }: { content: LandingContent }) {
           <h2 id="shift-heading" className="headline headline-lg max-w-[22ch] text-white">
             {shift.header}
           </h2>
-          <p className="lede mt-6 max-w-[60ch] text-white/90">{shift.body}</p>
+          <p className="lede mt-6 max-w-[60ch] text-white">{shift.body}</p>
           <CtaButton
             location="shift"
             targetId={cta.targetId}

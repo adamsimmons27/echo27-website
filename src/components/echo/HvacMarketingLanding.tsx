@@ -261,7 +261,7 @@ export function HvacMarketingLanding() {
             <h2 id="hvac-book" className="headline headline-lg">
               {c.closing.header}
             </h2>
-            <p className="lede mt-5 text-white/90">{c.closing.body}</p>
+            <p className="lede mt-5 text-white">{c.closing.body}</p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">
             <HvacBookingForm />
