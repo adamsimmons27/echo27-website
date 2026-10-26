@@ -28,16 +28,16 @@ const PLATFORMS: { name: string; logo: string }[] = [
 const PLATFORMS_MORE = "and other CRM, scheduling, and field service platforms";
 
 /**
- * Voice AI page at /voice-ai. An AI receptionist, built and run by Echo 27, for local businesses.
+ * Voice AI page at /voice-ai. An AI receptionist, built and run by Echo 27, for home service businesses.
  * Copy rules: no em dashes, no exclamation marks, no invented figures, "customers" not "jobs".
  */
 export const voiceAi = {
   cta: { label: "Book a call", targetId: "book" },
   hero: {
-    eyebrow: "Voice AI for local businesses",
+    eyebrow: "Voice AI for home service businesses",
     headline: "Every missed call is a customer who called someone else.",
     subhead:
-      "An AI receptionist that answers every call in seconds, day or night, asks the right questions, and books the appointment into your calendar. Built, trained, and run by Echo 27.",
+      "An AI receptionist for HVAC, plumbing, electrical, roofing, and other home service companies. It answers every call in seconds, day or night, asks the right questions, and books the appointment into the software your office already runs. Built, trained, and run by Echo 27.",
     demo: "Hear it answer",
     demoNote: "[Demo line goes here: a number anyone can call to hear the receptionist.]",
     mock: {
@@ -58,9 +58,9 @@ export const voiceAi = {
     header: "A front desk that never steps away.",
     cards: [
       { title: "Never misses a call", body: "Answers in seconds, 24 hours a day, including nights, weekends, and the moment three calls come in at once.", tone: "bg-sky" },
-      { title: "Built around your business", body: "Trained on your services, your service area, your hours, and the questions you ask before you book anyone.", tone: "bg-mint" },
+      { title: "Built around your trade", body: "Trained on your services, your service area, your hours, and the questions your dispatcher asks before anyone goes out.", tone: "bg-mint" },
       { title: "Books, not just answers", body: "Qualifies the caller and puts the appointment straight into your calendar or CRM, with the details your team needs.", tone: "bg-peach" },
-      { title: "Hands urgent calls to you", body: "When a call needs a person, it goes straight through to your phone. If you can't pick up, the details are texted and emailed to you as soon as the call ends.", tone: "bg-lilac" },
+      { title: "Hands emergencies to you", body: "A no-heat call in January or a burst pipe at midnight goes straight through to your phone. If you can't pick up, the details are texted and emailed to you as soon as the call ends.", tone: "bg-lilac" },
     ],
   },
   calc: {
@@ -81,14 +81,14 @@ export const voiceAi = {
     ],
   },
   who: {
-    header: "Who it's for.",
-    intro: "Any local business that wins customers one phone call at a time.",
+    header: "Built for the trades.",
+    intro: "Home service companies that win customers one phone call at a time, usually while everyone is out on site.",
     items: [
-      { title: "Clinics and practices", body: "New patient inquiries answered and booked while the front desk is with someone else." },
-      { title: "Gyms and studios", body: "Trial and membership questions handled at 9pm, when people actually decide." },
-      { title: "Professional services", body: "Inquiries screened for fit before they reach a partner's desk." },
-      { title: "Retail and hospitality", body: "Bookings, hours, and directions answered without pulling staff off the floor." },
-      { title: "Home services and trades", body: "Emergency calls go straight to your phone. Everything else is booked while you are out on site." },
+      { title: "HVAC", body: "No-heat and no-cool calls answered in seconds, system age and home ownership confirmed, and the visit booked before the next company picks up." },
+      { title: "Plumbing", body: "Burst pipe at midnight goes straight to your phone. Water heater quotes and drain calls get booked while you are under a sink." },
+      { title: "Electrical", body: "Panel upgrades, EV chargers, and the lights-out emergency, each sorted by urgency and put on the right tech's calendar." },
+      { title: "Roofing", body: "After the storm, every call answered at once. Inspections booked, insurance questions captured, nothing lost to voicemail." },
+      { title: "Other home services", body: "Landscaping, pest control, garage doors, cleaning, restoration. If customers call to book, it answers and books." },
     ],
   },
   integrations: {
@@ -131,10 +131,10 @@ export const voiceAi = {
   },
   closing: {
     header: "Stop losing the calls you already paid for.",
-    body: "Book a 20-minute call. We'll tell you straight whether an AI receptionist makes sense for your business, and what it would take to go live.",
+    body: "Book a 20-minute call. We'll tell you straight whether an AI receptionist makes sense for your company, and what it would take to go live.",
   },
   form: {
-    businessTypes: ["Clinic or practice", "Gym or studio", "Professional services", "Retail or hospitality", "Home services or trades", "Other"],
+    businessTypes: ["HVAC", "Plumbing", "Electrical", "Roofing", "Landscaping", "Other home service"],
     callVolume: ["Under 20 calls a week", "20 to 50 calls a week", "50 to 150 calls a week", "150+ calls a week"],
     submit: "Book a call",
     sending: "Sending",
@@ -508,7 +508,7 @@ const LABELS: Record<Field, string> = {
   email: "Email",
   phone: "Phone",
   company: "Business name",
-  business_type: "Type of business",
+  business_type: "Trade",
   call_volume: "Inbound calls",
 };
 
