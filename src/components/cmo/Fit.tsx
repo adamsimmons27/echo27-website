@@ -2,7 +2,7 @@ import { Check, X } from "lucide-react";
 import { Section } from "./Section";
 import type { LandingContent } from "@/content/types";
 
-/** Section 8: two pastel slabs, who this is for and who it is not for. Labelled by the first slab's heading. */
+/** Section 9: two pastel slabs, who this is for and who it is not for. Labelled by the first slab's heading. */
 export function Fit({ content }: { content: LandingContent }) {
   const { forYou, notForYou } = content.fit;
   return (

@@ -11,6 +11,7 @@ import { Offer } from "./Offer";
 import { Compare } from "./Compare";
 import { Proof } from "./Proof";
 import { HowItWorks } from "./HowItWorks";
+import { Team } from "./Team";
 import { Fit } from "./Fit";
 import { Faq } from "./Faq";
 import { Booking } from "./Booking";
@@ -29,6 +30,7 @@ export function FractionalCmoLanding({ content }: { content: LandingContent }) {
         <Compare content={content} />
         <Proof content={content} />
         <HowItWorks content={content} />
+        <Team content={content} />
         <Fit content={content} />
         <Faq faq={content.faq} />
         <Booking content={content} />

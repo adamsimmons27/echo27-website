@@ -51,12 +51,16 @@ export type LandingContent = {
     label: string;
     targetId: string;
   };
+  /** Display text for the header phone link; the tel: href is built from its digits. */
+  phone: string;
   hero: {
     eyebrow: string;
     headline: string;
     lead: string;
     subhead: string;
     ctaNote: string;
+    /** One line under the CTA note. */
+    promise: string;
     trust: [string, string, string];
   };
   problem: {
@@ -89,10 +93,17 @@ export type LandingContent = {
     header: string;
     labels: { situation: string; change: string; result: string };
     cases: [CaseStudy, CaseStudy, CaseStudy];
+    /** Short one-line results under the case studies, set as a two-column bullet grid. */
+    more: { header: string; items: string[]; note: string };
   };
   how: {
     header: string;
     steps: [Card, Card, Card, Card];
+  };
+  team: {
+    header: string;
+    body: string;
+    points: [string, string, string];
   };
   fit: {
     forYou: { header: string; items: [string, string, string] };

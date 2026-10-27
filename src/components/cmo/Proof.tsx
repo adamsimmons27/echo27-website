@@ -4,6 +4,7 @@ import type { LandingContent } from "@/content/types";
 /**
  * Section 6: three case study cards on cream, each a white slab with a marked photo slot on top.
  * Every field is a bracketed placeholder until real numbers exist. The result pair sits on a mint block.
+ * Below the cards, a two-column list of shorter one-line results.
  */
 export function Proof({ content }: { content: LandingContent }) {
   const { proof } = content;
@@ -48,6 +49,19 @@ export function Proof({ content }: { content: LandingContent }) {
           </li>
         ))}
       </ul>
+
+      <div className="mt-14 lg:mt-16">
+        <h3 className="headline headline-md">{proof.more.header}</h3>
+        <ul className="mt-6 grid gap-x-10 gap-y-3 md:grid-cols-2">
+          {proof.more.items.map((item, index) => (
+            <li key={index} className="flex items-start gap-3">
+              <span aria-hidden="true" className="mt-[0.6em] size-2 shrink-0 rounded-full bg-teal-deep" />
+              <span className="max-w-[52ch] font-medium leading-relaxed text-foreground">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm italic text-muted-foreground">{proof.more.note}</p>
+      </div>
     </Section>
   );
 }

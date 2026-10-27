@@ -2,7 +2,7 @@ import { Section } from "./Section";
 import { BookingEmbed } from "./BookingEmbed";
 import type { LandingContent } from "@/content/types";
 
-/** Section 10: the closing headline on a deep teal band, then the calendar or form in a white slab. id="book". */
+/** Section 11: the closing headline on a deep teal band, then the calendar or form in a white slab. id="book". */
 export function Booking({ content }: { content: LandingContent }) {
   const { finalCta, booking, cta } = content;
   return (

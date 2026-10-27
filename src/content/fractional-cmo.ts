@@ -14,7 +14,7 @@ export const fractionalCmo: LandingContent = {
   meta: {
     title: "Fractional CMO for Home Service Companies | Echo 27",
     description:
-      "Echo 27 takes ownership of your whole growth engine, from ads and search to the AI answers homeowners now trust, with a senior team based entirely in North America.",
+      "Echo 27 takes ownership of your whole marketing, from ads and search to the AI answers homeowners now trust, with a senior team based entirely in North America.",
     siteName: "Echo 27",
     url: "https://echo-27.com/fractional-cmo",
     variant: "Home Services",
@@ -30,14 +30,19 @@ export const fractionalCmo: LandingContent = {
     targetId: "book",
   },
 
+  /** Shown in the header on every screen size as a tel: link. */
+  phone: "[PHONE]",
+
   hero: {
     eyebrow: "For home service companies doing $1M to $10M",
-    headline: "Your entire marketing department, run by a fractional CMO who owns the growth number.",
+    headline:
+      "We help home service companies add [$500K to $2M] in booked revenue in 12 months, with one team that owns the number.",
     lead: "Who, right now, is responsible for your growth number?",
     subhead:
-      "Stop juggling an SEO guy, an ads agency, and a web person who never talk to each other. Echo 27 takes ownership of your whole growth engine, from ads and search to the AI answers homeowners now trust, with a senior team based entirely in North America.",
+      "Your whole marketing department, led by a fractional CMO who sits in your leadership meetings and reports on booked jobs, not clicks. Senior team, 100% North American.",
     ctaNote:
       "30 minutes. We'll show you where you're losing booked jobs, including whether AI search recommends you or your competitor.",
+    promise: "Our job is simple: keep your schedule full and your cost per booked job going down.",
     trust: ["12+ years in performance marketing", "23+ industries served", "100% North American team"],
   },
 
@@ -72,7 +77,7 @@ export const fractionalCmo: LandingContent = {
   offer: {
     header: "One team. One strategy. One number we're accountable for.",
     subhead:
-      "We operate as your marketing department, led by a fractional CMO who sits in your leadership meetings and reports on revenue, not clicks.",
+      "We operate as your marketing department, led by a fractional CMO who sits in your leadership meetings and reports on booked jobs and revenue, not clicks.",
     items: [
       { icon: "compass", label: "Strategy and budget allocation" },
       { icon: "megaphone", label: "Google Ads, LSAs, and Meta" },
@@ -148,6 +153,20 @@ export const fractionalCmo: LandingContent = {
         result: "[PLACEHOLDER: the result, with a real number]",
       },
     ],
+    more: {
+      header: "More results from the last 12 months",
+      items: [
+        "[Industry]: [metric and number, e.g. Cost per booked job down 41% in 90 days]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+        "[Industry]: [metric and number]",
+      ],
+      note: "Results from Echo 27 clients across home services and other industries.",
+    },
   },
 
   how: {
@@ -172,12 +191,22 @@ export const fractionalCmo: LandingContent = {
     ],
   },
 
+  team: {
+    header: "Who you'll work with",
+    body: "Adam Simmons leads every Echo 27 engagement. He's spent 12 years running paid media on Google, Meta, TikTok, and YouTube across 23+ industries, built a class-based business past $1M and sold it, and coaches growth-stage founders inside SaaS Academy. He sits in your leadership meeting, not a coordinator.",
+    points: [
+      "Built and sold a seven-figure service business",
+      "12+ years buying media on every major platform",
+      "Coach inside SaaS Academy",
+    ],
+  },
+
   fit: {
     forYou: {
       header: "This is for you if:",
       items: [
         "you're doing $1M to $10M in revenue",
-        "you have capacity to take on more jobs",
+        "you have trucks and techs with room on the schedule",
         "you want one accountable partner instead of a pile of vendors.",
       ],
     },

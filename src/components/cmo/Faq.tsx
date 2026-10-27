@@ -4,7 +4,7 @@ import { Section } from "./Section";
 import type { LandingContent } from "@/content/types";
 import { track } from "@/lib/tracking";
 
-/** Section 9: an accessible accordion in one white slab, divided by ink rules. Native buttons, hidden panels, several open at once. */
+/** Section 10: an accessible accordion in one white slab, divided by ink rules. Native buttons, hidden panels, several open at once. */
 export function Faq({ faq }: { faq: LandingContent["faq"] }) {
   const [open, setOpen] = useState<Set<number>>(() => new Set());
 
