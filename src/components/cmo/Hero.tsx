@@ -16,7 +16,8 @@ export function Hero({ content }: { content: LandingContent }) {
             <span className="hl">{parts.mark}</span>
             {parts.after}
           </h1>
-          <p className="lede mt-7 max-w-[56ch] text-muted-foreground">{hero.subhead}</p>
+          <p className="mt-7 max-w-[56ch] text-lg font-semibold">{hero.lead}</p>
+          <p className="lede mt-3 max-w-[56ch] text-muted-foreground">{hero.subhead}</p>
           <div className="mt-9 flex flex-col items-start gap-4">
             <CtaButton location="hero" targetId={cta.targetId} className="w-full sm:w-auto">
               {cta.label}

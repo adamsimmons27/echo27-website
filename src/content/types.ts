@@ -54,6 +54,7 @@ export type LandingContent = {
   hero: {
     eyebrow: string;
     headline: string;
+    lead: string;
     subhead: string;
     ctaNote: string;
     trust: [string, string, string];

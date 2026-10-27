@@ -33,6 +33,7 @@ export const fractionalCmo: LandingContent = {
   hero: {
     eyebrow: "For home service companies doing $1M to $10M",
     headline: "Your entire marketing department, run by a fractional CMO who owns the growth number.",
+    lead: "Who, right now, is responsible for your growth number?",
     subhead:
       "Stop juggling an SEO guy, an ads agency, and a web person who never talk to each other. Echo 27 takes ownership of your whole growth engine, from ads and search to the AI answers homeowners now trust, with a senior team based entirely in North America.",
     ctaNote:
@@ -41,7 +42,7 @@ export const fractionalCmo: LandingContent = {
   },
 
   problem: {
-    header: "You've outgrown agencies. You're not ready for a $250K CMO.",
+    header: "You've outgrown agencies. You're not ready to build a marketing department.",
     cards: [
       {
         title: "Nobody owns the result.",
@@ -53,14 +54,14 @@ export const fractionalCmo: LandingContent = {
       },
       {
         title: "The basics stopped being enough.",
-        body: "Everyone in your market runs Google Ads and LSAs now. Costs keep climbing and the same playbook gets you less every year.",
+        body: "Everyone in your market runs Google Ads and LSAs now. Costs keep climbing and the same playbook keeps you in the game but doesn't win it anymore.",
       },
     ],
   },
 
   shift: {
     header: "Homeowners are changing how they find you. Most contractors haven't noticed.",
-    body: "A growing share of homeowners now ask ChatGPT, Google's AI Overviews, and voice assistants who to call. Those tools name a handful of companies, not ten blue links. Getting named is a different discipline called answer engine optimization, or AEO. Most agencies aren't doing it. The companies that establish themselves in AI answers now will be very hard to displace later.",
+    body: "A growing share of homeowners now ask ChatGPT, Google's AI Overviews, and voice assistants who to call. Those tools name a handful of companies, not ten blue links. Getting named is a different discipline called answer engine optimization, or AEO. Most agencies serving contractors aren't measuring it or optimizing for it. AI answers are built on the same signals that drive Maps and LSAs: reviews, citations, consistent business data, and real content. Companies that get those right now are the ones AI will keep naming.",
     mock: {
       question: "Who's the best HVAC company near me?",
       answers: ["[Your competitor]", "[Another competitor]", "[Not you, yet]"],
@@ -101,7 +102,7 @@ export const fractionalCmo: LandingContent = {
       { label: "Accountable for", values: ["Clicks and impressions", "Activity", "Booked jobs and revenue"] },
       {
         label: "Cost",
-        values: ["Multiple retainers", "$150K to $400K+ in payroll", "One fee, a fraction of a department"],
+        values: ["Multiple retainers", "A $70K to $90K manager, plus the vendors they still need, or $200K+ for a real CMO.", "One fee, a fraction of a department"],
       },
       {
         label: "Speed to launch",
