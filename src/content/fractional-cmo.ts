@@ -35,8 +35,7 @@ export const fractionalCmo: LandingContent = {
 
   hero: {
     eyebrow: "For home service companies doing $1M to $10M",
-    headline:
-      "We help home service companies add [$500K to $2M] in booked revenue in 12 months, with one team that owns the number.",
+    headline: "Add $500K to $2M in booked revenue in the next 12 months.",
     lead: "Who, right now, is responsible for your growth number?",
     subhead:
       "Your whole marketing department, led by a fractional CMO who sits in your leadership meetings and reports on booked jobs, not clicks. Senior team, 100% North American.",

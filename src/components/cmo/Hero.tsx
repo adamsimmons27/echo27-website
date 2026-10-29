@@ -35,9 +35,9 @@ export function Hero({ content }: { content: LandingContent }) {
   );
 }
 
-/** Puts the marker on the last clause of the headline without touching the words. */
+/** Puts the marker on the revenue figure in the headline without touching the words. */
 function splitHighlight(headline: string): { before: string; mark: string; after: string } {
-  const key = "one team that owns the number.";
+  const key = "$500K to $2M";
   const i = headline.indexOf(key);
   if (i < 0) return { before: headline, mark: "", after: "" };
   return { before: headline.slice(0, i), mark: key, after: headline.slice(i + key.length) };
