@@ -30,6 +30,26 @@ Typecheck with `npx tsc --noEmit -p tsconfig.json`.
 
 All documented in `.env.example`. `VITE_GHL_WEBHOOK_URL` is the GoHighLevel inbound webhook that every form posts to; each form sends a `form` field (`application`, `free-audit`, `growth-audit`) so one workflow can branch on it. The fractional CMO page also reads `VITE_BOOKING_URL` (calendar embed instead of the form), `VITE_META_PIXEL_ID`, and `VITE_GA4_ID`. Values are baked in at build time, so set them where the site builds and redeploy.
 
+## AI Search Readiness Checker (`/ai-search-readiness`)
+
+A lead magnet for the fractional CMO service: a real audit of a home service website, scored out of 100, with the full report behind an email gate. Code lives in `src/lib/readiness/` (audit, checks, integrations) and `src/routes/api.readiness.*.ts` (the three server endpoints: `scan` streams progress, `unlock` records the lead and returns the full report, `report` restores a report by id).
+
+Nothing is simulated. Each integration that has no credentials only turns its checks into "unverified", which are left out of the score. In development the score card lists what is missing.
+
+Setup, all server-side (no `VITE_` prefix, so none of it reaches the browser). On Vercel, add these under Settings > Environment Variables:
+
+| Variable | Where to get it | What it powers |
+| --- | --- | --- |
+| `FIRECRAWL_API_KEY` | firecrawl.dev > API keys | Page discovery and content extraction. Without it the audit still works from the sitemap and direct fetches. |
+| `OPENAI_API_KEY` | platform.openai.com > API keys. Set a monthly budget under Limits. | The ten content questions (pricing, process, FAQs, people, reviews...). Each audit is one call of roughly 60K input tokens. `OPENAI_MODEL` overrides the default `gpt-5-mini`. |
+| `PAGESPEED_API_KEY` | console.cloud.google.com > enable "PageSpeed Insights API" > Credentials > API key | Mobile performance and Core Web Vitals. Keyless requests are rate-limited to nothing. |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | supabase.com > project > Settings > API. Run `supabase/migrations/20261101000000_readiness.sql` in the SQL editor first. | Report storage: the 24-hour cache, the unlock, and reloading a report by id. Without it, development keeps reports in memory. |
+| `GHL_WEBHOOK_URL` | GoHighLevel > Automation > Workflows > Inbound Webhook trigger | Where unlocked leads go, posted from the server with `form: "ai-search-readiness"`. Falls back to `VITE_GHL_WEBHOOK_URL`. |
+
+Vercel: an audit takes one to three minutes and streams progress, so the function's max duration must be above the default. Set `maxDuration` to 300 in the project settings (Fluid Compute) before launching ads.
+
+Abuse limits: 3 audits and 10 unlocks per visitor per hour, 4 audits at once per server instance, a 24-hour cache per site and city, and a bot honeypot on both forms. These slow abuse down; the hard cap on spend is the monthly limit set in each provider's dashboard.
+
 ## Fractional CMO page: trade-specific variants (HVAC, plumbing, roofing)
 
 1. Copy `src/content/fractional-cmo.ts` to `src/content/fractional-cmo.hvac.ts` and change the strings. Keep the shape; TypeScript will tell you if a field is missing. Rules: no em dashes, no invented stats or client names, placeholders in `[square brackets]`.

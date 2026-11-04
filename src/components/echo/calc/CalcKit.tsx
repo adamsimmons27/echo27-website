@@ -42,13 +42,14 @@ export const TOOLS = [
   },
 ] as const;
 
-/** Page chrome shared by every calculator. Narrow single column by default. */
+/** Page chrome shared by every calculator. Narrow single column by default. `cta` replaces the closing call to action. */
 export function CalcPage({
   eyebrow,
   title,
   intro,
   note,
   wide = false,
+  cta,
   children,
 }: {
   eyebrow: string;
@@ -56,6 +57,7 @@ export function CalcPage({
   intro: string;
   note?: string;
   wide?: boolean;
+  cta?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -84,7 +86,7 @@ export function CalcPage({
           <section>{children}</section>
           <section>
             <ToolLinks />
-            <CalcCTA />
+            {cta ?? <CalcCTA />}
           </section>
         </div>
       </main>
@@ -122,7 +124,7 @@ function ToolLinks() {
           <Link
             key={t.to}
             to={t.to}
-            className="card-flip group flex flex-col bg-surface p-6 md:p-7"
+            className="card-flip group flex flex-col bg-surface p-6 md:p-7 md:[&:last-child:nth-child(odd)]:col-span-2"
           >
             <p className="flex items-center gap-2 text-[20px] font-extrabold tracking-[-0.02em]">
               {t.name}

@@ -65,6 +65,7 @@
   --color-teal: var(--teal);
   --color-teal-deep: var(--teal-deep);
   --color-pink: var(--pink);
+  --color-amber: var(--amber);
   --color-yellow: var(--yellow);
   --color-butter: var(--butter);
   --color-sky: var(--sky);
@@ -98,6 +99,7 @@
   --primary: oklch(0.55 0.16 0);                 /* #C13D6E pink */
   --primary-foreground: oklch(1 0 0);
   --pink: oklch(0.55 0.16 0);
+  --amber: #B8690A;                             /* the orange in the readiness checker's traffic lights; ink-legible on cream */
   /* Exact Echo 27 brand teal (same color as the "27" in the logo) */
   --teal: #1F8F85;
   --secondary: oklch(0.935 0.005 95);

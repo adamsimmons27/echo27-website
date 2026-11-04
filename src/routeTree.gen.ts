@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AiSearchReadinessRouteImport } from './routes/ai-search-readiness'
 import { Route as ApplianceRepairRouteImport } from './routes/appliance-repair'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as CacCalculatorRouteImport } from './routes/cac-calculator'
@@ -33,10 +34,18 @@ import { Route as VoiceAiRouteImport } from './routes/voice-ai'
 import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as CaseStudiesMountainGamingRouteImport } from './routes/case-studies.mountain-gaming'
 import { Route as CaseStudiesSocietyMortgageRouteImport } from './routes/case-studies.society-mortgage'
+import { Route as ApiReadinessReportRouteImport } from './routes/api.readiness.report'
+import { Route as ApiReadinessScanRouteImport } from './routes/api.readiness.scan'
+import { Route as ApiReadinessUnlockRouteImport } from './routes/api.readiness.unlock'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiSearchReadinessRoute = AiSearchReadinessRouteImport.update({
+  id: '/ai-search-readiness',
+  path: '/ai-search-readiness',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplianceRepairRoute = ApplianceRepairRouteImport.update({
@@ -156,9 +165,25 @@ const CaseStudiesSocietyMortgageRoute =
     path: '/case-studies/society-mortgage',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiReadinessReportRoute = ApiReadinessReportRouteImport.update({
+  id: '/api/readiness/report',
+  path: '/api/readiness/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiReadinessScanRoute = ApiReadinessScanRouteImport.update({
+  id: '/api/readiness/scan',
+  path: '/api/readiness/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiReadinessUnlockRoute = ApiReadinessUnlockRouteImport.update({
+  id: '/api/readiness/unlock',
+  path: '/api/readiness/unlock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-search-readiness': typeof AiSearchReadinessRoute
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
@@ -182,9 +207,13 @@ export interface FileRoutesByFullPath {
   '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
+  '/api/readiness/report': typeof ApiReadinessReportRoute
+  '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-search-readiness': typeof AiSearchReadinessRoute
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
@@ -208,10 +237,14 @@ export interface FileRoutesByTo {
   '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
+  '/api/readiness/report': typeof ApiReadinessReportRoute
+  '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-search-readiness': typeof AiSearchReadinessRoute
   '/appliance-repair': typeof ApplianceRepairRoute
   '/book': typeof BookRoute
   '/cac-calculator': typeof CacCalculatorRoute
@@ -235,11 +268,15 @@ export interface FileRoutesById {
   '/web-design': typeof WebDesignRoute
   '/case-studies/mountain-gaming': typeof CaseStudiesMountainGamingRoute
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
+  '/api/readiness/report': typeof ApiReadinessReportRoute
+  '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ai-search-readiness'
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
@@ -263,9 +300,13 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
+    | '/api/readiness/report'
+    | '/api/readiness/scan'
+    | '/api/readiness/unlock'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ai-search-readiness'
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
@@ -289,9 +330,13 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
+    | '/api/readiness/report'
+    | '/api/readiness/scan'
+    | '/api/readiness/unlock'
   id:
     | '__root__'
     | '/'
+    | '/ai-search-readiness'
     | '/appliance-repair'
     | '/book'
     | '/cac-calculator'
@@ -315,10 +360,14 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/case-studies/mountain-gaming'
     | '/case-studies/society-mortgage'
+    | '/api/readiness/report'
+    | '/api/readiness/scan'
+    | '/api/readiness/unlock'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiSearchReadinessRoute: typeof AiSearchReadinessRoute
   ApplianceRepairRoute: typeof ApplianceRepairRoute
   BookRoute: typeof BookRoute
   CacCalculatorRoute: typeof CacCalculatorRoute
@@ -342,6 +391,9 @@ export interface RootRouteChildren {
   WebDesignRoute: typeof WebDesignRoute
   CaseStudiesMountainGamingRoute: typeof CaseStudiesMountainGamingRoute
   CaseStudiesSocietyMortgageRoute: typeof CaseStudiesSocietyMortgageRoute
+  ApiReadinessReportRoute: typeof ApiReadinessReportRoute
+  ApiReadinessScanRoute: typeof ApiReadinessScanRoute
+  ApiReadinessUnlockRoute: typeof ApiReadinessUnlockRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -351,6 +403,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-search-readiness': {
+      id: '/ai-search-readiness'
+      path: '/ai-search-readiness'
+      fullPath: '/ai-search-readiness'
+      preLoaderRoute: typeof AiSearchReadinessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/appliance-repair': {
@@ -514,11 +573,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesSocietyMortgageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/readiness/report': {
+      id: '/api/readiness/report'
+      path: '/api/readiness/report'
+      fullPath: '/api/readiness/report'
+      preLoaderRoute: typeof ApiReadinessReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/readiness/scan': {
+      id: '/api/readiness/scan'
+      path: '/api/readiness/scan'
+      fullPath: '/api/readiness/scan'
+      preLoaderRoute: typeof ApiReadinessScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/readiness/unlock': {
+      id: '/api/readiness/unlock'
+      path: '/api/readiness/unlock'
+      fullPath: '/api/readiness/unlock'
+      preLoaderRoute: typeof ApiReadinessUnlockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiSearchReadinessRoute: AiSearchReadinessRoute,
   ApplianceRepairRoute: ApplianceRepairRoute,
   BookRoute: BookRoute,
   CacCalculatorRoute: CacCalculatorRoute,
@@ -542,6 +623,9 @@ const rootRouteChildren: RootRouteChildren = {
   WebDesignRoute: WebDesignRoute,
   CaseStudiesMountainGamingRoute: CaseStudiesMountainGamingRoute,
   CaseStudiesSocietyMortgageRoute: CaseStudiesSocietyMortgageRoute,
+  ApiReadinessReportRoute: ApiReadinessReportRoute,
+  ApiReadinessScanRoute: ApiReadinessScanRoute,
+  ApiReadinessUnlockRoute: ApiReadinessUnlockRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -18,6 +18,7 @@ const tools = [
   { href: "/cac-calculator", label: "Cost per customer" },
   { href: "/growth-calculator", label: "Growth projection" },
   { href: "/growth-ceiling", label: "Growth ceiling" },
+  { href: "/ai-search-readiness", label: "AI search readiness" },
 ];
 
 const legal = [
