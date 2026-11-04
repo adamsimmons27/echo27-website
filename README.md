@@ -36,14 +36,14 @@ A lead magnet for the fractional CMO service: a real audit of a home service web
 
 Nothing is simulated. Each integration that has no credentials only turns its checks into "unverified", which are left out of the score. In development the score card lists what is missing.
 
-Setup, all server-side (no `VITE_` prefix, so none of it reaches the browser). On Vercel, add these under Settings > Environment Variables:
+Setup, all server-side (no `VITE_` prefix, so none of it reaches the browser). On Vercel, add the keys under Settings > Environment Variables and create the Blob store under Storage:
 
 | Variable | Where to get it | What it powers |
 | --- | --- | --- |
 | `FIRECRAWL_API_KEY` | firecrawl.dev > API keys | Page discovery and content extraction. Without it the audit still works from the sitemap and direct fetches. |
 | `OPENAI_API_KEY` | platform.openai.com > API keys. Set a monthly budget under Limits. | The ten content questions (pricing, process, FAQs, people, reviews...). Each audit is one call of roughly 60K input tokens. `OPENAI_MODEL` overrides the default `gpt-5-mini`. |
 | `PAGESPEED_API_KEY` | console.cloud.google.com > enable "PageSpeed Insights API" > Credentials > API key | Mobile performance and Core Web Vitals. Keyless requests are rate-limited to nothing. |
-| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | supabase.com > project > Settings > API. Run `supabase/migrations/20261101000000_readiness.sql` in the SQL editor first. | Report storage: the 24-hour cache, the unlock, and reloading a report by id. Without it, development keeps reports in memory. |
+| Vercel Blob store | Vercel > Storage > Create > Blob, access **Private**, then Connect to Project. Vercel adds `BLOB_STORE_ID` and `BLOB_READ_WRITE_TOKEN` itself. | Report storage: the 24-hour cache, the unlock, and reloading a report by id. Private, so reports are never readable by URL. Locally, `vercel env pull` writes the credentials to `.env.local`; without them, development keeps reports in memory. |
 | `GHL_WEBHOOK_URL` | GoHighLevel > Automation > Workflows > Inbound Webhook trigger | Where unlocked leads go, posted from the server with `form: "ai-search-readiness"`. Falls back to `VITE_GHL_WEBHOOK_URL`. |
 
 Vercel: an audit takes one to three minutes and streams progress, so the function's max duration must be above the default. Set `maxDuration` to 300 in the project settings (Fluid Compute) before launching ads.

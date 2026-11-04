@@ -5,10 +5,13 @@ export function env(name: string): string | undefined {
   if (!loaded) {
     loaded = true;
     if ((import.meta as { env?: { DEV?: boolean } }).env?.DEV) {
-      try {
-        process.loadEnvFile(".env");
-      } catch {
-        /* no .env file */
+      /* .env.local is what `vercel env pull` writes; it carries the Blob store credentials. */
+      for (const file of [".env", ".env.local"]) {
+        try {
+          process.loadEnvFile(file);
+        } catch {
+          /* file not present */
+        }
       }
     }
   }
@@ -23,7 +26,7 @@ export function missingSetup(): string[] {
   if (!env("FIRECRAWL_API_KEY")) missing.push("FIRECRAWL_API_KEY");
   if (!env("OPENAI_API_KEY")) missing.push("OPENAI_API_KEY");
   if (!env("PAGESPEED_API_KEY")) missing.push("PAGESPEED_API_KEY");
-  if (!env("SUPABASE_URL") || !env("SUPABASE_SERVICE_ROLE_KEY")) missing.push("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY");
+  if (!env("BLOB_READ_WRITE_TOKEN") && !env("BLOB_STORE_ID")) missing.push("Vercel Blob store (BLOB_READ_WRITE_TOKEN)");
   if (!env("GHL_WEBHOOK_URL")) missing.push("GHL_WEBHOOK_URL");
   return missing;
 }
