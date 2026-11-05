@@ -36,6 +36,7 @@ import { Route as CaseStudiesMountainGamingRouteImport } from './routes/case-stu
 import { Route as CaseStudiesSocietyMortgageRouteImport } from './routes/case-studies.society-mortgage'
 import { Route as ApiReadinessReportRouteImport } from './routes/api.readiness.report'
 import { Route as ApiReadinessScanRouteImport } from './routes/api.readiness.scan'
+import { Route as ApiReadinessStatusRouteImport } from './routes/api.readiness.status'
 import { Route as ApiReadinessUnlockRouteImport } from './routes/api.readiness.unlock'
 
 const IndexRoute = IndexRouteImport.update({
@@ -175,6 +176,11 @@ const ApiReadinessScanRoute = ApiReadinessScanRouteImport.update({
   path: '/api/readiness/scan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiReadinessStatusRoute = ApiReadinessStatusRouteImport.update({
+  id: '/api/readiness/status',
+  path: '/api/readiness/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiReadinessUnlockRoute = ApiReadinessUnlockRouteImport.update({
   id: '/api/readiness/unlock',
   path: '/api/readiness/unlock',
@@ -209,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
   '/api/readiness/report': typeof ApiReadinessReportRoute
   '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/status': typeof ApiReadinessStatusRoute
   '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRoutesByTo {
@@ -239,6 +246,7 @@ export interface FileRoutesByTo {
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
   '/api/readiness/report': typeof ApiReadinessReportRoute
   '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/status': typeof ApiReadinessStatusRoute
   '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRoutesById {
@@ -270,6 +278,7 @@ export interface FileRoutesById {
   '/case-studies/society-mortgage': typeof CaseStudiesSocietyMortgageRoute
   '/api/readiness/report': typeof ApiReadinessReportRoute
   '/api/readiness/scan': typeof ApiReadinessScanRoute
+  '/api/readiness/status': typeof ApiReadinessStatusRoute
   '/api/readiness/unlock': typeof ApiReadinessUnlockRoute
 }
 export interface FileRouteTypes {
@@ -302,6 +311,7 @@ export interface FileRouteTypes {
     | '/case-studies/society-mortgage'
     | '/api/readiness/report'
     | '/api/readiness/scan'
+    | '/api/readiness/status'
     | '/api/readiness/unlock'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -332,6 +342,7 @@ export interface FileRouteTypes {
     | '/case-studies/society-mortgage'
     | '/api/readiness/report'
     | '/api/readiness/scan'
+    | '/api/readiness/status'
     | '/api/readiness/unlock'
   id:
     | '__root__'
@@ -362,6 +373,7 @@ export interface FileRouteTypes {
     | '/case-studies/society-mortgage'
     | '/api/readiness/report'
     | '/api/readiness/scan'
+    | '/api/readiness/status'
     | '/api/readiness/unlock'
   fileRoutesById: FileRoutesById
 }
@@ -393,6 +405,7 @@ export interface RootRouteChildren {
   CaseStudiesSocietyMortgageRoute: typeof CaseStudiesSocietyMortgageRoute
   ApiReadinessReportRoute: typeof ApiReadinessReportRoute
   ApiReadinessScanRoute: typeof ApiReadinessScanRoute
+  ApiReadinessStatusRoute: typeof ApiReadinessStatusRoute
   ApiReadinessUnlockRoute: typeof ApiReadinessUnlockRoute
 }
 
@@ -587,6 +600,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiReadinessScanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/readiness/status': {
+      id: '/api/readiness/status'
+      path: '/api/readiness/status'
+      fullPath: '/api/readiness/status'
+      preLoaderRoute: typeof ApiReadinessStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/readiness/unlock': {
       id: '/api/readiness/unlock'
       path: '/api/readiness/unlock'
@@ -625,6 +645,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesSocietyMortgageRoute: CaseStudiesSocietyMortgageRoute,
   ApiReadinessReportRoute: ApiReadinessReportRoute,
   ApiReadinessScanRoute: ApiReadinessScanRoute,
+  ApiReadinessStatusRoute: ApiReadinessStatusRoute,
   ApiReadinessUnlockRoute: ApiReadinessUnlockRoute,
 }
 export const routeTree = rootRouteImport
