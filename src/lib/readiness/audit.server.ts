@@ -165,8 +165,17 @@ async function fetchPage(url: string, category: Category, city: string): Promise
       return { url: scraped.url, kinds, source: "firecrawl", status: scraped.status, parsed, text, xRobots: "" };
     }
   }
-  const res = await safeFetch(url, { timeoutMs: 12_000 });
-  if (!res.ok || res.status >= 400) return null;
+  let res = await safeFetch(url, { timeoutMs: 12_000 });
+  /* A dropped connection or a busy server is often gone a moment later. One retry keeps a real page from going missing. */
+  const transient = (r: typeof res) => (r.ok ? r.status === 429 || r.status >= 500 : r.reason === "network" || r.reason === "timeout");
+  if (transient(res)) {
+    await new Promise((r) => setTimeout(r, 1_500));
+    res = await safeFetch(url, { timeoutMs: 12_000 });
+  }
+  if (!res.ok || res.status >= 400) {
+    console.error(`Readiness: could not read ${url} (${res.ok ? res.status : res.reason})`);
+    return null;
+  }
   const parsed = parseHtml(res.text);
   return { url: res.url, kinds, source: "direct", status: res.status, parsed, text: parsed.text, xRobots: (res.headers["x-robots-tag"] ?? "").toLowerCase() };
 }
