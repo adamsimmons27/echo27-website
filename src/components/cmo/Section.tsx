@@ -28,7 +28,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={`${tones[tone]} py-16 sm:py-20 lg:py-28 ${className}`}>
+    <section id={id} aria-labelledby={labelledBy} className={`${tones[tone]} py-14 sm:py-16 lg:py-24 ${className}`}>
       <Container>{children}</Container>
     </section>
   );

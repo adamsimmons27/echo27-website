@@ -62,7 +62,11 @@ function Page() {
   useEffect(() => {
     captureAttribution();
     /* A reload after an audit brings the report back by its id. */
-    const id = new URLSearchParams(window.location.search).get("r");
+    const params = new URLSearchParams(window.location.search);
+    /* The fractional CMO page hands a website over as ?url=, so the visitor doesn't type it twice. */
+    const handed = params.get("url")?.trim().slice(0, 2048);
+    if (handed) setForm((f) => ({ ...f, url: handed }));
+    const id = params.get("r");
     if (!id) return;
     fetch(`/api/readiness/report?id=${encodeURIComponent(id)}`)
       .then((r) => (r.ok ? r.json() : null))

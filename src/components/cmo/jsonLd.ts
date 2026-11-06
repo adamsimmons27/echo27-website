@@ -12,9 +12,18 @@ export function landingJsonLd(content: LandingContent, url: string) {
       "@id": `${url}#service`,
       name: `Fractional CMO for ${content.meta.variant}`,
       serviceType: "Fractional CMO",
+      areaServed: ["US", "CA"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "What the growth system covers",
+        itemListElement: content.system.pillars.map((pillar) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: pillar.title, description: `${pillar.tagline} ${pillar.items.join(", ")}.` },
+        })),
+      },
       description: content.meta.description,
       provider: { "@id": orgId },
-      audience: { "@type": "BusinessAudience", audienceType: content.hero.eyebrow },
+      audience: { "@type": "BusinessAudience", audienceType: content.meta.audience },
       url,
     },
   ];

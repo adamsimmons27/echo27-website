@@ -3,32 +3,34 @@
  * so a trade-specific variant (HVAC, plumbing, roofing) is one duplicated file with different strings.
  */
 
-export type IconName =
-  | "compass"
-  | "megaphone"
-  | "search"
-  | "mouse-pointer-click"
-  | "star"
-  | "phone-call"
-  | "refresh"
-  | "bar-chart";
-
 export type Card = { title: string; body: string };
 
-export type CompareRow = {
-  label: string;
-  /** Values in column order: typical agency, in-house hire, Echo 27. */
-  values: [string, string, string];
-};
-
-export type CaseStudy = {
-  company: string;
-  situation: string;
-  change: string;
-  result: string;
-};
-
 export type FaqItem = { question: string; answer: string };
+
+export type PillarIcon = "search" | "messages" | "compass";
+export type StepIcon = "phone" | "messages" | "clipboard" | "repeat" | "calendar";
+export type StageIcon = "search" | "blocks" | "trending";
+
+export type Pillar = {
+  icon: PillarIcon;
+  title: string;
+  tagline: string;
+  items: string[];
+  /** The business outcome, shown under the list. */
+  outcome: string;
+};
+
+/** One line of the sample text conversation. "note" lines are centred system notes, not bubbles. */
+export type SmsLine = { from: "business" | "homeowner" | "note"; text: string };
+
+export type CaseResult = {
+  company: string;
+  /** What kind of business it is, so nobody mistakes it for a home service client. */
+  kind: string;
+  stats: [{ value: string; label: string }, { value: string; label: string }];
+  detail: string;
+  href: string;
+};
 
 export type LandingContent = {
   meta: {
@@ -36,78 +38,130 @@ export type LandingContent = {
     title: string;
     description: string;
     siteName: string;
-    /** Absolute URL of this page. Overridden by NEXT_PUBLIC_SITE_URL when set. */
+    /** Absolute URL of this page. */
     url: string;
-    /** Short label for the variant, used in the OG image and JSON-LD service name. */
+    /** Short label for the variant, used in the JSON-LD service name. */
     variant: string;
+    /** Who the service is for, in the Service schema. */
+    audience: string;
   };
   brand: {
     name: string;
     /** One line for the Organization schema. */
     description: string;
   };
-  /** The single conversion action. Every button on the page uses this label and scrolls to #book. */
+  /** The single conversion action. Every booking button scrolls to #book. */
   cta: {
     label: string;
+    /** Shorter label for the header button. */
+    short: string;
     targetId: string;
   };
-  /** Display text for the header phone link; the tel: href is built from its digits. */
+  /** Display text for the header phone link. Leave it in [square brackets] until there is a real number and the link stays hidden. */
   phone: string;
   hero: {
     eyebrow: string;
-    headline: string;
-    lead: string;
+    /** The headline as separate sentences. The first one carries the marker highlight. */
+    headline: [string, string, string];
     subhead: string;
+    subheadNote: string;
     ctaNote: string;
-    /** One line under the CTA note. */
-    promise: string;
-    trust: [string, string, string];
+    /** The illustrated growth system beside the headline. */
+    visual: {
+      label: string;
+      title: string;
+      steps: { title: string; body: string; pillar: string }[];
+      footer: { title: string; body: string };
+    };
+    trust: string[];
   };
-  problem: {
+  changed: {
     header: string;
-    cards: [Card, Card, Card];
+    intro: string;
+    shifts: Card[];
+    turnEyebrow: string;
+    keyMessage: string;
+    keyBody: string;
   };
-  shift: {
+  system: {
+    header: string;
+    subhead: string;
+    pillars: [Pillar, Pillar, Pillar];
+  };
+  followUp: {
+    eyebrow: string;
+    header: string;
+    subhead: string;
+    flowLabel: string;
+    flow: { icon: StepIcon; title: string; body: string }[];
+    sms: {
+      label: string;
+      business: string;
+      channel: string;
+      lines: SmsLine[];
+      outcome: string;
+      caption: string;
+    };
+    capabilitiesHeader: string;
+    capabilities: Card[];
+    integrations: { header: string; body: string; platforms: string[]; disclaimer: string };
+    cta: string;
+  };
+  aeo: {
+    eyebrow: string;
     header: string;
     body: string;
-    mock: {
-      question: string;
-      answers: [string, string, string];
+    honesty: string;
+    helpHeader: string;
+    items: string[];
+    visual: {
+      label: string;
+      traditional: { title: string; caption: string };
+      ai: { title: string; question: string; answers: [string, string, string]; caption: string };
+      foundations: { title: string; items: string[] };
     };
-    miniCta: string;
+    check: {
+      header: string;
+      body: string;
+      inputLabel: string;
+      placeholder: string;
+      button: string;
+      note: string;
+      /** The existing checker page; the form sends the website there. */
+      action: string;
+    };
   };
-  offer: {
+  compare: {
     header: string;
-    subhead: string;
-    items: { icon: IconName; label: string }[];
+    columns: [string, string];
+    rows: { label: string; them: string; us: string }[];
+    /** Name of the person in src/components/echo/Testimonials.tsx whose quote sits under the table. */
+    quote: string;
   };
-  why: {
+  leadership: {
     header: string;
-    columns: [string, string, string];
-    /** Index of the column to highlight. */
-    highlight: 0 | 1 | 2;
-    rows: CompareRow[];
-    points: [Card, Card, Card];
-  };
-  proof: {
-    header: string;
-    labels: { situation: string; change: string; result: string };
-    cases: [CaseStudy, CaseStudy, CaseStudy];
-    /** Short one-line results under the case studies, set as a two-column bullet grid. */
-    more: { header: string; items: string[]; note: string };
+    body: string;
+    benefit: string;
+    listHeader: string;
+    items: string[];
+    visual: {
+      label: string;
+      before: { title: string; you: string; vendors: string[]; note: string };
+      after: { title: string; you: string; cmo: string; team: string[]; note: string };
+    };
+    lead: { header: string; body: string; points: [string, string, string] };
   };
   how: {
     header: string;
-    steps: [Card, Card, Card, Card];
+    steps: [{ icon: StageIcon } & Card, { icon: StageIcon } & Card, { icon: StageIcon } & Card];
   };
-  team: {
+  proof: {
     header: string;
-    body: string;
-    points: [string, string, string];
-  };
-  fit: {
-    forYou: { header: string; items: [string, string, string] };
-    notForYou: { header: string; items: [string, string, string] };
+    subhead: string;
+    cases: CaseResult[];
+    caseLink: string;
+    /** Names of the people in src/components/echo/Testimonials.tsx whose quotes appear here. */
+    quotes: string[];
   };
   faq: {
     header: string;
@@ -116,6 +170,7 @@ export type LandingContent = {
   finalCta: {
     header: string;
     body: string;
+    note: string;
   };
   booking: {
     /** Screen-reader heading for the booking region. */

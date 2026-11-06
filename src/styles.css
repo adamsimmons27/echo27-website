@@ -672,6 +672,20 @@
     text-transform: uppercase;
   }
 }
+/* Fractional CMO page only. Unlayered so they win over the utilities they adjust. */
+.cmo-page .cmo-h1 { font-size: clamp(2.125rem, 1.3rem + 2.9vw, 3.3rem); line-height: 1.03; }
+.cmo-page .cmo-h1 > span + span { margin-top: 0.08em; }
+/* A long eyebrow wraps: keep the dot on the first line. */
+.cmo-page .cmo-eyebrow { align-items: flex-start; line-height: 1.5; }
+.cmo-page .cmo-eyebrow::before { flex-shrink: 0; margin-top: 0.3em; }
+.cmo-page .cmo-hl-white { background-color: var(--surface); }
+/* Two coloured bands in a row share one ink rule, not two. */
+.cmo-page section.border-y-2 + section.border-y-2 { border-top-width: 0; }
+.cmo-page .cmo-lift { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cmo-page .cmo-lift:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--foreground); }
+}
+
 /* One clear keyboard focus ring everywhere; white on the dark teal bands. */
 :focus-visible { outline: 3px solid var(--teal-deep); outline-offset: 3px; }
 .on-dark :focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }

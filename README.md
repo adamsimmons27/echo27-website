@@ -56,8 +56,8 @@ Abuse limits: 3 audits and 10 unlocks per visitor per hour, 4 audits at once per
 2. Copy `src/routes/fractional-cmo.tsx` to `src/routes/fractional-cmo.hvac.tsx`, import the new content, and change the route path to `/fractional-cmo/hvac`. Set that variant's `meta.url` to match.
 3. Add the new URL to `public/sitemap.xml`.
 
-Everything else, from the comparison table to the FAQ schema, is generated from the content file. The FAQ schema only includes answers that are no longer placeholders.
+Everything else, from the comparison table to the FAQ schema, is generated from the content file.
 
 ## Placeholders on the fractional CMO page
 
-Search `src/content/fractional-cmo.ts` for `[` to find them: three case studies and six FAQ answers. Photo slots are marked in `src/components/cmo/Hero.tsx` and `src/components/cmo/Proof.tsx`. The homepage stats in `src/components/echo/Results.tsx` and the result lines on the video testimonials are also placeholders awaiting real figures.
+The page shows no placeholders. Two things are waiting on real values in `src/content/fractional-cmo.ts`: `phone` (the header phone link stays hidden while the value is in `[brackets]`) and the booking calendar (`VITE_BOOKING_URL`, otherwise the form is used). Proof on the page is real: the two case study figures come from the published case study pages and the quotes from `src/components/echo/Testimonials.tsx`, with their placeholder result lines switched off. The homepage stats in `src/components/echo/Results.tsx` and the result lines on the video testimonials are still placeholders awaiting real figures.

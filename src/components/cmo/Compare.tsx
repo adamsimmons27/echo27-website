@@ -1,46 +1,38 @@
+import { Check, X } from "lucide-react";
 import { Section } from "./Section";
+import { Byline, writtenBy } from "@/components/echo/Testimonials";
 import type { LandingContent } from "@/content/types";
 
 /**
- * Section 5: the comparison, on the pale mint band. A real table inside a white slab at md and up, with ink
- * rules between rows and columns and the Echo 27 column on deep teal. Below md, one white cell per row inside
- * a slab grid so nothing scrolls sideways on a phone. Both renderings are in the DOM and toggled with display classes.
+ * Traditional agency against Echo 27. A real two-column table in a white slab at md and up, with the Echo 27 column
+ * on deep teal. Below md, one cell per row so nothing scrolls sideways. A real client quote sits underneath.
  */
 export function Compare({ content }: { content: LandingContent }) {
-  const { why } = content;
-  const { columns, rows, highlight, points } = why;
+  const { compare } = content;
+  const { columns, rows } = compare;
+  const quote = writtenBy(compare.quote);
 
-  const cell = "px-5 py-4 align-top text-[15px] leading-snug";
+  const cell = "px-5 py-4 align-middle text-[15px] leading-snug";
   const rule = "border-b-2 border-foreground";
-  const colRule = "border-l-2 border-foreground";
 
   return (
-    <Section id="why" tone="mist" labelledBy="why-heading">
-      <h2 id="why-heading" className="headline headline-lg max-w-[22ch]">
-        {why.header}
+    <Section id="difference" tone="light" labelledBy="difference-heading">
+      <h2 id="difference-heading" className="headline headline-lg max-w-[22ch]">
+        {compare.header}
       </h2>
 
-      {/* (a) md and up: a real table in a white slab. Rules are drawn on the cells so the slab's own border stays 2px. */}
       <div className="slab mt-10 hidden bg-surface md:block lg:mt-12">
         <table className="w-full border-separate border-spacing-0 text-left">
-          <caption className="sr-only">{why.header}</caption>
+          <caption className="sr-only">{compare.header}</caption>
           <thead>
             <tr>
-              <td className={`${cell} ${rule} w-[22%] bg-surface`} />
-              {columns.map((column, i) => {
-                const isHighlight = i === highlight;
-                return (
-                  <th
-                    key={column}
-                    scope="col"
-                    className={`${cell} ${rule} ${colRule} text-base font-bold ${
-                      isHighlight ? "bg-teal-deep text-white" : "bg-surface text-foreground"
-                    }`}
-                  >
-                    {column}
-                  </th>
-                );
-              })}
+              <td className={`${cell} ${rule} w-[20%] bg-surface`} />
+              <th scope="col" className={`${cell} ${rule} w-[36%] border-l-2 border-foreground bg-surface text-base font-bold text-muted-foreground`}>
+                {columns[0]}
+              </th>
+              <th scope="col" className={`${cell} ${rule} border-l-2 border-foreground bg-teal-deep text-base font-bold text-white`}>
+                {columns[1]}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -48,22 +40,21 @@ export function Compare({ content }: { content: LandingContent }) {
               const rowRule = r === rows.length - 1 ? "" : rule;
               return (
                 <tr key={row.label}>
-                  <th scope="row" className={`${cell} ${rowRule} bg-surface font-bold text-foreground`}>
+                  <th scope="row" className={`${cell} ${rowRule} bg-surface text-[13px] font-bold uppercase tracking-[0.08em] text-foreground`}>
                     {row.label}
                   </th>
-                  {row.values.map((value, i) => {
-                    const isHighlight = i === highlight;
-                    return (
-                      <td
-                        key={columns[i]}
-                        className={`${cell} ${rowRule} ${colRule} ${
-                          isHighlight ? "bg-teal-deep font-bold text-white" : "bg-surface text-foreground"
-                        }`}
-                      >
-                        {value}
-                      </td>
-                    );
-                  })}
+                  <td className={`${cell} ${rowRule} border-l-2 border-foreground bg-surface text-muted-foreground`}>
+                    <span className="flex items-center gap-3">
+                      <X aria-hidden="true" size={18} strokeWidth={2.5} className="shrink-0" />
+                      {row.them}
+                    </span>
+                  </td>
+                  <td className={`${cell} ${rowRule} border-l-2 border-foreground bg-teal-deep text-[16px] font-bold text-white`}>
+                    <span className="flex items-center gap-3">
+                      <Check aria-hidden="true" size={20} strokeWidth={2.5} className="shrink-0" />
+                      {row.us}
+                    </span>
+                  </td>
                 </tr>
               );
             })}
@@ -71,41 +62,34 @@ export function Compare({ content }: { content: LandingContent }) {
         </table>
       </div>
 
-      {/* (b) below md: one white cell per row inside a slab grid, values as a definition list. */}
       <ul className="slab slab-grid mt-10 grid-cols-1 md:hidden">
         {rows.map((row) => (
           <li key={row.label} className="bg-surface p-5">
-            <h3 className="text-[19px] font-extrabold leading-[1.05] tracking-[-0.03em] text-foreground">{row.label}</h3>
-            <dl className="mt-4 flex flex-col gap-3">
-              {row.values.map((value, i) => {
-                const isHighlight = i === highlight;
-                return (
-                  <div
-                    key={columns[i]}
-                    className={isHighlight ? "rounded-r-lg border-l-4 border-teal bg-mint px-4 py-3" : "px-4 py-1"}
-                  >
-                    <dt className="text-[12px] font-bold uppercase tracking-[0.08em] text-teal-deep">{columns[i]}</dt>
-                    <dd className={`mt-1 text-[15px] leading-snug text-foreground ${isHighlight ? "font-bold" : ""}`}>
-                      {value}
-                    </dd>
-                  </div>
-                );
-              })}
-            </dl>
+            <h3 className="text-[12px] font-bold uppercase tracking-[0.08em] text-teal-deep">{row.label}</h3>
+            <p className="mt-3 flex items-start gap-2.5 text-[15px] leading-snug text-muted-foreground">
+              <X aria-hidden="true" size={18} strokeWidth={2.5} className="mt-0.5 shrink-0" />
+              <span>
+                <span className="sr-only">{columns[0]}: </span>
+                {row.them}
+              </span>
+            </p>
+            <p className="mt-2 flex items-start gap-2.5 rounded-lg bg-teal-deep px-3 py-2.5 text-[15px] font-bold leading-snug text-white">
+              <Check aria-hidden="true" size={18} strokeWidth={2.5} className="mt-0.5 shrink-0" />
+              <span>
+                <span className="sr-only">{columns[1]}: </span>
+                {row.us}
+              </span>
+            </p>
           </li>
         ))}
       </ul>
 
-      {/* Three supporting points, each marked with the site's teal dot. */}
-      <ul className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-3 lg:gap-8">
-        {points.map((point) => (
-          <li key={point.title} className="max-w-[40ch]">
-            <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-teal" />
-            <h3 className="headline headline-md mt-4 text-foreground">{point.title}</h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{point.body}</p>
-          </li>
-        ))}
-      </ul>
+      <figure className="mt-12 grid gap-6 border-l-4 border-teal pl-6 md:mt-14 md:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] md:items-center md:gap-10 md:pl-8">
+        <blockquote className="text-[19px] font-medium leading-snug text-foreground md:text-[22px]">“{quote.quote}”</blockquote>
+        <figcaption>
+          <Byline person={quote} />
+        </figcaption>
+      </figure>
     </Section>
   );
 }

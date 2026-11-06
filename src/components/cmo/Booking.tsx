@@ -12,6 +12,7 @@ export function Booking({ content }: { content: LandingContent }) {
           {finalCta.header}
         </h2>
         <p className="lede mt-5 text-white">{finalCta.body}</p>
+        <p className="mt-4 font-bold leading-snug text-white">{finalCta.note}</p>
       </div>
       <div className="mx-auto mt-10 max-w-3xl">
         <h3 className="sr-only">{booking.heading}</h3>
